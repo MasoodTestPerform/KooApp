@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+	<listeners>
+        <listener class-name="com.framework.listeners.SuiteEvent"></listener>
+        <listener class-name="com.framework.listeners.MobileEvent"></listener>
+    </listeners>
+       <test name="Test">
+        <classes>
+            <class name="com.framework.android.testcases.topicsTests.TopicWidgetTest">
+                <methods>
+                    <include name="TC_50_51_verifyTopicTabPage"/>
+                </methods>
+            </class>
+             <!-- <class name="com.koo.loginflow.LanguageSelectionTest">
+                <methods>
+                    <exclude name="verifyRewardBannerForHindiAndVerifyLoginPageHeading"/>
+                    <exclude name="verifyAvailableLanguagesInEnglish"/>
+                    <exclude name="verifyAvailableLanguagesInSameLanguage"/>
+                    <exclude name="verifyCheckBoxesForAvailableLanguages"/>
+                </methods>
+            </class>-->
+            
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->

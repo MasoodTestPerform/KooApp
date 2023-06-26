@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="6" total="7" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-06-25T20:56:47 IST" name="Suite" finished-at="2023-06-25T20:59:20 IST" duration-ms="152493">
+    <groups>
+      <group name="Topics">
+        <method signature="TopicWidgetTest.TC_50_51_verifyTopicTabPage(java.lang.String)[pri:0, instance:com.framework.android.testcases.topicsTests.TopicWidgetTest@3e694b3f]" name="TC_50_51_verifyTopicTabPage" class="com.framework.android.testcases.topicsTests.TopicWidgetTest"/>
+      </group> <!-- Topics -->
+      <group name="regression">
+        <method signature="TopicWidgetTest.TC_50_51_verifyTopicTabPage(java.lang.String)[pri:0, instance:com.framework.android.testcases.topicsTests.TopicWidgetTest@3e694b3f]" name="TC_50_51_verifyTopicTabPage" class="com.framework.android.testcases.topicsTests.TopicWidgetTest"/>
+      </group> <!-- regression -->
+    </groups>
+    <test started-at="2023-06-25T20:56:47 IST" name="Test" finished-at="2023-06-25T20:59:20 IST" duration-ms="152493">
+      <class name="com.framework.android.testcases.topicsTests.TopicWidgetTest">
+        <test-method is-config="true" signature="suiteSetup()[pri:0, instance:com.framework.android.testcases.topicsTests.TopicWidgetTest@3e694b3f]" started-at="2023-06-25T20:56:46 IST" name="suiteSetup" finished-at="2023-06-25T20:56:47 IST" duration-ms="1396" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- suiteSetup -->
+        <test-method is-config="true" signature="startReporting(java.lang.reflect.Method)[pri:0, instance:com.framework.android.testcases.topicsTests.TopicWidgetTest@3e694b3f]" started-at="2023-06-25T20:56:47 IST" name="startReporting" finished-at="2023-06-25T20:57:10 IST" duration-ms="23094" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.framework.android.testcases.topicsTests.TopicWidgetTest.TC_50_51_verifyTopicTabPage(java.lang.String)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startReporting -->
+        <test-method signature="TC_50_51_verifyTopicTabPage(java.lang.String)[pri:0, instance:com.framework.android.testcases.topicsTests.TopicWidgetTest@3e694b3f]" started-at="2023-06-25T20:57:10 IST" name="TC_50_51_verifyTopicTabPage" description="[TC_50, TC_51] Verify Topics tab should have Topics pills with + button, tapping on it or topic name, topic is followed&gt;tapping on arrow button, user goes to Topics Details screen &amp; related topics content should be shown" data-provider="Languages" finished-at="2023-06-25T20:59:18 IST" duration-ms="128017" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[English]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_50_51_verifyTopicTabPage -->
+        <test-method is-config="true" signature="testResult(java.lang.reflect.Method,org.testng.ITestResult)[pri:0, instance:com.framework.android.testcases.topicsTests.TopicWidgetTest@3e694b3f]" started-at="2023-06-25T20:59:18 IST" name="testResult" finished-at="2023-06-25T20:59:20 IST" duration-ms="1296" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.framework.android.testcases.topicsTests.TopicWidgetTest.TC_50_51_verifyTopicTabPage(java.lang.String)]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[[TestResult name=TC_50_51_verifyTopicTabPage status=SUCCESS method=TopicWidgetTest.TC_50_51_verifyTopicTabPage(java.lang.String)[pri:0, instance:com.framework.android.testcases.topicsTests.TopicWidgetTest@3e694b3f] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testResult -->
+        <test-method is-config="true" signature="generateResult()[pri:0, instance:com.framework.android.testcases.topicsTests.TopicWidgetTest@3e694b3f]" started-at="2023-06-25T20:59:23 IST" name="generateResult" finished-at="2023-06-25T20:59:23 IST" duration-ms="18" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- generateResult -->
+      </class> <!-- com.framework.android.testcases.topicsTests.TopicWidgetTest -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
