@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="6" total="7" passed="1" failed="0" skipped="0">
+<testng-results ignored="6" total="7" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-06-25T20:56:47 IST" name="Suite" finished-at="2023-06-25T20:59:20 IST" duration-ms="152493">
+  <suite started-at="2023-06-27T17:13:45 IST" name="Suite" finished-at="2023-06-27T17:18:43 IST" duration-ms="298469">
     <groups>
       <group name="Topics">
-        <method signature="TopicWidgetTest.TC_50_51_verifyTopicTabPage(java.lang.String)[pri:0, instance:com.framework.android.testcases.topicsTests.TopicWidgetTest@3e694b3f]" name="TC_50_51_verifyTopicTabPage" class="com.framework.android.testcases.topicsTests.TopicWidgetTest"/>
+        <method signature="TopicWidgetTest.TC_053_verifyTopicsWidgetInFeedPage(java.lang.String)[pri:0, instance:com.framework.android.testcases.topicsTests.TopicWidgetTest@3e694b3f]" name="TC_053_verifyTopicsWidgetInFeedPage" class="com.framework.android.testcases.topicsTests.TopicWidgetTest"/>
       </group> <!-- Topics -->
       <group name="regression">
-        <method signature="TopicWidgetTest.TC_50_51_verifyTopicTabPage(java.lang.String)[pri:0, instance:com.framework.android.testcases.topicsTests.TopicWidgetTest@3e694b3f]" name="TC_50_51_verifyTopicTabPage" class="com.framework.android.testcases.topicsTests.TopicWidgetTest"/>
+        <method signature="TopicWidgetTest.TC_053_verifyTopicsWidgetInFeedPage(java.lang.String)[pri:0, instance:com.framework.android.testcases.topicsTests.TopicWidgetTest@3e694b3f]" name="TC_053_verifyTopicsWidgetInFeedPage" class="com.framework.android.testcases.topicsTests.TopicWidgetTest"/>
       </group> <!-- regression -->
     </groups>
-    <test started-at="2023-06-25T20:56:47 IST" name="Test" finished-at="2023-06-25T20:59:20 IST" duration-ms="152493">
+    <test started-at="2023-06-27T17:13:45 IST" name="Test" finished-at="2023-06-27T17:18:43 IST" duration-ms="298469">
       <class name="com.framework.android.testcases.topicsTests.TopicWidgetTest">
-        <test-method is-config="true" signature="suiteSetup()[pri:0, instance:com.framework.android.testcases.topicsTests.TopicWidgetTest@3e694b3f]" started-at="2023-06-25T20:56:46 IST" name="suiteSetup" finished-at="2023-06-25T20:56:47 IST" duration-ms="1396" status="PASS">
+        <test-method is-config="true" signature="suiteSetup()[pri:0, instance:com.framework.android.testcases.topicsTests.TopicWidgetTest@3e694b3f]" started-at="2023-06-27T17:13:42 IST" name="suiteSetup" finished-at="2023-06-27T17:13:45 IST" duration-ms="3006" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- suiteSetup -->
-        <test-method is-config="true" signature="startReporting(java.lang.reflect.Method)[pri:0, instance:com.framework.android.testcases.topicsTests.TopicWidgetTest@3e694b3f]" started-at="2023-06-25T20:56:47 IST" name="startReporting" finished-at="2023-06-25T20:57:10 IST" duration-ms="23094" status="PASS">
+        <test-method is-config="true" signature="startReporting(java.lang.reflect.Method)[pri:0, instance:com.framework.android.testcases.topicsTests.TopicWidgetTest@3e694b3f]" started-at="2023-06-27T17:13:45 IST" name="startReporting" finished-at="2023-06-27T17:14:32 IST" duration-ms="46642" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void com.framework.android.testcases.topicsTests.TopicWidgetTest.TC_50_51_verifyTopicTabPage(java.lang.String)]]>
+                <![CDATA[public void com.framework.android.testcases.topicsTests.TopicWidgetTest.TC_053_verifyTopicsWidgetInFeedPage(java.lang.String)]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- startReporting -->
-        <test-method signature="TC_50_51_verifyTopicTabPage(java.lang.String)[pri:0, instance:com.framework.android.testcases.topicsTests.TopicWidgetTest@3e694b3f]" started-at="2023-06-25T20:57:10 IST" name="TC_50_51_verifyTopicTabPage" description="[TC_50, TC_51] Verify Topics tab should have Topics pills with + button, tapping on it or topic name, topic is followed&gt;tapping on arrow button, user goes to Topics Details screen &amp; related topics content should be shown" data-provider="Languages" finished-at="2023-06-25T20:59:18 IST" duration-ms="128017" status="PASS">
+        <test-method signature="TC_053_verifyTopicsWidgetInFeedPage(java.lang.String)[pri:0, instance:com.framework.android.testcases.topicsTests.TopicWidgetTest@3e694b3f]" started-at="2023-06-27T17:14:32 IST" name="TC_053_verifyTopicsWidgetInFeedPage" description="[TC_053] Verify Topics widget in feed screen with same pills like in Topics tab with same behaviour." data-provider="Languages" finished-at="2023-06-27T17:18:43 IST" duration-ms="251620" status="FAIL">
           <params>
             <param index="0">
               <value>
@@ -36,26 +36,130 @@
               </value>
             </param>
           </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[null]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: null
+at org.testng.Assert.fail(Assert.java:99)
+at org.testng.Assert.fail(Assert.java:106)
+at com.koo.framework.AssertManager.sAssertException(AssertManager.java:168)
+at com.koo.android.utils.MobileActions.swipeUsingText(MobileActions.java:469)
+at com.framework.android.screens.topics.TopicsTab.topicsWidgetInFeedTab(TopicsTab.java:79)
+at com.framework.android.testcases.topicsTests.TopicWidgetTest.TC_053_verifyTopicsWidgetInFeedPage(TopicWidgetTest.java:80)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TC_50_51_verifyTopicTabPage -->
-        <test-method is-config="true" signature="testResult(java.lang.reflect.Method,org.testng.ITestResult)[pri:0, instance:com.framework.android.testcases.topicsTests.TopicWidgetTest@3e694b3f]" started-at="2023-06-25T20:59:18 IST" name="testResult" finished-at="2023-06-25T20:59:20 IST" duration-ms="1296" status="PASS">
+        </test-method> <!-- TC_053_verifyTopicsWidgetInFeedPage -->
+        <test-method is-config="true" signature="testResult(java.lang.reflect.Method,org.testng.ITestResult)[pri:0, instance:com.framework.android.testcases.topicsTests.TopicWidgetTest@3e694b3f]" started-at="2023-06-27T17:18:43 IST" name="testResult" finished-at="2023-06-27T17:18:43 IST" duration-ms="4" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void com.framework.android.testcases.topicsTests.TopicWidgetTest.TC_50_51_verifyTopicTabPage(java.lang.String)]]>
+                <![CDATA[public void com.framework.android.testcases.topicsTests.TopicWidgetTest.TC_053_verifyTopicsWidgetInFeedPage(java.lang.String)]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[[TestResult name=TC_50_51_verifyTopicTabPage status=SUCCESS method=TopicWidgetTest.TC_50_51_verifyTopicTabPage(java.lang.String)[pri:0, instance:com.framework.android.testcases.topicsTests.TopicWidgetTest@3e694b3f] output={null}]]]>
+                <![CDATA[[TestResult name=TC_053_verifyTopicsWidgetInFeedPage status=FAILURE method=TopicWidgetTest.TC_053_verifyTopicsWidgetInFeedPage(java.lang.String)[pri:0, instance:com.framework.android.testcases.topicsTests.TopicWidgetTest@3e694b3f] output={null}]]]>
               </value>
             </param>
           </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+Exception occured in while validating Something went wrong in swipeUsingText. Text:Add Topics to your Feed. An element could not be located on the page using the given search parameters.
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DESKTOP-6V4BN1U', ip: '192.168.29.81', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.7'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities {app: C:\Users\Admin\git\KooApp/s..., appActivity: com.koo.onboarding.OnBoardi..., appPackage: com.koo.app, automationName: uiautomator2, databaseEnabled: false, desired: {app: C:\Users\Admin\git\KooApp/s..., appActivity: com.koo.onboarding.OnBoardi..., appPackage: com.koo.app, automationName: uiautomator2, noReset: false, orientation: PORTRAIT, platformName: android, platformVersion: 13, udid: emulator-5554}, deviceApiLevel: 33, deviceManufacturer: Google, deviceModel: sdk_gphone64_x86_64, deviceName: emulator-5554, deviceScreenDensity: 440, deviceScreenSize: 1080x2160, deviceUDID: emulator-5554, javascriptEnabled: true, locationContextEnabled: false, networkConnectionEnabled: true, noReset: false, orientation: PORTRAIT, pixelRatio: 2.75, platform: LINUX, platformName: Android, platformVersion: 13, statBarHeight: 66, takesScreenshot: true, udid: emulator-5554, viewportRect: {height: 2028, left: 0, top: 66, width: 1080}, warnings: {}, webStorageEnabled: false}
+Session ID: 8515de73-6c87-4ad6-9708-fc045fd2fdb6
+*** Element info: {Using=-android uiautomator, value=new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().text("Add Topics to your Feed"))} expected [true] but found [false]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+Exception occured in while validating Something went wrong in swipeUsingText. Text:Add Topics to your Feed. An element could not be located on the page using the given search parameters.
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DESKTOP-6V4BN1U', ip: '192.168.29.81', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.7'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities {app: C:\Users\Admin\git\KooApp/s..., appActivity: com.koo.onboarding.OnBoardi..., appPackage: com.koo.app, automationName: uiautomator2, databaseEnabled: false, desired: {app: C:\Users\Admin\git\KooApp/s..., appActivity: com.koo.onboarding.OnBoardi..., appPackage: com.koo.app, automationName: uiautomator2, noReset: false, orientation: PORTRAIT, platformName: android, platformVersion: 13, udid: emulator-5554}, deviceApiLevel: 33, deviceManufacturer: Google, deviceModel: sdk_gphone64_x86_64, deviceName: emulator-5554, deviceScreenDensity: 440, deviceScreenSize: 1080x2160, deviceUDID: emulator-5554, javascriptEnabled: true, locationContextEnabled: false, networkConnectionEnabled: true, noReset: false, orientation: PORTRAIT, pixelRatio: 2.75, platform: LINUX, platformName: Android, platformVersion: 13, statBarHeight: 66, takesScreenshot: true, udid: emulator-5554, viewportRect: {height: 2028, left: 0, top: 66, width: 1080}, warnings: {}, webStorageEnabled: false}
+Session ID: 8515de73-6c87-4ad6-9708-fc045fd2fdb6
+*** Element info: {Using=-android uiautomator, value=new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().text("Add Topics to your Feed"))} expected [true] but found [false]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:47)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:31)
+at com.koo.framework.BaseTest.testResult(BaseTest.java:145)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:62)
+at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:385)
+at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:321)
+at org.testng.internal.TestInvoker.runConfigMethods(TestInvoker.java:700)
+at org.testng.internal.TestInvoker.runAfterGroupsConfigurations(TestInvoker.java:676)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:660)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testResult -->
-        <test-method is-config="true" signature="generateResult()[pri:0, instance:com.framework.android.testcases.topicsTests.TopicWidgetTest@3e694b3f]" started-at="2023-06-25T20:59:23 IST" name="generateResult" finished-at="2023-06-25T20:59:23 IST" duration-ms="18" status="PASS">
+        <test-method is-config="true" signature="generateResult()[pri:0, instance:com.framework.android.testcases.topicsTests.TopicWidgetTest@3e694b3f]" started-at="2023-06-27T17:18:49 IST" name="generateResult" finished-at="2023-06-27T17:18:50 IST" duration-ms="1111" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- generateResult -->

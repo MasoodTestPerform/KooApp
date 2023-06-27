@@ -9,10 +9,10 @@
     <classes>
       <class name="com.framework.android.testcases.topicsTests.TopicWidgetTest">
         <methods>
+          <include name="TC_053_verifyTopicsWidgetInFeedPage" invocation-numbers="0"/>
           <include name="suiteSetup"/>
           <include name="testResult"/>
           <include name="startReporting"/>
-          <include name="TC_50_51_verifyTopicTabPage" invocation-numbers="0"/>
           <include name="generateResult"/>
         </methods>
       </class> <!-- com.framework.android.testcases.topicsTests.TopicWidgetTest -->

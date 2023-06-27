@@ -1,6 +1,5 @@
 package com.framework.android.screens.topics;
 import com.framework.android.allpages.*;
-
 import com.koo.android.utils.MobileActions;
 import com.koo.framework.BaseTest;
 
@@ -75,12 +74,25 @@ public class TopicsTab {
 	}
 
 	public void topicsWidgetInFeedTab(String topicsWidgetText) {
-		
-		mobileActions.swipeUsingText(topicsWidgetText);
-		String topicsTitle = mobileActions.getText(feedTabPage.topicsWidget_feedScreen, feedTabPage.topicsWidget_feedScreen_Name, true);
-		BaseTest.utilObj.get().getAssertManager().sAssertEquals(topicsTitle, topicsWidgetText, "Verification of Topics widget header is matched", true, BaseTest.mobileDriver.get(), false);
-			
+		BaseTest.LOGGER.get().logTestStep(BaseTest.extentTest.get(), "INFO", "Going to use Language:"+topicsWidgetText, false, BaseTest.mobileDriver.get());
+		try {
+			BaseTest.utilObj.get().getMobileActions().swipeUsingText(topicsWidgetText);
+			String topicsTitle = mobileActions.getText(feedTabPage.topicsWidget_feedScreen,"topicsTitle",true);
+
+			if (topicsWidgetText.equalsIgnoreCase(topicsTitle)) {
+				BaseTest.LOGGER.get().logInfo("Topics widget header is matched");
+				BaseTest.utilObj.get().getAssertManager().sAssertTrue(true, topicsWidgetText, true,  BaseTest.mobileDriver.get(), true);
+			} else {
+				BaseTest.LOGGER.get().logError("Topics widget header is not matched");
+				BaseTest.utilObj.get().getAssertManager().sAssertTrue(false, topicsWidgetText, true, BaseTest.mobileDriver.get(), true);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			BaseTest.LOGGER.get().logError("Topics widget header is not available");
+			BaseTest.utilObj.get().getAssertManager().sAssertTrue(false, topicsWidgetText, true, BaseTest.mobileDriver.get(), true);
+		}
 	}
+
 	
 	public void allAndFollowTopicsInTopicsTab(String topicsTabText, String topicsWidgetText) {
 		

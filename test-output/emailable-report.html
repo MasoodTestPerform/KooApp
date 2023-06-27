@@ -9,10 +9,28 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Suite</th></tr>
-<tr><td><a href="#t0">Test</a></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">152,493</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Test</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">298,469</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">com.framework.android.testcases.topicsTests.TopicWidgetTest</td><td><a href="#m0">TC_50_51_verifyTopicTabPage</a></td><td rowspan="1">1687706830908</td><td rowspan="1">128017</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Test &#8212; failed (configuration methods)</th></tr><tr class="failedeven"><td rowspan="1">com.framework.android.testcases.topicsTests.TopicWidgetTest</td><td><a href="#m0">testResult</a></td><td rowspan="1">1687866523848</td><td rowspan="1">4</td></tr><tr><th colspan="4">Test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.framework.android.testcases.topicsTests.TopicWidgetTest</td><td><a href="#m1">TC_053_verifyTopicsWidgetInFeedPage</a></td><td rowspan="1">1687866272136</td><td rowspan="1">251620</td></tr></tbody>
 </table>
-<h2>Test</h2><h3 id="m0">com.framework.android.testcases.topicsTests.TopicWidgetTest#TC_50_51_verifyTopicTabPage</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>English</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>Test</h2><h3 id="m0">com.framework.android.testcases.topicsTests.TopicWidgetTest#testResult</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>public void com.framework.android.testcases.topicsTests.TopicWidgetTest.TC_053_verifyTopicsWidgetInFeedPage(java.lang.String)</td><td>[TestResult name=TC_053_verifyTopicsWidgetInFeedPage status=FAILURE method=TopicWidgetTest.TC_053_verifyTopicsWidgetInFeedPage(java.lang.String)[pri:0, instance:com.framework.android.testcases.topicsTests.TopicWidgetTest@3e694b3f] output={null}]</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">java.lang.AssertionError: The following asserts failed:
+	Exception occured in while validating Something went wrong in swipeUsingText. Text:Add Topics to your Feed. An element could not be located on the page using the given search parameters.
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;DESKTOP-6V4BN1U&apos;, ip: &apos;192.168.29.81&apos;, os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities {app: C:\Users\Admin\git\KooApp/s..., appActivity: com.koo.onboarding.OnBoardi..., appPackage: com.koo.app, automationName: uiautomator2, databaseEnabled: false, desired: {app: C:\Users\Admin\git\KooApp/s..., appActivity: com.koo.onboarding.OnBoardi..., appPackage: com.koo.app, automationName: uiautomator2, noReset: false, orientation: PORTRAIT, platformName: android, platformVersion: 13, udid: emulator-5554}, deviceApiLevel: 33, deviceManufacturer: Google, deviceModel: sdk_gphone64_x86_64, deviceName: emulator-5554, deviceScreenDensity: 440, deviceScreenSize: 1080x2160, deviceUDID: emulator-5554, javascriptEnabled: true, locationContextEnabled: false, networkConnectionEnabled: true, noReset: false, orientation: PORTRAIT, pixelRatio: 2.75, platform: LINUX, platformName: Android, platformVersion: 13, statBarHeight: 66, takesScreenshot: true, udid: emulator-5554, viewportRect: {height: 2028, left: 0, top: 66, width: 1080}, warnings: {}, webStorageEnabled: false}
+Session ID: 8515de73-6c87-4ad6-9708-fc045fd2fdb6
+*** Element info: {Using=-android uiautomator, value=new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().text(&quot;Add Topics to your Feed&quot;))} expected [true] but found [false]
+	at com.koo.framework.BaseTest.testResult(BaseTest.java:145)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 34 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">com.framework.android.testcases.topicsTests.TopicWidgetTest#TC_053_verifyTopicsWidgetInFeedPage</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>English</td></tr><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: null
+	at com.koo.framework.AssertManager.sAssertException(AssertManager.java:168)
+	at com.koo.android.utils.MobileActions.swipeUsingText(MobileActions.java:469)
+	at com.framework.android.screens.topics.TopicsTab.topicsWidgetInFeedTab(TopicsTab.java:79)
+	at com.framework.android.testcases.topicsTests.TopicWidgetTest.TC_053_verifyTopicsWidgetInFeedPage(TopicWidgetTest.java:80)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>
