@@ -9,7 +9,7 @@
         <classes>
             <class name="com.framework.android.testcases.topicsTests.TopicWidgetTest">
                 <methods>
-                    <include name="TC_50_51_verifyTopicTabPage"/>
+                    <include name="TC_054_055_verifyManageTopicsPage"/>
                 </methods>
             </class>
              <!-- <class name="com.koo.loginflow.LanguageSelectionTest">

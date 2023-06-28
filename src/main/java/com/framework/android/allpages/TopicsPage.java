@@ -16,7 +16,7 @@ public class TopicsPage {
 	public By btn_GreaterThanIconintopics = By.xpath("(//android.widget.ImageView[@resource-id='com.koo.app:id/ivDetail'])[1]");
 	public By txt_followedtopicHeadinginTopic = By.xpath("(//android.widget.TextView[@resource-id='com.koo.app:id/item_title'])[1]");
 	public By txt_afterfollowedtopicHeadinginTopic = By.xpath("(//android.widget.TextView[@resource-id='com.koo.app:id/toolbar_heading_textview'])");
-	public By btn_PLUSintopics = By.xpath("(//android.widget.ImageView[@resource-id='com.koo.app:id/iv_follow_icon'])[10]");
+	public By btn_PLUSintopics = By.xpath("(//android.widget.ImageView[@resource-id='com.koo.app:id/iv_follow_icon'])[1]");
 	
 	public By btn_topicWithViewMore = By.xpath("//android.widget.TextView[contains(@text,'View more')]");//need to be reviewed with Chaitanya
 	public By txt_topic = By.id("com.koo.app:id/toolbar_heading_textview");
@@ -28,22 +28,9 @@ public class TopicsPage {
 	public By txt_organisations = By.xpath("//android.widget.TextView[@text='Organisations']");
 	public By txt_places = By.xpath("//android.widget.TextView[@text='Places']");
 	public By txt_trending = By.xpath("//android.widget.TextView[@text='Trending']");
-	public By btn_followedTopic = By.xpath("(//android.view.ViewGroup[1]/android.widget.TextView)[1]");
-	public By AfterPosting = By.xpath("//android.view.View[@content-desc='add_language']");
-	public By text_comments = By.xpath("//android.view.View[@content-desc='koo_create_textField']");
-	public By chkbox_english = By.xpath("//android.widget.CheckBox[@content-desc='English_checkBox']");
-	public By chkbox_telugu = By.xpath("//android.widget.CheckBox[@content-desc='Telugu_checkBox']");
-	public By chkbox_hindi = By.xpath("//android.widget.CheckBox[@content-desc='Hindi_checkBox']");
-	public By chkbox_kannada = By.xpath("//android.widget.CheckBox[@content-desc='Kannada_checkBox']");
-	public By chkbox_tamil = By.xpath("//android.widget.CheckBox[@content-desc='Tamil_checkBox']");
-	public By chkbox_marathi = By.xpath("//android.widget.CheckBox[@content-desc='Marathi_checkBox']");
-	public By chkbox_bengali = By.xpath("//android.widget.CheckBox[@content-desc='Bengali_checkBox']");
-	public By chkbox_assamese = By.xpath("//android.widget.CheckBox[@content-desc='Assamese_checkBox']");
-	public By chkbox_gujarati = By.xpath("//android.widget.CheckBox[@content-desc='Gujarati_checkBox']");
-	public By chkbox_punjabi = By.xpath("//android.widget.CheckBox[@content-desc='Punjabi_checkBox']");
-	public By btn_languageDone = By.xpath("//android.view.View[@content-desc='language_done']");
-	
-	
+	public By btn_followedTopic = By.xpath("(//android.view.ViewGroup[1]/android.widget.TextView)[1]");	
+	public By all_availableTopics = By.xpath("//androidx.appcompat.widget.LinearLayoutCompat/android.view.ViewGroup/android.widget.TextView[1]");
+		
 	public String homePageTab_Name = "";
 	public String homePageAllTabs_Name = "";
 	public String btn_followedtopicHeading_Name = "topic heading which we followed";
