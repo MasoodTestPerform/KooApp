@@ -77,7 +77,7 @@ public class TopicWidgetTest extends BaseTest {
 		LoginKooPage loginKooPage = new LoginKooPage();
 		loginKooPage.loginValidUser(language, TestConfig.getInstance().getUserName());
 		TopicsTab topics = new TopicsTab();
-		topics.topicsWidgetInFeedTab("Add Topics to your Feed");
+		topics.topicsWidgetInFeedTab(language, "Add Topics to your Feed");
 		BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO", "<b><----Test case execution completed for Test:Successfully executed - TC_053 - Verify Topics widget in feed screen with same pills like in Topics tab with same behaviour. ------><b>", true, BaseTest.mobileDriver.get());
 	    BaseTest.afterMethodDriver.set(BaseTest.mobileDriver.get());
 	}catch(Exception e) {
@@ -89,14 +89,14 @@ public class TopicWidgetTest extends BaseTest {
 	@Test(dataProvider = "Languages", dataProviderClass = LanguageDataProvider.class, 
 			description = "[TC_054] Verify Manage Topics screen in own profile, 'All' & 'Following' tabs should be present in that screen.", groups = {
 			"regression", "Topics" })
-	public void TC_054_verifyManageTopicsPage(String language)  {
+	public void TC_054_055_verifyManageTopicsPage(String language)  {
 		BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO", "<b><----Test case execution started for Test: TC_054 - Verify Manage Topics screen in own profile, 'All' & 'Following' tabs should be present in that screen. ------><b>", false, BaseTest.mobileDriver.get());
 		try{
 		LanguageDataProvider.setCurrentLanguage(language);
 		LoginKooPage loginKooPage = new LoginKooPage();
 		loginKooPage.loginValidUser(language, TestConfig.getInstance().getUserName());
 		TopicsTab topics = new TopicsTab();
-		topics.manageTopics();
+		topics.manageTopics(language);
 		BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO", "<b><----Test case execution completed for Test:Successfully executed - TC_054 - Verify Manage Topics screen in own profile, 'All' & 'Following' tabs should be present in that screen. ------><b>", true, BaseTest.mobileDriver.get());
 	    BaseTest.afterMethodDriver.set(BaseTest.mobileDriver.get());
 	}catch(Exception e) {

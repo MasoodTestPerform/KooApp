@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>1/0/0</td>
 </tr><tr>
-<td>Started on:</td><td>Tue Jun 27 17:13:45 IST 2023</td>
+<td>Started on:</td><td>Wed Jun 28 16:10:32 IST 2023</td>
 </tr>
-<tr><td>Total time:</td><td>298 seconds (298469 ms)</td>
+<tr><td>Total time:</td><td>229 seconds (229022 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,129 +67,17 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-failed'>
-<tr><td colspan='4' align='center'><b>FAILED CONFIGURATIONS</b></td></tr>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
 <td width="30%"><b>Exception</b></td>
 <td width="10%"><b>Time (seconds)</b></td>
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.framework.android.testcases.topicsTests.TopicWidgetTest.testResult()'><b>testResult</b><br>Test class: com.framework.android.testcases.topicsTests.TopicWidgetTest<br>Parameters: public void com.framework.android.testcases.topicsTests.TopicWidgetTest.TC_053_verifyTopicsWidgetInFeedPage(java.lang.String), [TestResult name=TC_053_verifyTopicsWidgetInFeedPage status=FAILURE method=TopicWidgetTest.TC_053_verifyTopicsWidgetInFeedPage(java.lang.String)[pri:0, instance:com.framework.android.testcases.topicsTests.TopicWidgetTest@3e694b3f] output={null}]</td>
-<td><div><pre>java.lang.AssertionError: The following asserts failed:
-	Exception occured in while validating Something went wrong in swipeUsingText. Text:Add Topics to your Feed. An element could not be located on the page using the given search parameters.
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;DESKTOP-6V4BN1U&apos;, ip: &apos;192.168.29.81&apos;, os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
-Driver info: io.appium.java_client.android.AndroidDriver
-Capabilities {app: C:\Users\Admin\git\KooApp/s..., appActivity: com.koo.onboarding.OnBoardi..., appPackage: com.koo.app, automationName: uiautomator2, databaseEnabled: false, desired: {app: C:\Users\Admin\git\KooApp/s..., appActivity: com.koo.onboarding.OnBoardi..., appPackage: com.koo.app, automationName: uiautomator2, noReset: false, orientation: PORTRAIT, platformName: android, platformVersion: 13, udid: emulator-5554}, deviceApiLevel: 33, deviceManufacturer: Google, deviceModel: sdk_gphone64_x86_64, deviceName: emulator-5554, deviceScreenDensity: 440, deviceScreenSize: 1080x2160, deviceUDID: emulator-5554, javascriptEnabled: true, locationContextEnabled: false, networkConnectionEnabled: true, noReset: false, orientation: PORTRAIT, pixelRatio: 2.75, platform: LINUX, platformName: Android, platformVersion: 13, statBarHeight: 66, takesScreenshot: true, udid: emulator-5554, viewportRect: {height: 2028, left: 0, top: 66, width: 1080}, warnings: {}, webStorageEnabled: false}
-Session ID: 8515de73-6c87-4ad6-9708-fc045fd2fdb6
-*** Element info: {Using=-android uiautomator, value=new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().text(&quot;Add Topics to your Feed&quot;))} expected [true] but found [false]
-	at com.koo.framework.BaseTest.testResult(BaseTest.java:145)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 34 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1668004795", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1668004795'><pre>java.lang.AssertionError: The following asserts failed:
-	Exception occured in while validating Something went wrong in swipeUsingText. Text:Add Topics to your Feed. An element could not be located on the page using the given search parameters.
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;DESKTOP-6V4BN1U&apos;, ip: &apos;192.168.29.81&apos;, os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.7&apos;
-Driver info: io.appium.java_client.android.AndroidDriver
-Capabilities {app: C:\Users\Admin\git\KooApp/s..., appActivity: com.koo.onboarding.OnBoardi..., appPackage: com.koo.app, automationName: uiautomator2, databaseEnabled: false, desired: {app: C:\Users\Admin\git\KooApp/s..., appActivity: com.koo.onboarding.OnBoardi..., appPackage: com.koo.app, automationName: uiautomator2, noReset: false, orientation: PORTRAIT, platformName: android, platformVersion: 13, udid: emulator-5554}, deviceApiLevel: 33, deviceManufacturer: Google, deviceModel: sdk_gphone64_x86_64, deviceName: emulator-5554, deviceScreenDensity: 440, deviceScreenSize: 1080x2160, deviceUDID: emulator-5554, javascriptEnabled: true, locationContextEnabled: false, networkConnectionEnabled: true, noReset: false, orientation: PORTRAIT, pixelRatio: 2.75, platform: LINUX, platformName: Android, platformVersion: 13, statBarHeight: 66, takesScreenshot: true, udid: emulator-5554, viewportRect: {height: 2028, left: 0, top: 66, width: 1080}, warnings: {}, webStorageEnabled: false}
-Session ID: 8515de73-6c87-4ad6-9708-fc045fd2fdb6
-*** Element info: {Using=-android uiautomator, value=new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().text(&quot;Add Topics to your Feed&quot;))} expected [true] but found [false]
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:47)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:31)
-	at com.koo.framework.BaseTest.testResult(BaseTest.java:145)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-	at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:62)
-	at org.testng.internal.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:385)
-	at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:321)
-	at org.testng.internal.TestInvoker.runConfigMethods(TestInvoker.java:700)
-	at org.testng.internal.TestInvoker.runAfterGroupsConfigurations(TestInvoker.java:676)
-	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:660)
-	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
-	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at org.testng.TestRunner.privateRun(TestRunner.java:794)
-	at org.testng.TestRunner.run(TestRunner.java:596)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
-	at org.testng.TestNG.runSuites(TestNG.java:1063)
-	at org.testng.TestNG.run(TestNG.java:1031)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></div></td>
-<td>0</td>
-<td>com.framework.android.testcases.topicsTests.TopicWidgetTest@3e694b3f</td></tr>
-</table><p>
-<table width='100%' border='1' class='invocation-failed'>
-<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
-<tr><td><b>Test method</b></td>
-<td width="30%"><b>Exception</b></td>
-<td width="10%"><b>Time (seconds)</b></td>
-<td><b>Instance</b></td>
-</tr>
-<tr>
-<td title='com.framework.android.testcases.topicsTests.TopicWidgetTest.TC_053_verifyTopicsWidgetInFeedPage()'><b>TC_053_verifyTopicsWidgetInFeedPage</b><br>Test class: com.framework.android.testcases.topicsTests.TopicWidgetTest<br>Test method: [TC_053] Verify Topics widget in feed screen with same pills like in Topics tab with same behaviour.<br>Parameters: English</td>
-<td><div><pre>java.lang.AssertionError: null
-	at com.koo.framework.AssertManager.sAssertException(AssertManager.java:168)
-	at com.koo.android.utils.MobileActions.swipeUsingText(MobileActions.java:469)
-	at com.framework.android.screens.topics.TopicsTab.topicsWidgetInFeedTab(TopicsTab.java:79)
-	at com.framework.android.testcases.topicsTests.TopicWidgetTest.TC_053_verifyTopicsWidgetInFeedPage(TopicWidgetTest.java:80)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace218654115", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace218654115'><pre>java.lang.AssertionError: null
-	at org.testng.Assert.fail(Assert.java:99)
-	at org.testng.Assert.fail(Assert.java:106)
-	at com.koo.framework.AssertManager.sAssertException(AssertManager.java:168)
-	at com.koo.android.utils.MobileActions.swipeUsingText(MobileActions.java:469)
-	at com.framework.android.screens.topics.TopicsTab.topicsWidgetInFeedTab(TopicsTab.java:79)
-	at com.framework.android.testcases.topicsTests.TopicWidgetTest.TC_053_verifyTopicsWidgetInFeedPage(TopicWidgetTest.java:80)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
-	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
-	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at org.testng.TestRunner.privateRun(TestRunner.java:794)
-	at org.testng.TestRunner.run(TestRunner.java:596)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
-	at org.testng.TestNG.runSuites(TestNG.java:1063)
-	at org.testng.TestNG.run(TestNG.java:1031)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></div></td>
-<td>251</td>
+<td title='com.framework.android.testcases.topicsTests.TopicWidgetTest.TC_054_055_verifyManageTopicsPage()'><b>TC_054_055_verifyManageTopicsPage</b><br>Test class: com.framework.android.testcases.topicsTests.TopicWidgetTest<br>Test method: [TC_054] Verify Manage Topics screen in own profile, 'All' & 'Following' tabs should be present in that screen.<br>Parameters: English</td>
+<td></td>
+<td>125</td>
 <td>com.framework.android.testcases.topicsTests.TopicWidgetTest@3e694b3f</td></tr>
 </table><p>
 </body>

@@ -1,2 +1,2 @@
 "Date","Time","Test Case ID","Description","Result"
-"1970/01/01","05:29:59","TC_053_verifyTopicsWidgetInFeedPage","[TC_053] Verify Topics widget in feed screen with same pills like in Topics tab with same behaviour.","FAIL"
+"1970/01/01","05:29:59","TC_054_055_verifyManageTopicsPage","[TC_054] Verify Manage Topics screen in own profile, 'All' & 'Following' tabs should be present in that screen.","PASS"

@@ -1,5 +1,12 @@
 package com.framework.android.screens.topics;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.server.DriverFactory;
+
 import com.framework.android.allpages.*;
+import com.framework.android.screens.topicsPage.TopicsTabPage;
 import com.koo.android.utils.MobileActions;
 import com.koo.framework.BaseTest;
 
@@ -24,9 +31,21 @@ public class TopicsTab {
 	}
 	
 
+	public void topicsTab1(String topicsTabText, String topicsWidgetText) {
+		mobileActions.click(mobileActions.returnByBasedOnPageNameAndObjectName(topicsPage.btn_topicsTab, "xpath", topicsTabText), topicsTabText);
+		BaseTest.utilObj.get().getMobileActions().swipeUsingText(topicsWidgetText);
+		mobileActions.click(topicsPage.btn_PLUSintopics, topicsPage.btn_PLUSintopics_Name);
+//		String bfrtxt = mobileActions.getText(topicsPage.txt_followedtopicHeadinginTopic, topicsPage.txt_followedtopicHeadinginTopic_Name, true);
+//		mobileActions.click(topicsPage.btn_GreaterThanIconintopics, topicsPage.btn_GreaterThanIconintopics_Name);
+//		String aftrtxt = mobileActions.getText(topicsPage.txt_afterfollowedtopicHeadinginTopic, topicsPage.txt_afterfollowedtopicHeadinginTopic_Name, true);
+		
+//		BaseTest.utilObj.get().getAssertManager().sAssertEquals(bfrtxt,aftrtxt, "Verification of text mesage before and after are equal. Text:"+bfrtxt, true, BaseTest.mobileDriver.get(), false); 
+		mobileActions.click(userBlockPage.backButton_arrow, userBlockPage.backButton_arrow_Name);
+	}
+
 	public void topicsTab(String topicsTabText) {
-		mobileActions.click(mobileActions.returnByBasedOnPageNameAndObjectName(topicsPage.btn_topicsTab, "xpath", topicsTabText),
-				topicsTabText + ":"+topicsPage.btn_topicsTab_Name);
+		mobileActions.click(mobileActions.returnByBasedOnPageNameAndObjectName(topicsPage.btn_topicsTab, "xpath", topicsTabText), topicsTabText);
+//		BaseTest.utilObj.get().getMobileActions().swipeUsingText(topicsWidgetText);
 		mobileActions.click(topicsPage.btn_PLUSintopics, topicsPage.btn_PLUSintopics_Name);
 		String bfrtxt = mobileActions.getText(topicsPage.txt_followedtopicHeadinginTopic, topicsPage.txt_followedtopicHeadinginTopic_Name, true);
 		mobileActions.click(topicsPage.btn_GreaterThanIconintopics, topicsPage.btn_GreaterThanIconintopics_Name);
@@ -35,7 +54,6 @@ public class TopicsTab {
 		BaseTest.utilObj.get().getAssertManager().sAssertEquals(bfrtxt,aftrtxt, "Verification of text mesage before and after are equal. Text:"+bfrtxt, true, BaseTest.mobileDriver.get(), false); 
 		mobileActions.click(userBlockPage.backButton_arrow, userBlockPage.backButton_arrow_Name);
 	}
-
 	public void topicsWithViewMore() {
 		String topicsTitleInHome;
 		
@@ -54,27 +72,108 @@ public class TopicsTab {
 			
 	}
 
-	public void manageTopics() {
-		
-		mobileActions.click(kooCardPage.profile_icon, kooCardPage.profile_icon_Name);
-		mobileActions.click(userBlockPage.threeDots, userBlockPage.threeDots_Name);
-		String bfrtxt = mobileActions.getText(kooRewardsProgramPage.btn_manageTopics, kooRewardsProgramPage.btn_manageTopics_Name, true);
-		mobileActions.click(
-				kooRewardsProgramPage.btn_manageTopics, kooRewardsProgramPage.btn_manageTopics_Name);
+	public void manageTopics(String language) {
+		BaseTest.LOGGER.get().logTestStep(BaseTest.extentTest.get(), "INFO", "Going to use Language:"+language, false, BaseTest.mobileDriver.get());
+		try {			
+			BaseTest.utilObj.get().getMobileActions().click(kooCardPage.profile_icon, "profile icon");
+			BaseTest.utilObj.get().getMobileActions().click(userBlockPage.threeDots, "three dots button");
+			String bfrtxt = BaseTest.utilObj.get().getMobileActions().getText(
+					kooRewardsProgramPage.btn_manageTopics, kooRewardsProgramPage.btn_manageTopics_Name, 
+					true).trim();
+			BaseTest.utilObj.get().getMobileActions().click(kooRewardsProgramPage.btn_manageTopics, 
+					"Manage topics Button");
 
-		String aftrtxt = mobileActions.getText(manageTopicsPage.txt_ManageTopicsHeader,
-				"Manage topics heading which we followed", true);
-		BaseTest.utilObj.get().getAssertManager().sAssertContains(bfrtxt,aftrtxt, "Verification of text mesage before and after are equal. Text:"+bfrtxt, true, BaseTest.mobileDriver.get(), false);
-		
-		boolean isDisplayed = mobileActions.isElmPresent(manageTopicsPage.tab_AllTabInManageTopics);
-		BaseTest.utilObj.get().getAssertManager().sAssertEquals(isDisplayed, true, "Verification of All tab displayed in Manage topics", true, BaseTest.mobileDriver.get(), false);
-		
-		mobileActions.click(userBlockPage.backButton_arrow, userBlockPage.backButton_arrow_Name);
-		
+			String aftrtxt = BaseTest.utilObj.get().getMobileActions().getText(
+					manageTopicsPage.txt_ManageTopicsHeader, manageTopicsPage.txt_ManageTopicsHeader_Name, 
+					true).trim();
+			BaseTest.utilObj.get().getAssertManager().sAssertEquals(aftrtxt, bfrtxt, 
+					"Both name are matched", true, BaseTest.mobileDriver.get(), true );
+
+			//TC_054 validation
+			if (BaseTest.utilObj.get().getMobileActions().isElmPresent(
+					manageTopicsPage.tab_AllTabInManageTopics)) {
+				BaseTest.LOGGER.get().logInfo("All tab displayed in Manage topics");
+				BaseTest.utilObj.get().getAssertManager().sAssertTrue(true, 
+						"All tab displayed in Manage topics", false, BaseTest.mobileDriver.get(), true);
+			} else {
+				BaseTest.LOGGER.get().logInfo("All tab not displayed in Manage topics");
+				BaseTest.utilObj.get().getAssertManager().sAssertTrue(false, 
+						"All tab not displayed in Manage topics", true, BaseTest.mobileDriver.get(), true);
+			}
+			
+			if (mobileActions.isElmPresent(manageTopicsPage.tab_FollowingTabInManageTopics)) {
+				BaseTest.LOGGER.get().logInfo("Following tab displayed in Manage topics");
+				BaseTest.utilObj.get().getAssertManager().sAssertTrue(true, 
+						"Following tab displayed in Manage topics", false, BaseTest.mobileDriver.get(), true);
+			} else {
+				BaseTest.LOGGER.get().logInfo("Following tab not displayed in Manage topics");
+				BaseTest.utilObj.get().getAssertManager().sAssertTrue(false, 
+						"Following tab not displayed in Manage topics", true, BaseTest.mobileDriver.get(), true);
+			}
+
+			//TC_055 validation
+			List<WebElement> allTopics = BaseTest.utilObj.get().getMobileActions()
+					.elements(manageTopicsPage.list_btn_followView);
+			System.out.println("allTopics Size: "+allTopics.size());
+			if (allTopics.size() > 0) {
+				BaseTest.LOGGER.get().logInfo("Topics available in All tab");
+				BaseTest.utilObj.get().getAssertManager().sAssertTrue(true, "Topics available in All tab", 
+						true, BaseTest.mobileDriver.get(), true);				
+			} else {
+				BaseTest.LOGGER.get().logInfo("No Topics available in All tab");
+				BaseTest.utilObj.get().getAssertManager().sAssertTrue(true, "No Topics available in All tab", 
+						true, BaseTest.mobileDriver.get(), true);
+			}			
+
+			mobileActions.click(manageTopicsPage.tab_FollowingTabInManageTopics, "Following tab");
+			Thread.sleep(1000);
+			List<WebElement> followTopics = BaseTest.utilObj.get().getMobileActions()
+					.elements(manageTopicsPage.list_btn_followView);
+			System.out.println("followTopics Size: "+followTopics.size());
+			if (followTopics.size() > 0) {
+				BaseTest.LOGGER.get().logInfo("Topics available in Following tab");
+				BaseTest.utilObj.get().getAssertManager().sAssertTrue(true, "Topics available in Following tab", 
+						true, BaseTest.mobileDriver.get(), true);				
+			} else if(BaseTest.utilObj.get().getMobileActions().isElmPresent(
+					manageTopicsPage.btn_viewTopics)){
+				mobileActions.click(manageTopicsPage.btn_viewTopics, "View Topics button");
+				List<WebElement> topicsView = BaseTest.utilObj.get().getMobileActions()
+						.elements(manageTopicsPage.list_followingTopics);
+				if(topicsView.size()>0) {
+					for(int i=0; i<topicsView.size();i++) {
+						if(topicsView.get(i).getText().equals("Sports")) {
+							System.out.println("Topic Title1: "+topicsView.get(i).getText());
+							String s=Integer.toString(i+1);
+							mobileActions.click(mobileActions.returnByBasedOnPageNameAndObjectName(manageTopicsPage.btn_follow, "xpath", s),
+									topicsPage.btn_topicsTab_Name);
+							mobileActions.click(manageTopicsPage.tab_FollowingTabInManageTopics, "Following tab");
+							mobileActions.swipeDown(2);
+							Thread.sleep(2000);							
+							List<WebElement> followTopics1 = BaseTest.utilObj.get().getMobileActions()
+									.elements(manageTopicsPage.list_btn_followView);
+							System.out.println("followTopics Size: "+followTopics1.size());
+							if (followTopics.size() > 0) {
+								BaseTest.LOGGER.get().logInfo("Topics available in Following tab");
+								BaseTest.utilObj.get().getAssertManager().sAssertTrue(true, "Topics available in Following tab", 
+										true, BaseTest.mobileDriver.get(), true);
+							}else {
+								BaseTest.LOGGER.get().logInfo("No Topics available in Following tab");
+								BaseTest.utilObj.get().getAssertManager().sAssertTrue(true, 
+										"No Topics available in Following tab", true, BaseTest.mobileDriver.get(), true);								
+							}
+						}
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			BaseTest.LOGGER.get().logError("Topics widget header is not available");
+			BaseTest.utilObj.get().getAssertManager().sAssertTrue(false, "Topics widget header is not available", true, BaseTest.mobileDriver.get(), true);
+		}
 	}
 
-	public void topicsWidgetInFeedTab(String topicsWidgetText) {
-		BaseTest.LOGGER.get().logTestStep(BaseTest.extentTest.get(), "INFO", "Going to use Language:"+topicsWidgetText, false, BaseTest.mobileDriver.get());
+	public void topicsWidgetInFeedTab(String language, String topicsWidgetText) {
+		BaseTest.LOGGER.get().logTestStep(BaseTest.extentTest.get(), "INFO", "Going to use Language:"+language, false, BaseTest.mobileDriver.get());
 		try {
 			BaseTest.utilObj.get().getMobileActions().swipeUsingText(topicsWidgetText);
 			String topicsTitle = mobileActions.getText(feedTabPage.topicsWidget_feedScreen,"topicsTitle",true);
@@ -92,7 +191,6 @@ public class TopicsTab {
 			BaseTest.utilObj.get().getAssertManager().sAssertTrue(false, topicsWidgetText, true, BaseTest.mobileDriver.get(), true);
 		}
 	}
-
 	
 	public void allAndFollowTopicsInTopicsTab(String topicsTabText, String topicsWidgetText) {
 		
