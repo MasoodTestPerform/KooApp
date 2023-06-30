@@ -15,6 +15,7 @@ import io.appium.java_client.android.AndroidDriver;
 import java.time.Duration;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
@@ -638,6 +639,13 @@ public class MobileActions {
         	BaseTest.utilObj.get().getAssertManager().sAssertException("Something went wrong in getAttribute for element"+elementName+". "+e.getMessage(), true, this.driver, false);            
         }
         return elmText;
+    }
+    
+    public void setImplicitWaitMinimum() {
+    	BaseTest.mobileDriver.get().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+    }
+    public void setImplicitNormal() {
+    	BaseTest.mobileDriver.get().manage().timeouts().implicitlyWait(Long.parseLong(TestConfig.getInstance().getOBJWAITTIME()), TimeUnit.SECONDS);
     }
 
 }
