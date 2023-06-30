@@ -21,7 +21,7 @@ public class HomeScreenTabPage {
 	KooCreationPage kooCreationPage = null;
 	
 	public void HomeScreenTabPage() {
-		this.mobileActions = new MobileActions();
+		this.mobileActions = BaseTest.utilObj.get().getMobileActions();
 		this.userBlockPage = new UserBlockPage();
 		this.homeScreenTabPage = new HomeScreenTabPage();
 		this.hashTagScreenPage = new HashTagScreenPage();

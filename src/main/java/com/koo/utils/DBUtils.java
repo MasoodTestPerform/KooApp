@@ -9,8 +9,8 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Properties;
 
-import oracle.jdbc.OracleConnection;
-import oracle.jdbc.datasource.impl.OracleDataSource;
+//import oracle.jdbc.OracleConnection;
+//import oracle.jdbc.datasource.impl.OracleDataSource;
 
 import org.apache.log4j.Logger;
 
@@ -22,35 +22,36 @@ public class DBUtils {
 	Connection connection = null;
 	ResultSet rs = null;
 	Statement stmt = null;
-	OracleConnection dbConn = null;
+	//OracleConnection dbConn = null;
 	
 	public boolean setupDBUtills(String userName, String password, String envName) {
-		boolean flag = true;
-		String DBURL = null;
-		try {
-			if(envName.equals("TEST")) {
-				DBURL = "jdbc:oracle:thin:@XXXX:1521/YYYYY";
-			}else if(envName.equals("SIT")) {
-				DBURL = "jdbc:oracle:thin:@XXXX:1521/YYYYY";
-			} 
-			
-			if(dbConn==null || (! dbConn.isUsable())) {
-				Properties info = new Properties();
-				info.put(OracleConnection.CONNECTION_PROPERTY_USER_NAME, userName);
-				info.put(OracleConnection.CONNECTION_PROPERTY_PASSWORD, password);
-				info.put(OracleConnection.CONNECTION_PROPERTY_DEFAULT_ROW_PREFETCH, "20");
-				
-				OracleDataSource oracleDataSource = new OracleDataSource();
-				oracleDataSource.setURL(DBURL);
-				oracleDataSource.setConnectionProperties(info);
-				dbConn = (OracleConnection) oracleDataSource.getConnection();
-				stmt = dbConn.createStatement();
-			}
-		}catch(SQLException e) {
-			flag = false;
-			e.printStackTrace();
-		}		
-		return flag;
+//		boolean flag = true;
+//		String DBURL = null;
+//		try {
+//			if(envName.equals("TEST")) {
+//				DBURL = "jdbc:oracle:thin:@XXXX:1521/YYYYY";
+//			}else if(envName.equals("SIT")) {
+//				DBURL = "jdbc:oracle:thin:@XXXX:1521/YYYYY";
+//			} 
+//			
+//			if(dbConn==null || (! dbConn.isUsable())) {
+//				Properties info = new Properties();
+//				info.put(OracleConnection.CONNECTION_PROPERTY_USER_NAME, userName);
+//				info.put(OracleConnection.CONNECTION_PROPERTY_PASSWORD, password);
+//				info.put(OracleConnection.CONNECTION_PROPERTY_DEFAULT_ROW_PREFETCH, "20");
+//				
+//				OracleDataSource oracleDataSource = new OracleDataSource();
+//				oracleDataSource.setURL(DBURL);
+//				oracleDataSource.setConnectionProperties(info);
+//				dbConn = (OracleConnection) oracleDataSource.getConnection();
+//				stmt = dbConn.createStatement();
+//			}
+//		}catch(SQLException e) {
+//			flag = false;
+//			e.printStackTrace();
+//		}		
+		//return flag;
+		return true;
 	}
 	
 	public ResultSet getResultSet(String SQL) {
