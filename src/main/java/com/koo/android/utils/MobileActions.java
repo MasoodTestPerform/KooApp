@@ -90,7 +90,7 @@ public class MobileActions {
 
     
     public WebElement waitForVisible(By locator) {
-        WebDriverWait wait = new WebDriverWait(BaseTest.mobileDriver.get(), 20);
+        WebDriverWait wait = new WebDriverWait(BaseTest.mobileDriver.get(),Long.parseLong(TestConfig.getInstance().getOBJWAITTIME()));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
     
@@ -132,7 +132,7 @@ public class MobileActions {
 	        LOGGER.logTestStep(extentTest, "INFO", elementName + " isDisplayed value is "+isPresent, false, this.driver);
         }catch(Exception e) {
         	e.printStackTrace();
-			BaseTest.utilObj.get().getAssertManager().sAssertException("Something went wrong in isDisplayed for "+elementName+".Exception"+e.getMessage(), true, this.driver, false);
+			BaseTest.utilObj.get().getAssertManager().sAssertException("Something went wrong in isDisplayed for "+elementName+".Exception"+e.getMessage(), true, this.driver, true);
         }
     	return isPresent;
     }
@@ -144,7 +144,7 @@ public class MobileActions {
 	        LOGGER.logTestStep(extentTest, "INFO", "Clicked on element:"+elementName+".", false, this.driver);
         }catch(Exception e) {
         	e.printStackTrace();
-			BaseTest.utilObj.get().getAssertManager().sAssertException("Clicked on element:"+elementName+".Exception"+e.getMessage(), true, this.driver, false);
+			BaseTest.utilObj.get().getAssertManager().sAssertException("Clicked on element:"+elementName+".Exception"+e.getMessage(), true, this.driver, true);
         }
     }
     
@@ -208,7 +208,7 @@ public class MobileActions {
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-			BaseTest.utilObj.get().getAssertManager().sAssertException("Unable to retrieve text of element:"+elementName+ ".Exception"+e.getMessage(), true, this.driver, false);
+			BaseTest.utilObj.get().getAssertManager().sAssertException("Unable to retrieve text of element:"+elementName+ ".Exception"+e.getMessage(), true, this.driver, true);
 		}
 		return text;
 	}
@@ -401,7 +401,7 @@ public class MobileActions {
 	        }
     	}catch(Exception e) {
     		e.printStackTrace();
-			BaseTest.utilObj.get().getAssertManager().sAssertException("Unable to tap the element."+e.getMessage(), true, this.driver, false);
+			BaseTest.utilObj.get().getAssertManager().sAssertException("Unable to tap the element."+e.getMessage(), true, this.driver, true);
     	}
     }
     
@@ -642,19 +642,21 @@ public class MobileActions {
     }
     
     public void setImplicitWaitMinimum() {
-    	BaseTest.mobileDriver.get().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+    	BaseTest.mobileDriver.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
     public void setImplicitNormal() {
     	BaseTest.mobileDriver.get().manage().timeouts().implicitlyWait(Long.parseLong(TestConfig.getInstance().getOBJWAITTIME()), TimeUnit.SECONDS);
     }
     
     public void dismissUpdateWindow() {
-    	setImplicitWaitMinimum();
-    	int updatesNotificationCnt = BaseTest.mobileDriver.get().findElements(By.xpath("//android.widget.ImageView[@content-desc='Dismiss update dialog']")).size();
-    	if(updatesNotificationCnt>0) {
-    		click(By.xpath("//android.widget.ImageView[@content-desc='Dismiss update dialog']"), " to dismiss Google Play Update");
+    	if(TestConfig.getInstance().getGooglePlayUpdateNotification().equalsIgnoreCase("true")) {
+	    	setImplicitWaitMinimum();
+	    	int updatesNotificationCnt = BaseTest.mobileDriver.get().findElements(By.xpath("//android.widget.ImageView[@content-desc='Dismiss update dialog']")).size();
+	    	if(updatesNotificationCnt>0) {
+	    		click(By.xpath("//android.widget.ImageView[@content-desc='Dismiss update dialog']"), " to dismiss Google Play Update");
+	    	}
+	    	setImplicitNormal();
     	}
-    	setImplicitNormal();
     }
 
 }
