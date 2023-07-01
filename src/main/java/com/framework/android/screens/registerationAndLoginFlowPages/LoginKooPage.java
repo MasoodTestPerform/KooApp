@@ -88,19 +88,19 @@ public class LoginKooPage {
 					System.out.println("Already you on login screen");
 				}else {
 					mobileActions.swipeUsingText(language);
-					mobileActions.click(mobileActions.returnByBasedOnPageNameAndObjectName(homePage.app_Language, "xpath", language), language);
+					mobileActions.tapElement(mobileActions.returnByBasedOnPageNameAndObjectName(homePage.app_Language, "xpath", language), language);
 				}
 			}else {
 				mobileActions.swipeUsingText(language);
-				mobileActions.click(mobileActions.returnByBasedOnPageNameAndObjectName(homePage.app_Language, "xpath", language), language);
+				mobileActions.tapElement(mobileActions.returnByBasedOnPageNameAndObjectName(homePage.app_Language, "xpath", language), language);
 			}
 			mobileActions.sendKeys(homePage.signIn_Email_Btn, homePage.signIn_Email_Btn_Name, emailId);
-			mobileActions.sendKeys(homePage.enter_email, homePage.enter_email_Name, TestConfig.getInstance().getPassword());
+			//mobileActions.sendKeys(homePage.enter_email, homePage.enter_email_Name, TestConfig.getInstance().getPassword());
 			mobileActions.click(homePage.OTP_btn, homePage.OTP_btn_Name);
 			mobileActions.sendKeys(homePage.otp_text, homePage.otp_text_Name, TestConfig.getInstance().getPassword());
 			mobileActions.waitForVisible(homePage.verify_btn);
-			mobileActions.click(homePage.verify_btn, homePage.verify_btn_Name);
-			
+			mobileActions.tapElement(homePage.verify_btn, homePage.verify_btn_Name);
+						
 			boolean isNothanks = mobileActions.isElmPresent(By.id("com.android.vending:id/0_resource_name_obfuscated"));
 			if (isNothanks) {
 				List<WebElement> lstElm = mobileActions.elements(By.id("com.android.vending:id/0_resource_name_obfuscated"));
@@ -112,6 +112,7 @@ public class LoginKooPage {
 				}
 				
 			}
+			
 			
 			boolean objFlag = mobileActions.isDisplayed(homePage.profile_lnk, homePage.profile_lnk_Name);
 			
@@ -131,6 +132,43 @@ public class LoginKooPage {
 			}
 		}catch(Exception e) {
 			
+		}
+			
+		
+
+	}
+	
+	public void loginEmailTillClickingVerifyButton(String language, String emailId){
+		
+		try {
+			
+			if(language.equalsIgnoreCase("English")) {
+				boolean isTextBox = mobileActions.isElmPresent(homePage.MobNo_txt);
+				if (isTextBox) {
+					System.out.println("Already you on login screen");
+				}else {
+					mobileActions.swipeUsingText(language);
+					mobileActions.tapElement(mobileActions.returnByBasedOnPageNameAndObjectName(homePage.app_Language, "xpath", language), language);
+				}
+			}else {
+				mobileActions.swipeUsingText(language);
+				mobileActions.tapElement(mobileActions.returnByBasedOnPageNameAndObjectName(homePage.app_Language, "xpath", language), language);
+			}
+			
+			mobileActions.click(homePage.signInEmail_button, homePage.signInEmail_button_Name);
+			mobileActions.sendKeys(homePage.enter_email, homePage.enter_email_Name, emailId);
+			//mobileActions.sendKeys(homePage.enter_email, homePage.enter_email_Name, TestConfig.getInstance().getPassword());
+			
+			mobileActions.tapElement(homePage.OTP_Email_btn, homePage.OTP_Email_btn_Name);
+			
+			mobileActions.waitForVisible(homePage.verify_email_btn);
+			mobileActions.tapElement(homePage.verify_email_btn, homePage.verify_email_btn_Name);
+			
+			
+		}catch(Exception e) {
+			BaseTest.utilObj.get().getAssertManager().sAssertException("Something went wrong in loginEmailTillClickingVerifyButton. Exception:"+e.getMessage(), true, BaseTest.mobileDriver.get(), true);
+			BaseTest.afterMethodDriver.set(BaseTest.mobileDriver.get());
+			BaseTest.sAssert.get().assertAll();
 		}
 			
 		
