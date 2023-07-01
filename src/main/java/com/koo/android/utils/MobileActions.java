@@ -49,7 +49,7 @@ public class MobileActions {
 		this.driver = BaseTest.mobileDriver.get();
 		this.extentTest = BaseTest.extentTest.get();
 		this.sAssert = BaseTest.sAssert.get();
-		action = new Actions(BaseTest.mobileDriver.get());
+		this.action = new Actions(BaseTest.mobileDriver.get());
 	}
 	
 	public void waitForSec(int i) {
@@ -646,6 +646,15 @@ public class MobileActions {
     }
     public void setImplicitNormal() {
     	BaseTest.mobileDriver.get().manage().timeouts().implicitlyWait(Long.parseLong(TestConfig.getInstance().getOBJWAITTIME()), TimeUnit.SECONDS);
+    }
+    
+    public void dismissUpdateWindow() {
+    	setImplicitWaitMinimum();
+    	int updatesNotificationCnt = BaseTest.mobileDriver.get().findElements(By.xpath("//android.widget.ImageView[@content-desc='Dismiss update dialog']")).size();
+    	if(updatesNotificationCnt>0) {
+    		click(By.xpath("//android.widget.ImageView[@content-desc='Dismiss update dialog']"), " to dismiss Google Play Update");
+    	}
+    	setImplicitNormal();
     }
 
 }

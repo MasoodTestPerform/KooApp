@@ -12,6 +12,7 @@ import org.testng.asserts.SoftAssert;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
+import com.koo.setup.TestConfig;
 
 public class LogMe {
 	private Logger logger = null;
@@ -21,10 +22,18 @@ public class LogMe {
 	public String test_name=null;
 	
 	public void setupTestObj(String test_name) {
-		this.driver = BaseTest.driver.get();
-		this.extentTest = BaseTest.extentTest.get();
-		this.sAssert = BaseTest.sAssert.get();
-		this.test_name = test_name;
+		if(TestConfig.getInstance().getWebmobileFlag().equals("mobile")) {
+			this.driver = BaseTest.mobileDriver.get();
+			this.extentTest = BaseTest.extentTest.get();
+			this.sAssert = BaseTest.sAssert.get();
+			this.test_name = test_name;
+		}else {
+			this.driver = BaseTest.driver.get();
+			this.extentTest = BaseTest.extentTest.get();
+			this.sAssert = BaseTest.sAssert.get();
+			this.test_name = test_name;
+		}
+		
 	}
 	
 

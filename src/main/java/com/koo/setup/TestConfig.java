@@ -269,11 +269,11 @@ public class TestConfig {
 
 	public WebDriver setMobileDriver(String platform, String udid, String systemPort, String deviceName,
 			String deviceVersion) throws Exception {
-		platform="Android 13";
-		udid = "emulator-5554";
+		platform=TestConfig.getInstance().getPlatform();
+		udid = TestConfig.getInstance().getUdid();
 		systemPort = "8200";
 		deviceName = "";
-		deviceVersion = "Android 13";
+		deviceVersion = "";
 		WebDriver mobileDriver = null;
 		String[] platformInfo = platform.split(" ");
 		DesiredCapabilities capabilities = new DesiredCapabilities();

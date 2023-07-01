@@ -36,6 +36,7 @@ public class LoginKooPage {
 			BaseTest.LOGGER.get().logTestStep(BaseTest.extentTest.get(), "INFO", "Screenshot for test data entered", true, BaseTest.mobileDriver.get());
 			mobileActions.waitForVisible(homePage.verify_btn);
 			mobileActions.click(homePage.verify_btn, homePage.verify_btn_Name);
+			mobileActions.dismissUpdateWindow();
 			
 			boolean isNothanks = mobileActions.isElmPresent(By.id("com.android.vending:id/0_resource_name_obfuscated"));
 			if (isNothanks) {
@@ -48,7 +49,7 @@ public class LoginKooPage {
 				}
 				
 			}
-			
+			mobileActions.dismissUpdateWindow();
 			boolean objFlag = mobileActions.isDisplayed(homePage.profile_lnk, homePage.profile_lnk_Name);
 			
 			if (objFlag= false) {
@@ -57,7 +58,8 @@ public class LoginKooPage {
 					if(objFlag) {
 						mobileActions.sendKeys(homePage.otp_text, homePage.otp_text_Name, TestConfig.getInstance().getPassword());
 						mobileActions.waitForVisible(homePage.verify_btn);
-						mobileActions.click(homePage.verify_btn, homePage.verify_btn_Name);					
+						mobileActions.click(homePage.verify_btn, homePage.verify_btn_Name);	
+						mobileActions.dismissUpdateWindow();
 					}
 				}
 				objFlag = mobileActions.isDisplayed(homePage.profile_lnk, homePage.profile_lnk_Name);
@@ -66,7 +68,9 @@ public class LoginKooPage {
 				
 			}
 		}catch(Exception e) {
-			
+			BaseTest.utilObj.get().getAssertManager().sAssertException("Something went wrong in loginValidUser. Exception:"+e.getMessage(), true, BaseTest.mobileDriver.get());
+			BaseTest.afterMethodDriver.set(BaseTest.mobileDriver.get());
+			BaseTest.sAssert.get().assertAll();
 		}
 	}
 	
