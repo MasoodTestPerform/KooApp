@@ -48,6 +48,7 @@ public class TestConfig {
 	private static String platform;
 	private static String udid;
 	private static String port;
+	private static String googleplayupdatenotification;
 	private static String browserstack;
 	private static String UserName;
 	private static String ChildUserName;
@@ -194,6 +195,7 @@ public class TestConfig {
 	public String getPlatform(){return platform;}
 	public String getUdid(){return udid;}
 	public String getPort(){return port;}
+	public String getGooglePlayUpdateNotification() {return googleplayupdatenotification;};
 	public String getBrowserStack(){return browserstack;}
 	public String getUserName(){return UserName;}
 	public String getChildUserName(){return ChildUserName;}
@@ -324,6 +326,7 @@ public class TestConfig {
 		platform = config.getPropertyValue("platform");
 		udid = config.getPropertyValue("udid");
 		port = config.getPropertyValue("port");
+		googleplayupdatenotification = config.getPropertyValue("googleplayupdatenotification");
 		UserName = config.getPropertyValue("UserName");
 		ChildUserName = config.getPropertyValue("ChildUserName");
 		userNameAuto = config.getPropertyValue("userNameAuto");
