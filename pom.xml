@@ -214,6 +214,12 @@
 			<version>4.1</version>
 		</dependency>
 	
+<!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc11 -->
+<dependency>
+    <groupId>com.oracle.database.jdbc</groupId>
+    <artifactId>ojdbc11</artifactId>
+    <version>21.7.0.0</version>
+</dependency>
 
 	</dependencies>
 </project>

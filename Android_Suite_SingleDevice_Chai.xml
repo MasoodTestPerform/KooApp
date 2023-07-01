@@ -10,6 +10,8 @@
 			 <class name="com.koo.registrationAndLoginFlowTests.LoginKooTest">
                 <methods>
                     <include name="TC_006_verifyUserLoginWithOTP"/>
+
+                    <include name="TC_054_055_verifyManageTopicsPage"/>
                 </methods>
             </class>
             <class name="com.koo.registrationAndLoginFlowTests.LanguageSelectionTest">
