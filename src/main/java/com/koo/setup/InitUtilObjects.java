@@ -24,7 +24,7 @@ public class InitUtilObjects {
 	
 	public void setupTestObj() {
 		if(TestConfig.getInstance().getWebmobileFlag().equals("mobile")) {
-			BaseTest.utilObj.get().mobileActions.setupTestObj();
+			BaseTest.utilObj.get().getMobileActions().setupTestObj();
 		}else {
 			BaseTest.utilObj.get().uiutil.setupTestObj();
 		}

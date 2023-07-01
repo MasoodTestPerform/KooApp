@@ -7,19 +7,18 @@
     </listeners>
        <test name="Test">
         <classes>
-            <class name="com.framework.android.testcases.topicsTests.TopicWidgetTest">
+			 <class name="com.koo.registrationAndLoginFlowTests.LoginKooTest">
                 <methods>
+                    <include name="TC_006_verifyUserLoginWithOTP"/>
+
                     <include name="TC_054_055_verifyManageTopicsPage"/>
                 </methods>
             </class>
-             <!-- <class name="com.koo.loginflow.LanguageSelectionTest">
+            <class name="com.koo.registrationAndLoginFlowTests.LanguageSelectionTest">
                 <methods>
-                    <exclude name="verifyRewardBannerForHindiAndVerifyLoginPageHeading"/>
-                    <exclude name="verifyAvailableLanguagesInEnglish"/>
-                    <exclude name="verifyAvailableLanguagesInSameLanguage"/>
-                    <exclude name="verifyCheckBoxesForAvailableLanguages"/>
+                    <include name="TC_003_verifyDifferentLanguages"/>
                 </methods>
-            </class>-->
+            </class>   
             
         </classes>
     </test> <!-- Test -->
