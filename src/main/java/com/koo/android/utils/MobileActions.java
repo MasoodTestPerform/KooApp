@@ -94,13 +94,25 @@ public class MobileActions {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
     
+    public boolean isElementDisplayed(By locator) {
+    	boolean flag = false;
+    	try {
+        WebDriverWait wait = new WebDriverWait(BaseTest.mobileDriver.get(),Long.parseLong(TestConfig.getInstance().getOBJWAITTIME()));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        flag=true;
+    	}catch(Exception e) {
+    		flag=false;
+    	}
+    	
+    	return flag;
+    }
+    
     public boolean objWait(String elementName, By by, String maxDurationInSec, boolean hardAssert) {
 		boolean flag = true;
 		try {
 			JavascriptExecutor js = (JavascriptExecutor)driver;
 			Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(Integer.parseInt(maxDurationInSec)))
 					.pollingEvery(Duration.ofMillis(100)).ignoring(NoSuchElementException.class);
-
 		wait.until((ExpectedConditions.presenceOfElementLocated(by)));
 		flag = driver.findElement(by).isDisplayed();
 		wait.until((ExpectedConditions.visibilityOfAllElementsLocatedBy(by)));

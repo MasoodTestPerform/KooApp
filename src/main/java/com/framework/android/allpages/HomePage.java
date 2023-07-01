@@ -23,6 +23,7 @@ public class HomePage {
 	public By signInEmail_button = By.id("com.koo.app:id/sign_with_email");
 	public By otp_text = By.id("com.koo.app:id/otp_edit_text");
 	public By verify_btn = By.id("com.koo.app:id/button_verify");
+	public By verify_email_btn = By.id("com.koo.app:id/email_continue_button");
 	public By profile_lnk = By.id("com.koo.app:id/img_my_profile");
 	public By signIn_Email_Btn = By.id("com.koo.app:id/sign_with_email");
 	public By signIn_Email_Heading = By.id("com.koo.app:id/login_header");
@@ -39,6 +40,7 @@ public class HomePage {
 	public String app_Language = "//android.widget.TextView[@text=\\\"###\\\"]";
 	public By MobNo_txt = By.id("com.koo.app:id/phone_no_edittext");
 	public By OTP_btn = By.id("com.koo.app:id/phone_no_next_button");
+	public By OTP_Email_btn = By.id("com.koo.app:id/email_continue_button");
 	public By btn_skip = By.id("com.starhub.csselfhelp.preview:id/txtSkip");
 	public By feed_tab = By.id("com.starhub.csselfhelp.preview:id/txtSkip");
 	public By txt_homescreen = By.id("com.starhub.csselfhelp.preview:id/imvLogo");
@@ -74,6 +76,7 @@ public class HomePage {
 	public By btn_pending = By.xpath("(//android.widget.TextView[@text='PENDING'])[1]");
 	
 	
+	
 	public String select_languages_Name = "";
 	public String backButton_LanguageChange_Name = "Languagae Back button";
 	public String englishTyped_language_Name = "";
@@ -90,13 +93,14 @@ public class HomePage {
 	public String googleLoginPage_btn_Name = "";
 	public String select_account_Name = "";
 	public String profile_registration_Name = "";
-	public String signInEmail_button_Name = "";
+	public String signInEmail_button_Name = "sign-In Email button";
 	public String otp_text_Name = "OTP text box";
 	public String verify_btn_Name = "Verify button";
+	public String verify_email_btn_Name = "Verify email button after OTP enetered";
 	public String profile_lnk_Name = "Profile Link";
 	public String signIn_Email_Btn_Name = "";
 	public String signIn_Email_Heading_Name = "";
-	public String enter_email_Name = "";
+	public String enter_email_Name = "Enter email text box";
 	public String continue_email_button_Name = "";
 	public String captcha_popup_Name = "";
 	public String change_countryCode_Name = "";
@@ -109,6 +113,7 @@ public class HomePage {
 	public String app_Language_Name = "";
 	public String MobNo_txt_Name = "Mobile Number text field";
 	public String OTP_btn_Name = "OTP button";
+	public String OTP_Email_btn_Name = "OTP button for email";
 	public String btn_skip_Name = "";
 	public String feed_tab_Name = "";
 	public String txt_homescreen_Name = "";

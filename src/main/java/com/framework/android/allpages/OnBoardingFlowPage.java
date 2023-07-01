@@ -61,11 +61,11 @@ public class OnBoardingFlowPage {
 	public String feedTab_Text_Name = "";
 	public String topicsArrangedCategories_Name = "";
 	public String userName_Field_Name = "";
-	public String continueButton_Name = "";
+	public String continueButton_Name = "Continue button";
 	public String cameraIconOnGalleryPage_Name = "";
 	public String interestText_Name = "";
 	public String interestCheckbox_Name = "";
-	public String skipButton_Name = "";
+	public String skipButton_Name = "Skip button";
 	public String preferences_Name = "";
 	public String topicElement_Name = "";
 	public String selectedTopicOnFeed_Name = "";
