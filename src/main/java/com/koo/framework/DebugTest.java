@@ -65,7 +65,7 @@ public class DebugTest {
       String host = "pop.gmail.com";// change accordingly
       String mailStoreType = "pop3";
       String username = "sunil.bgp@gmail.com";// change accordingly
-      String password = "Just6just6@";// change accordingly
+      String password = "";// change accordingly
 
       check(host, mailStoreType, username, password);
 
