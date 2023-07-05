@@ -12,12 +12,6 @@ import com.koo.framework.BaseTest;
 
 public class HomeScreenTabPage {
 	
-//	MobileActions mobileActions = BaseTest.utilObj.get().getMobileActions();
-//	UserBlockPage userBlockPage = new UserBlockPage();
-//	HashTagScreenPage hashTagScreenPage = new HashTagScreenPage();
-//	OnBoardingFlowPage onBoardingFlowPage = new OnBoardingFlowPage();
-//	KooDetailScreenPage kooDetailScreenPage = new KooDetailScreenPage();
-//	KooCreationPage kooCreationPage = new KooCreationPage();
 	MobileActions mobileActions = null;
 	UserBlockPage userBlockPage = null;
 	HashTagScreenPage hashTagScreenPage = null;
@@ -26,12 +20,13 @@ public class HomeScreenTabPage {
 	KooCreationPage kooCreationPage = null;
 	
 	public HomeScreenTabPage(){
-		this.mobileActions = new MobileActions();
-		this.userBlockPage = new UserBlockPage();
-		this.hashTagScreenPage = new HashTagScreenPage();
-		this.onBoardingFlowPage = new OnBoardingFlowPage();
-		this.kooDetailScreenPage = new KooDetailScreenPage();
-		this.kooCreationPage = new KooCreationPage();
+		mobileActions = BaseTest.utilObj.get().getMobileActions();
+		userBlockPage = new UserBlockPage();
+		hashTagScreenPage = new HashTagScreenPage();
+		onBoardingFlowPage = new OnBoardingFlowPage();
+		kooDetailScreenPage = new KooDetailScreenPage();
+		kooCreationPage = new KooCreationPage();
+
 	}
 	public By trendingTagsIcon = By.id("com.koo.app:id/trending_feed_imageview");
 	public By timeElapsedForVideo = By.id("com.koo.app:id/time_elapsed");
@@ -199,10 +194,10 @@ public class HomeScreenTabPage {
 	public HomeScreenTabPage verifyHeaderTabs(List<String> expectedTabText) {
 		for (int i = 0; i < expectedTabText.size(); i++) {
 			WebElement elementsOne = BaseTest.mobileDriver.get().findElement(this.mobileActions
-					.returnByBasedOnPageNameAndObjectName("OnBoardingFlow", "feedTab_Text", expectedTabText.get(i)));
+					.returnByBasedOnPageNameAndObjectName(onBoardingFlowPage.feedTab_Text, "xpath", expectedTabText.get(i)));
 			this.mobileActions.waitForVisible(this.mobileActions.returnByBasedOnPageNameAndObjectName(onBoardingFlowPage.feedTab_Text, "xpath", expectedTabText.get(i)));
 			boolean diaplyFlag = this.mobileActions.isDisplayed(this.mobileActions.returnByBasedOnPageNameAndObjectName(onBoardingFlowPage.feedTab_Text, "xpath", expectedTabText.get(i)),onBoardingFlowPage.feedTab_Text_Name);
-			BaseTest.utilObj.get().getAssertManager().sAssertEquals(diaplyFlag,true, "Validation of header bar tab expected is = " + expectedTabText.get(i), true, BaseTest.mobileDriver.get(), true);
+			BaseTest.utilObj.get().getAssertManager().sAssertEquals(diaplyFlag,true, "Validation of header bar tab expected is = " + expectedTabText.get(i), false, BaseTest.mobileDriver.get(), false);
 			
 			this.mobileActions.swipeLeftOrRight(elementsOne, "LEFT");
 		}
@@ -211,15 +206,14 @@ public class HomeScreenTabPage {
 	}
 	
 	public HomeScreenTabPage verifyHeaderTabsNotPresent(List<String> expectedTabText) {
-		boolean diaplyFlag= false;
+		int  objCnt = 0;
+		this.mobileActions.setImplicitWaitMinimum(1);
 		for (int i = 0; i < expectedTabText.size(); i++) {
 			this.mobileActions.swipeLeftToRight(1);
-			diaplyFlag = this.mobileActions.isElementDisplayed(this.mobileActions.returnByBasedOnPageNameAndObjectName(onBoardingFlowPage.feedTab_Text, "xpath", expectedTabText.get(i)));
-			
-			BaseTest.utilObj.get().getAssertManager().sAssertEquals(diaplyFlag,false, "Validation of header bar tab not present and not expected TAB is = " + expectedTabText.get(i), true, BaseTest.mobileDriver.get(), false);
-			
+			objCnt = BaseTest.mobileDriver.get().findElements(this.mobileActions.returnByBasedOnPageNameAndObjectName(onBoardingFlowPage.feedTab_Text, "xpath", expectedTabText.get(i))).size(); 
+			BaseTest.utilObj.get().getAssertManager().sAssertEquals(objCnt,0, "Validation of header bar tab not present and not expected TAB is = " + expectedTabText.get(i), false, BaseTest.mobileDriver.get(), false);
 		}
-		
+		this.mobileActions.setImplicitNormal();
 		return this;
 	}
 

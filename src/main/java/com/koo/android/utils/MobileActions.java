@@ -654,7 +654,10 @@ public class MobileActions {
     }
     
     public void setImplicitWaitMinimum() {
-    	BaseTest.mobileDriver.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    	BaseTest.mobileDriver.get().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+    }
+    public void setImplicitWaitMinimum(int timeInSec) {
+    	BaseTest.mobileDriver.get().manage().timeouts().implicitlyWait(timeInSec, TimeUnit.SECONDS);
     }
     public void setImplicitNormal() {
     	BaseTest.mobileDriver.get().manage().timeouts().implicitlyWait(Long.parseLong(TestConfig.getInstance().getOBJWAITTIME()), TimeUnit.SECONDS);
