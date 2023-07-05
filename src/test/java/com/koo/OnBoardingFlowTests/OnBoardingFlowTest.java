@@ -1,13 +1,26 @@
 package com.koo.OnBoardingFlowTests;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.Test;
 
+import com.koo.android.utils.CommonHelper;
 import com.koo.android.utils.LanguageDataProvider;
+import com.koo.framework.BaseTest;
 import com.koo.setup.TestConfig;
 import com.framework.android.screens.registerationAndLoginFlowPages.*;
 import com.framework.android.allpages.*;
 
-public class OnBoardingFlowTest {
+public class OnBoardingFlowTest extends BaseTest {
+	
+	@Test(dataProvider = "Languages", dataProviderClass = LanguageDataProvider.class,
+            description = "[TC_039, TC_040] Verify keyboard should auto open & cursor should be in enter name text filed & user is able to type username.",
+            groups = {"regression", "onboarding_flow"})
+    public void verifyKeyboardAutoOpenForUpdateNameField(String language) {
+        LanguageDataProvider.setCurrentLanguage(language);
+        LoginKooPage loginKooPage = new LoginKooPage();
+        //loginKooPage.loginValidUser(language, "needtoaddnewuser");
+        CommonHelper.enterValueFromKeyboard(RandomStringUtils.randomAlphabetic(40));
+    }
 	
 	@Test(dataProvider = "Languages", dataProviderClass = LanguageDataProvider.class, description = "[TC_12, TC_13] Verify user gets username update & profile image update screens. Verify username update only for new accounts or relogin account without handles.", groups = {
 			"regression", "onboarding_flow" })

@@ -27,7 +27,7 @@ public class HomeScreenTabTest extends BaseTest {
     	    
             //homeScreenTabPage.verifyRedDotIndicator();
 			
-			loginKooPage.loginEmailTillClickingVerifyButton("English", "sunil.bgp+22@gmail.com");
+			loginKooPage.loginEmailTillClickingVerifyButton("English", "sunil.bgp+34@gmail.com");
 			
 			boolean isDisplayed = false;
 			for(int i=1; i<=4; i++) {
@@ -52,6 +52,9 @@ public class HomeScreenTabTest extends BaseTest {
 				}
 				
 			}
+			
+			BaseTest.utilObj.get().getMobileActions().dismissUpdateWindow();
+			
 			isDisplayed =  BaseTest.utilObj.get().getMobileActions().isDisplayed(homePage.profile_lnk, homePage.profile_lnk_Name);
 			if(! isDisplayed) {
 				BaseTest.utilObj.get().getAssertManager().sAssertEquals(isDisplayed,true, "Please investigate as not able to reach Koo home page for further validation", true, BaseTest.mobileDriver.get(), true);
