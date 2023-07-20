@@ -55,6 +55,7 @@ public class KooCreationPage {
 	public String btn_draft1 = "//android.widget.TextView[contains(@text,'###')]";
 	public By btn_drafts = By.xpath("//android.widget.TextView[@text='Scheduled & Drafts']");
 	public By menu_hamberger = By.id("com.koo.app:id/iv_options_more");
+	public By first_menu_hamberger = By.xpath("(//*[@resource-id='com.koo.app:id/iv_options_more'])[1]");
 	public By btn_editkoo = By.id("com.koo.app:id/itemEditContent");
 	public By btn_deletekoo = By.id("com.koo.app:id/itemDeleteContent");
 	public By btn_yes = By.id("android:id/button1");
@@ -109,7 +110,7 @@ public class KooCreationPage {
 	public String btn_draft_Name = "";
 	public String txt_languages_Name = "";
 	public String btn_no_Name = "";
-	public String btn_post_Name = "Post Button";
+	public String btn_post_Name = "Post";
 	public String txt_Message_Name = "Koo creation text field";
 	public String btn_addlanguage_plus_Name = "";
 	public String checkbox_selectLanguage_Name = "";
@@ -179,7 +180,7 @@ public class KooCreationPage {
 	public String txt_editedKoo_Name = "";
 	public String btn_like_Name = "";
 	public String txt_bftEditTxt_Name = "";
-	public String txt_threadkoo1_Name = "";
+	public String txt_threadkoo1_Name = "Latest koo";
 	public String txt_threadkoo2_Name = "";
 	public String btn_backinMLK_Name = "";
 	

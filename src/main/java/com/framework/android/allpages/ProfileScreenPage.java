@@ -25,6 +25,7 @@ public class ProfileScreenPage {
 	public By txt_socialMedialinksHeadinginMorePopup = By.xpath("(//android.widget.TextView)[7]");
 	public By btn_closeinMorePopup = By.xpath("(//android.widget.TextView)[9]");
 	public String tab_people = "//android.widget.LinearLayout[@content-desc='###']";
+	public String tab = "//android.widget.LinearLayout[@content-desc='###']";
 	public By btn_arrowInPeopleTab = By.id("com.koo.app:id/header_icon_right");
 	public String btn_arrowForSpecificSectionUnderPeopleTa = "//android.widget.TextView[@text='###']//following-sibling::android.widget.ImageView[@resource-id='com.koo.app:id/header_icon_right']";
 	public By btn_publicProfile = By.xpath("(//android.widget.TextView)[3]");
@@ -59,7 +60,7 @@ public class ProfileScreenPage {
 	public By btn_showThisThreadInCommentsTab = By.id("com.koo.app:id/tvShowThisThread");
 	public By txt_rekoowithComments = By.id("com.koo.app:id/tv_koo_header");
 	public By btn_saved = By.id("com.koo.app:id/btnAddToFavorite");
-	public By txt_kooSavedTime = By.id("com.koo.app:id/koo_time_creation_tv");
+	public By txt_kooSavedTime = By.xpath("(//*[@resource-id='com.koo.app:id/koo_time_creation_tv'])[1]");
 	public By btn_followers = By.id("com.koo.app:id/followers_layout");
 	public By txt_followersheading = By.id("com.koo.app:id/toolbar_heading_textview");
 	public By btn_following = By.id("com.koo.app:id/following_layout");
@@ -76,7 +77,9 @@ public class ProfileScreenPage {
 	public By noKoos = By.id("com.koo.app:id/tv_title");
 	public By commentsKoos = By.xpath("//android.widget.ImageView[@content-desc='COMMENT_KOOS']");
 	public By mentionsKoos = By.xpath("//android.widget.ImageView[@content-desc='MENTIONS']");
-	
+	public By kooFabPlus = By.id("com.koo.app:id/circular_fab_plus");
+	public By list_heartButton = By.id("com.koo.app:id/favourite_button");
+	public By txt_explanatory = By.xpath("//*[@resource-id='com.koo.app:id/favourite_Accounts_Info_ComposeView']/android.view.View/android.view.View/android.widget.TextView[2]");
 	
 	public String img_profilePic_Name = "";
 	public String txt_profileName_Name = "";
@@ -98,7 +101,7 @@ public class ProfileScreenPage {
 	public String txt_dateOfJoininMorePopup_Name = "";
 	public String txt_socialMedialinksHeadinginMorePopup_Name = "";
 	public String btn_closeinMorePopup_Name = "";
-	public String tab_people_Name = "";
+	public String tab_people_Name = "People";
 	public String btn_arrowInPeopleTab_Name = "";
 	public String btn_arrowForSpecificSectionUnderPeopleTa_Name = "";
 	public String btn_publicProfile_Name = "";
@@ -133,7 +136,7 @@ public class ProfileScreenPage {
 	public String btn_showThisThreadInCommentsTab_Name = "";
 	public String txt_rekoowithComments_Name = "";
 	public String btn_saved_Name = "";
-	public String txt_kooSavedTime_Name = "";
+	public String txt_kooSavedTime_Name = "Koo Saved Time";
 	public String btn_followers_Name = "";
 	public String txt_followersheading_Name = "";
 	public String btn_following_Name = "";
@@ -150,7 +153,7 @@ public class ProfileScreenPage {
 	public String noKoos_Name = "";
 	public String commentsKoos_Name = "";
 	public String mentionsKoos_Name = "";
-	
+	public String txt_explanatory_name = "Favorite accounts";
 	
 			
 }

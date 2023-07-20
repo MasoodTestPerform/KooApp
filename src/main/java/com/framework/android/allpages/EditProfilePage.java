@@ -3,7 +3,7 @@ package com.framework.android.allpages;
 import org.openqa.selenium.By;
 
 public class EditProfilePage {
-	
+
 	public By btn_editprofile = By.id("com.koo.app:id/edit_profile_button");
 	public By txt_editprofile = By.id("com.koo.app:id/toolbar_heading_textview");
 	public By txt_nameHeading = By.id("com.koo.app:id/float_name");
@@ -35,8 +35,7 @@ public class EditProfilePage {
 	public By btn_editProfileBio = By.id("com.koo.app:id/tv_bio_expandable");
 	public By btn_editProfileDOB = By.id("com.koo.app:id/tv_dob");
 	public By btn_editProfileWebsite = By.id("com.koo.app:id/tv_website");
-	
-	
+
 	public String btn_editprofile_Name = "";
 	public String txt_editprofile_Name = "";
 	public String txt_nameHeading_Name = "";

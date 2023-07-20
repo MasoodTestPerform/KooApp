@@ -36,15 +36,16 @@ public class KooCardPage {
 	public By btn_rekoo = By.id("com.koo.app:id/rekoo_imageview");
 	public By btn_rekoono = By.id("com.koo.app:id/rekooNo");
 	public By btn_rekooyes = By.id("com.koo.app:id/rekooYes");
-	public By back_button = By.id("com.koo.app:id/backArrow");
+	public By back_button = By.id("com.koo.app:id/layoutBack");
 	public By rekoocounttext = By.id("com.koo.app:id/rekoo_textview");
 	public By btn_whatsapp = By.id("com.koo.app:id/whatsapp_share_iv");
 	public By btn_share = By.id("com.koo.app:id/generic_share_iv");
 	public By webLink = By.id("com.koo.app:id/link_preview_link");
-	
-	
+	public By btn_yes = By.xpath("//android.widget.TextView[@content-desc='positiveButton']");
+	public By btn_no = By.xpath("//android.widget.TextView[@content-desc='negativeButton']");
+		
 	public String profile_icon_Name = "Profile icon";
-	public String postButton_Name = "Post button";
+	public String postButton_Name = "Post";
 	public String mlkButton_Name = "";
 	public String reeKooIcon_Name = "ReKoo button";
 	public String reeKooNoButton_Name = "ReKoo No button";
@@ -68,14 +69,14 @@ public class KooCardPage {
 	public String likeCountText_Name = "";
 	public String btn_comment_Name = "Comment button";
 	public String btn_commentText_Name = "";
-	public String comment_txt_Name = "";
+	public String comment_txt_Name = "Comments text box";
 	public String comment_post_Name = "";
 	public String CommentCountText_Name = "";
 	public String btn_comment1_Name = "";
 	public String btn_rekoo_Name = "";
 	public String btn_rekoono_Name = "";
 	public String btn_rekooyes_Name = "";
-	public String back_button_Name = "";
+	public String back_button_Name = "Back Arrow";
 	public String rekoocounttext_Name = "";
 	public String btn_whatsapp_Name = "";
 	public String btn_share_Name = "";

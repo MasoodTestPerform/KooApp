@@ -27,6 +27,7 @@ public class CommonHelper {
 	 public static CarouselPage carouselPage = new CarouselPage();
 	 public static PeopleTabPage peopleTabPg = new PeopleTabPage();
 	 public static ExploreScreenPage exploreScreenPage = new ExploreScreenPage();
+	 public static ProfileScreenPage profileScreenPage = new ProfileScreenPage();
 
 	    /**
 	     * This method is to click on Home icon from footer bar

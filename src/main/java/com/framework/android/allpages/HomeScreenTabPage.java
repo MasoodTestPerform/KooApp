@@ -31,7 +31,7 @@ public class HomeScreenTabPage {
 		
 	}
 	
-	
+	public String tab_name = "//android.widget.LinearLayout[@content-desc='###']";
 	public By trendingTagsIcon = By.id("com.koo.app:id/trending_feed_imageview");
 	public By timeElapsedForVideo = By.id("com.koo.app:id/time_elapsed");
 	public By kooDetail = By.id("com.koo.app:id/topic_title_textview");
