@@ -1,8 +1,13 @@
 package com.framework.android.allpages;
 
 import org.openqa.selenium.By;
+import org.testng.Assert;
+
+import com.koo.android.utils.MobileActions;
+import com.koo.framework.BaseTest;
 
 public class UserBlockPage {
+	MobileActions mobileActions = BaseTest.utilObj.get().getMobileActions();
 	
 	public String viewMore_options = "//android.widget.TextView[not(contains(@text,'###')) and @resource-id='com.koo.app:id/channel_name_textview']//..//android.widget.ImageView[@resource-id='com.koo.app:id/iv_options_more']";
 	public By blockUnblockButton = By.id("com.koo.app:id/itemblockUser");
@@ -40,7 +45,7 @@ public class UserBlockPage {
 	public String okButton_Name = "";
 	public String searchedUserResult_Name = "";
 	public String searchedUserName_Name = "";
-	public String threeDots_Name = "three dots";
+	public String threeDots_Name = "Ellipses(three dots)";
 	public String closeButton_Name = "";
 	public String backButton_Name = "Back button";
 	public String homeButton_Name = "Home button";
@@ -59,4 +64,14 @@ public class UserBlockPage {
 	public String multipleBlockedUsers_Name = "";
 	public String deleteAccount_Name = "";
 	
+	/**
+     * This method is to click on three dots/ellipses from profile of user
+     * Jagath
+     * @throws IOException
+     */
+    public void clickOnThreeDots() {
+        mobileActions.waitForVisible(threeDots);
+        Assert.assertTrue(mobileActions.isDisplayed(threeDots, threeDots_Name));
+        mobileActions.click(threeDots,threeDots_Name);
+    }
 }

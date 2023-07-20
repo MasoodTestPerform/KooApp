@@ -23,7 +23,8 @@ public class HomePage {
 	public By signInEmail_button = By.id("com.koo.app:id/sign_with_email");
 	public By otp_text = By.id("com.koo.app:id/otp_edit_text");
 	public By verify_btn = By.id("com.koo.app:id/button_verify");
-	public By profile_lnk = By.id("com.koo.app:id/img_my_profile");
+//	public By profile_lnk = By.id("com.koo.app:id/img_my_profile");
+	public By profile_lnk=By.xpath("//*[@resource-id='com.koo.app:id/clProfile']/*[@resource-id='com.koo.app:id/img_my_profile']");
 	public By signIn_Email_Btn = By.id("com.koo.app:id/sign_with_email");
 	public By signIn_Email_Heading = By.id("com.koo.app:id/login_header");
 	public By enter_email = By.id("com.koo.app:id/email_edittext");
