@@ -1,5 +1,7 @@
 package com.koo.android.utils;
 
+import java.util.concurrent.TimeUnit;
+//import java.time.Duration;
 import com.aventstack.extentreports.ExtentTest;
 import com.koo.framework.BaseTest;
 import com.koo.framework.LogMe;
@@ -12,7 +14,7 @@ import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import io.appium.java_client.android.AndroidDriver;
 
-import java.time.Duration;
+
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
@@ -111,14 +113,13 @@ public class MobileActions {
 		boolean flag = true;
 		try {
 			JavascriptExecutor js = (JavascriptExecutor)driver;
-			Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(Integer.parseInt(maxDurationInSec)))
-					.pollingEvery(Duration.ofMillis(100)).ignoring(NoSuchElementException.class);
+			WebDriverWait wait = new WebDriverWait(driver, Integer.parseInt(maxDurationInSec)) ;
 		wait.until((ExpectedConditions.presenceOfElementLocated(by)));
-		flag = driver.findElement(by).isDisplayed();
+		//flag = driver.findElement(by).isDisplayed();
 		wait.until((ExpectedConditions.visibilityOfAllElementsLocatedBy(by)));
 		wait.until((ExpectedConditions.elementToBeClickable(by)));
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(500);
 		}catch(Exception e) {
 			
 		}
@@ -223,6 +224,24 @@ public class MobileActions {
 			BaseTest.utilObj.get().getAssertManager().sAssertException("Unable to retrieve text of element:"+elementName+ ".Exception"+e.getMessage(), true, this.driver, true);
 		}
 		return text;
+	}
+    
+    public String getAttribute(By by, String attributeValue, String elementName, boolean logMsg) {
+		String attributeVal = null;
+		WebElement element;
+		try {
+			element = findElement(elementName, by, TestConfig.getInstance().getOBJWAITTIME(), false);
+			attributeVal = element.getAttribute(attributeValue).trim();
+			
+			if(logMsg==true) {
+				LOGGER.logTestStep(extentTest, "INFO", "Element:"+elementName+" attribute value:"+attributeValue+" is "+attributeVal, false, this.driver);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			BaseTest.utilObj.get().getAssertManager().sAssertException("Unable to retrieve attribute value of element:"+elementName+ ".Exception"+e.getMessage(), true, this.driver, false);
+		}
+		return attributeVal;
 	}
     
     public List<WebElement> elements(By locator) {
@@ -550,7 +569,7 @@ public class MobileActions {
         }
         try {
             new TouchAction((PerformsTouchActions) driver).press(pointOptionStart)
-                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(PRESS_TIME))).moveTo(pointOptionEnd).release()
+                    .moveTo(pointOptionEnd).release()
                     .perform();
             LOGGER.logTestStep(extentTest, "INFO", "swipe completed for direction:"+direction, false, this.driver);
             
@@ -619,7 +638,7 @@ public class MobileActions {
                     System.out.println(i);
                     new TouchAction((PerformsTouchActions) driver).press(pointOptionStart)
                             // a bit more reliable when we add small wait
-                            .waitAction(WaitOptions.waitOptions(Duration.ofMillis(PRESS_TIME))).moveTo(pointOptionEnd)
+                            .moveTo(pointOptionEnd)
                             .release().perform();
                     
                     LOGGER.logTestStep(extentTest, "INFO", "swipe element completed for direction:"+dir, false, this.driver);
@@ -654,7 +673,7 @@ public class MobileActions {
     }
     
     public void setImplicitWaitMinimum() {
-    	BaseTest.mobileDriver.get().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+    	BaseTest.mobileDriver.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
     public void setImplicitWaitMinimum(int timeInSec) {
     	BaseTest.mobileDriver.get().manage().timeouts().implicitlyWait(timeInSec, TimeUnit.SECONDS);
@@ -666,9 +685,11 @@ public class MobileActions {
     public void dismissUpdateWindow() {
     	if(TestConfig.getInstance().getGooglePlayUpdateNotification().equalsIgnoreCase("true")) {
 	    	setImplicitWaitMinimum();
-	    	int updatesNotificationCnt = BaseTest.mobileDriver.get().findElements(By.xpath("//android.widget.ImageView[@content-desc='Dismiss update dialog']")).size();
+	    	int updatesNotificationCnt = BaseTest.mobileDriver.get().findElements(By.xpath("//android.widget.ImageView[@content-desc='Dismiss update dialogue']")).size();
 	    	if(updatesNotificationCnt>0) {
-	    		click(By.xpath("//android.widget.ImageView[@content-desc='Dismiss update dialog']"), " to dismiss Google Play Update");
+	    		click(By.xpath("//android.widget.ImageView[@content-desc='Dismiss update dialogue']"), " to dismiss Google Play Update");
+	    	}else {
+	    		System.out.println("seems not present Good Update Dialogue");
 	    	}
 	    	setImplicitNormal();
     	}
