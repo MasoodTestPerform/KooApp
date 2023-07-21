@@ -87,7 +87,7 @@ public class LoginKooPage {
 			}
 			mobileActions.sendKeys(homePage.signIn_Email_Btn, homePage.signIn_Email_Btn_Name, emailId);
 			mobileActions.sendKeys(homePage.enter_email, homePage.enter_email_Name, TestConfig.getInstance().getPassword());
-			mobileActions.click(homePage.OTP_btn, homePage.OTP_btn_Name);
+//			mobileActions.click(homePage.OTP_btn, homePage.OTP_btn_Name);
 			mobileActions.sendKeys(homePage.otp_text, homePage.otp_text_Name, TestConfig.getInstance().getPassword());
 			mobileActions.waitForVisible(homePage.verify_btn);
 			mobileActions.click(homePage.verify_btn, homePage.verify_btn_Name);

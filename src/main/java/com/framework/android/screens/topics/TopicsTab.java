@@ -176,7 +176,7 @@ public class TopicsTab {
 				BaseTest.mobileDriver.get());
 		try {
 			mobileActions.click(mobileActions.returnByBasedOnPageNameAndObjectName(
-					homeScreenTabPage.tab_name, "xpath", "Feed"), "Feed tab");
+					profileScreenPage.tab, "xpath", "Feed"), "Feed tab");
 			mobileActions.swipeUsingText(topicsWidgetText);
 			String topicsTitle = mobileActions.getText(feedTabPage.topicsWidget_feedScreen, "topicsTitle", true);
 			System.out.println("topics Title"+topicsTitle);

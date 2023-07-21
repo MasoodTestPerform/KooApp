@@ -14,24 +14,20 @@ public class HomeScreenTabPage {
 	
 	MobileActions mobileActions = null;
 	UserBlockPage userBlockPage = null;
-	HomeScreenTabPage homeScreenTabPage = null;
 	HashTagScreenPage hashTagScreenPage = null;
 	OnBoardingFlowPage onBoardingFlowPage = null;
 	KooDetailScreenPage kooDetailScreenPage = null;
 	KooCreationPage kooCreationPage = null;
 	
-	public void HomeScreenTabPage() {
-		this.mobileActions = new MobileActions();
-		this.userBlockPage = new UserBlockPage();
-		this.homeScreenTabPage = new HomeScreenTabPage();
-		this.hashTagScreenPage = new HashTagScreenPage();
-		this.onBoardingFlowPage = new OnBoardingFlowPage();
-		this.kooDetailScreenPage = new KooDetailScreenPage();
-		this.kooCreationPage = new KooCreationPage();
-		
+	public HomeScreenTabPage(){
+		mobileActions = BaseTest.utilObj.get().getMobileActions();
+		userBlockPage = new UserBlockPage();
+		hashTagScreenPage = new HashTagScreenPage();
+		onBoardingFlowPage = new OnBoardingFlowPage();
+		kooDetailScreenPage = new KooDetailScreenPage();
+		kooCreationPage = new KooCreationPage();
+
 	}
-	
-	public String tab_name = "//android.widget.LinearLayout[@content-desc='###']";
 	public By trendingTagsIcon = By.id("com.koo.app:id/trending_feed_imageview");
 	public By timeElapsedForVideo = By.id("com.koo.app:id/time_elapsed");
 	public By kooDetail = By.id("com.koo.app:id/topic_title_textview");
@@ -102,7 +98,7 @@ public class HomeScreenTabPage {
 	 */
 	public HomeScreenTabPage verifyHomeIcon() {
 		mobileActions.waitForVisible(userBlockPage.homeButton);
-		boolean diaplyFlag = mobileActions.isDisplayed(userBlockPage.homeButton, userBlockPage.homeButton_Name);
+		boolean diaplyFlag = this.mobileActions.isDisplayed(userBlockPage.homeButton, userBlockPage.homeButton_Name);
 		BaseTest.utilObj.get().getAssertManager().sAssertEquals(diaplyFlag,true, "Validation of Home Icon in Koo", true, BaseTest.mobileDriver.get(), true);
 		
 		return this;
@@ -114,9 +110,9 @@ public class HomeScreenTabPage {
 	 * @return
 	 */
 	public HomeScreenTabPage verifyTrendingTagIcon() {
-		mobileActions.waitForVisible(homeScreenTabPage.trendingTagsIcon);
+		this.mobileActions.waitForVisible(trendingTagsIcon);
 		
-		boolean diaplyFlag = mobileActions.isDisplayed(homeScreenTabPage.trendingTagsIcon, homeScreenTabPage.trendingTagsIcon_Name );
+		boolean diaplyFlag = this.mobileActions.isDisplayed(trendingTagsIcon, trendingTagsIcon_Name );
 		BaseTest.utilObj.get().getAssertManager().sAssertEquals(diaplyFlag,true, "Validation of Trending Tag fire icon on main page", true, BaseTest.mobileDriver.get(), true);
 		
 		return this;
@@ -128,8 +124,8 @@ public class HomeScreenTabPage {
 	 * @return
 	 */
 	public HomeScreenTabPage verifySearchIcon() {
-		mobileActions.waitForVisible(hashTagScreenPage.search_icon);
-		boolean diaplyFlag = mobileActions.isDisplayed(hashTagScreenPage.search_icon, hashTagScreenPage.search_icon_Name);
+		this.mobileActions.waitForVisible(hashTagScreenPage.search_icon);
+		boolean diaplyFlag = this.mobileActions.isDisplayed(hashTagScreenPage.search_icon, hashTagScreenPage.search_icon_Name);
 		BaseTest.utilObj.get().getAssertManager().sAssertEquals(diaplyFlag,true, "Validation of Search icon on main page", true, BaseTest.mobileDriver.get(), true);
 		
 		return this;
@@ -141,9 +137,9 @@ public class HomeScreenTabPage {
 	 * @return
 	 */
 	public HomeScreenTabPage verifyChatIcon() {
-		mobileActions.waitForVisible(homeScreenTabPage.chatIcon);
+		this.mobileActions.waitForVisible(chatIcon);
 		
-		boolean diaplyFlag = mobileActions.isDisplayed(homeScreenTabPage.chatIcon, homeScreenTabPage.chatIcon_Name);
+		boolean diaplyFlag = this.mobileActions.isDisplayed(chatIcon, chatIcon_Name);
 		BaseTest.utilObj.get().getAssertManager().sAssertEquals(diaplyFlag,true, "Validation of Chat icon", true, BaseTest.mobileDriver.get(), true);
 		
 		return this;
@@ -155,8 +151,8 @@ public class HomeScreenTabPage {
 	 * @return
 	 */
 	public HomeScreenTabPage verifyNotificationIcon() {
-		mobileActions.waitForVisible(homeScreenTabPage.notificationIcon);
-		boolean diaplyFlag = mobileActions.isDisplayed(homeScreenTabPage.notificationIcon, homeScreenTabPage.notificationIcon_Name);
+		this.mobileActions.waitForVisible(notificationIcon);
+		boolean diaplyFlag = this.mobileActions.isDisplayed(notificationIcon, notificationIcon_Name);
 		BaseTest.utilObj.get().getAssertManager().sAssertEquals(diaplyFlag,true, "Validation of Notification icon on bottom ba", true, BaseTest.mobileDriver.get(), true);
 		
 		return this;
@@ -168,8 +164,8 @@ public class HomeScreenTabPage {
 	 * @return
 	 */
 	public HomeScreenTabPage verifyStartConversationButton() {
-		mobileActions.waitForVisible(homeScreenTabPage.startConversationButton);
-		boolean diaplyFlag = mobileActions.isDisplayed(homeScreenTabPage.startConversationButton,homeScreenTabPage.startConversationButton_Name);
+		this.mobileActions.waitForVisible(startConversationButton);
+		boolean diaplyFlag = this.mobileActions.isDisplayed(startConversationButton,startConversationButton_Name);
 		BaseTest.utilObj.get().getAssertManager().sAssertEquals(diaplyFlag,true, "Validation of Start Conversation Page", true, BaseTest.mobileDriver.get(), true);
 		
 		return this;
@@ -181,8 +177,8 @@ public class HomeScreenTabPage {
 	 * @return
 	 */
 	public HomeScreenTabPage verifyNotificationPreferencesBtn() {
-		mobileActions.waitForVisible(homeScreenTabPage.notificationPreferenceIcon);
-		boolean diaplyFlag = mobileActions.isDisplayed(homeScreenTabPage.notificationPreferenceIcon,homeScreenTabPage.notificationPreferenceIcon_Name);
+		this.mobileActions.waitForVisible(notificationPreferenceIcon);
+		boolean diaplyFlag = this.mobileActions.isDisplayed(notificationPreferenceIcon,notificationPreferenceIcon_Name);
 		BaseTest.utilObj.get().getAssertManager().sAssertEquals(diaplyFlag,true, "Validation of Notification page", true, BaseTest.mobileDriver.get(), true);
 				
 				
@@ -197,27 +193,27 @@ public class HomeScreenTabPage {
 	 */
 	public HomeScreenTabPage verifyHeaderTabs(List<String> expectedTabText) {
 		for (int i = 0; i < expectedTabText.size(); i++) {
-			WebElement elementsOne = BaseTest.mobileDriver.get().findElement(mobileActions
-					.returnByBasedOnPageNameAndObjectName("OnBoardingFlow", "feedTab_Text", expectedTabText.get(i)));
-			mobileActions.waitForVisible(mobileActions.returnByBasedOnPageNameAndObjectName(onBoardingFlowPage.feedTab_Text, "xpath", expectedTabText.get(i)));
-			boolean diaplyFlag = mobileActions.isDisplayed(mobileActions.returnByBasedOnPageNameAndObjectName(onBoardingFlowPage.feedTab_Text, "xpath", expectedTabText.get(i)),onBoardingFlowPage.feedTab_Text_Name);
-			BaseTest.utilObj.get().getAssertManager().sAssertEquals(diaplyFlag,true, "Validation of header bar tab expected is = " + expectedTabText.get(i), true, BaseTest.mobileDriver.get(), true);
+			WebElement elementsOne = BaseTest.mobileDriver.get().findElement(this.mobileActions
+					.returnByBasedOnPageNameAndObjectName(onBoardingFlowPage.feedTab_Text, "xpath", expectedTabText.get(i)));
+			this.mobileActions.waitForVisible(this.mobileActions.returnByBasedOnPageNameAndObjectName(onBoardingFlowPage.feedTab_Text, "xpath", expectedTabText.get(i)));
+			boolean diaplyFlag = this.mobileActions.isDisplayed(this.mobileActions.returnByBasedOnPageNameAndObjectName(onBoardingFlowPage.feedTab_Text, "xpath", expectedTabText.get(i)),onBoardingFlowPage.feedTab_Text_Name);
+			BaseTest.utilObj.get().getAssertManager().sAssertEquals(diaplyFlag,true, "Validation of header bar tab expected is = " + expectedTabText.get(i), false, BaseTest.mobileDriver.get(), false);
 			
-			mobileActions.swipeLeftOrRight(elementsOne, "LEFT");
+			this.mobileActions.swipeLeftOrRight(elementsOne, "LEFT");
 		}
 		
 		return this;
 	}
-
+	
 	/**
 	 * This method is to verify red dot indicator
 	 *
 	 * @return
 	 */
 	public HomeScreenTabPage verifyRedDotIndicator() {
-		mobileActions.waitForVisible(homeScreenTabPage.redDotIndicator);
+		this.mobileActions.waitForVisible(redDotIndicator);
 		
-		boolean diaplyFlag = mobileActions.isDisplayed(homeScreenTabPage.redDotIndicator, homeScreenTabPage.redDotIndicator_Name);
+		boolean diaplyFlag = this.mobileActions.isDisplayed(redDotIndicator, redDotIndicator_Name);
 		BaseTest.utilObj.get().getAssertManager().sAssertEquals(diaplyFlag,true, "Validation of Red Dot Indicator", true, BaseTest.mobileDriver.get(), true);
 		
 		return this;
@@ -233,18 +229,18 @@ public class HomeScreenTabPage {
 			 {
 		boolean displayFlag = false;
 		for (int i = 0; i < expectedTabText.size(); i++) {
-			mobileActions.click(mobileActions.returnByBasedOnPageNameAndObjectName(onBoardingFlowPage.feedTab_Text, "xpath",
+			this.mobileActions.click(this.mobileActions.returnByBasedOnPageNameAndObjectName(onBoardingFlowPage.feedTab_Text, "xpath",
 					expectedTabText.get(i)), "Click on next tab = " + expectedTabText.get(i));
 			
 				
-			mobileActions.waitForVisible(mobileActions.returnByBasedOnPageNameAndObjectName(homeScreenTabPage.redDotIndicatorNextTab, "xpath", expectedTabText.get(i)));
-			displayFlag = mobileActions.isDisplayed(mobileActions.returnByBasedOnPageNameAndObjectName(homeScreenTabPage.redDotIndicatorNextTab, "xpath", expectedTabText.get(i)), homeScreenTabPage.redDotIndicatorNextTab_Name);
+			this.mobileActions.waitForVisible(this.mobileActions.returnByBasedOnPageNameAndObjectName(redDotIndicatorNextTab, "xpath", expectedTabText.get(i)));
+			displayFlag = this.mobileActions.isDisplayed(this.mobileActions.returnByBasedOnPageNameAndObjectName(redDotIndicatorNextTab, "xpath", expectedTabText.get(i)), redDotIndicatorNextTab_Name);
 			BaseTest.utilObj.get().getAssertManager().sAssertEquals(displayFlag, true, "Validation of Red Dot Indicator on next tab when it's previous tab is selected. Expected:"+expectedTabText.get(i), true, BaseTest.mobileDriver.get(), true);
 					
 			
 		}
 		
-		mobileActions.swipeUp(2);
+		this.mobileActions.swipeUp(2);
 		return this;
 	}
 
@@ -256,9 +252,9 @@ public class HomeScreenTabPage {
 	 * @throws IOException
 	 */
 	public HomeScreenTabPage clickOnAnyTabFromHomePage(String tabName)  {
-		mobileActions.waitForVisible(
-				mobileActions.returnByBasedOnPageNameAndObjectName(onBoardingFlowPage.feedTab_Text, "xpath", tabName));
-		mobileActions.click(mobileActions.returnByBasedOnPageNameAndObjectName(onBoardingFlowPage.feedTab_Text, "xpath", tabName),
+		this.mobileActions.waitForVisible(
+				this.mobileActions.returnByBasedOnPageNameAndObjectName(onBoardingFlowPage.feedTab_Text, "xpath", tabName));
+		this.mobileActions.click(this.mobileActions.returnByBasedOnPageNameAndObjectName(onBoardingFlowPage.feedTab_Text, "xpath", tabName),
 				"Click on tab = " + tabName);
 		return this;
 	}
@@ -272,10 +268,10 @@ public class HomeScreenTabPage {
 	 * @throws IOException
 	 */
 	public HomeScreenTabPage verifyTopOfThePage(String tabName){
-		mobileActions.swipeUp(5);
-		mobileActions.click(mobileActions.returnByBasedOnPageNameAndObjectName(onBoardingFlowPage.feedTab_Text, "xpath", tabName),
+		this.mobileActions.swipeUp(5);
+		this.mobileActions.click(this.mobileActions.returnByBasedOnPageNameAndObjectName(onBoardingFlowPage.feedTab_Text, "xpath", tabName),
 				"Click on tab = " + tabName);
-		boolean displayFlag = mobileActions.isDisplayed(mobileActions.returnByBasedOnPageNameAndObjectName(onBoardingFlowPage.feedTab_Text, "xpath", tabName), homeScreenTabPage.redDotIndicatorNextTab_Name);
+		boolean displayFlag = this.mobileActions.isDisplayed(this.mobileActions.returnByBasedOnPageNameAndObjectName(onBoardingFlowPage.feedTab_Text, "xpath", tabName), redDotIndicatorNextTab_Name);
 		BaseTest.utilObj.get().getAssertManager().sAssertEquals(displayFlag, true, "Validation of Feed tab. Expected:"+ tabName, true, BaseTest.mobileDriver.get(), true);
 		
 		return this;
@@ -288,9 +284,9 @@ public class HomeScreenTabPage {
 	 * @throws IOException
 	 */
 	public HomeScreenTabPage verifyDynamicBanner() {
-		mobileActions.swipeUsingID("root_single_user_big");
+		this.mobileActions.swipeUsingID("root_single_user_big");
 		
-		boolean displayFlag = mobileActions.isDisplayed(homeScreenTabPage.dynamicBanner, homeScreenTabPage.dynamicBanner_Name);
+		boolean displayFlag = this.mobileActions.isDisplayed(dynamicBanner, dynamicBanner_Name);
 		BaseTest.utilObj.get().getAssertManager().sAssertEquals(displayFlag, true, "Validation of dynamic banner is displaying", true, BaseTest.mobileDriver.get(), true);
 		
 		return this;
@@ -303,10 +299,10 @@ public class HomeScreenTabPage {
 	 * @throws IOException
 	 */
 	public HomeScreenTabPage verifyBannersOnFeedPage(String regexExpression) {
-		String actualText = mobileActions
-				.getText(homeScreenTabPage.dynamicBannerText, homeScreenTabPage.dynamicBannerText_Name, true);
-		mobileActions.click(homeScreenTabPage.dynamicBannerText, homeScreenTabPage.dynamicBannerText_Name);
-		String expectedText = mobileActions
+		String actualText = this.mobileActions
+				.getText(dynamicBannerText, dynamicBannerText_Name, true);
+		this.mobileActions.click(dynamicBannerText, dynamicBannerText_Name);
+		String expectedText = this.mobileActions
 				.getText(userBlockPage.profileName, userBlockPage.profileName_Name, true);
 		actualText = actualText.split("  ")[0].split(regexExpression)[0];
 		expectedText = expectedText.split("  ")[0].split(regexExpression)[0];
@@ -324,7 +320,7 @@ public class HomeScreenTabPage {
 	 * @throws IOException
 	 */
 	public HomeScreenTabPage verifyTrendingKooPageHeading(String expectedTrendingKooPageHeading) {
-		boolean displayFlag = mobileActions.isDisplayed(mobileActions.returnByBasedOnPageNameAndObjectName(homeScreenTabPage.trendingKooPageHeading, "xpath", expectedTrendingKooPageHeading), expectedTrendingKooPageHeading);
+		boolean displayFlag = this.mobileActions.isDisplayed(this.mobileActions.returnByBasedOnPageNameAndObjectName(trendingKooPageHeading, "xpath", expectedTrendingKooPageHeading), expectedTrendingKooPageHeading);
 		BaseTest.utilObj.get().getAssertManager().sAssertEquals(displayFlag, true, "Validation of Trending Koo page heading.Heading:"+expectedTrendingKooPageHeading, true, BaseTest.mobileDriver.get(), true);
 		
 		return this;
@@ -337,8 +333,8 @@ public class HomeScreenTabPage {
 	 * @throws IOException
 	 */
 	public HomeScreenTabPage clickTrendingKooIcon() {
-		mobileActions.waitForVisible(homeScreenTabPage.refreshButtonOnTrendingKooPage);
-		mobileActions.click(homeScreenTabPage.refreshButtonOnTrendingKooPage, homeScreenTabPage.refreshButtonOnTrendingKooPage_Name);
+		this.mobileActions.waitForVisible(refreshButtonOnTrendingKooPage);
+		this.mobileActions.click(refreshButtonOnTrendingKooPage, refreshButtonOnTrendingKooPage_Name);
 		return this;
 	}
 
@@ -350,9 +346,9 @@ public class HomeScreenTabPage {
 	 * @throws InterruptedException
 	 */
 	public HomeScreenTabPage verifyKoosInRankOnFeedPage() {
-		mobileActions.swipeUsingID("koo_time_creation_tv");
-		String currentKooCreationTimeText = mobileActions
-				.getText(homeScreenTabPage.kooCreationTimeStamp, homeScreenTabPage.kooCreationTimeStamp_Name, true);
+		this.mobileActions.swipeUsingID("koo_time_creation_tv");
+		String currentKooCreationTimeText = this.mobileActions
+				.getText(kooCreationTimeStamp, kooCreationTimeStamp_Name, true);
 		if (!currentKooCreationTimeText.equalsIgnoreCase("Just Now")) {
 			String currentKooCreationTimeText_1 = currentKooCreationTimeText.replaceAll("[^0-9]", "");
 			CommonHelper.clickOnHomeButton();
@@ -360,12 +356,12 @@ public class HomeScreenTabPage {
 			CommonHelper.clickOnKooBird();
 			CommonHelper.clickOnKooBird();
 			CommonHelper.clickOnKooBird();
-			mobileActions.swipeDown(5);
+			this.mobileActions.swipeDown(5);
 			BaseTest.utilObj.get().getUIUtils().waitForSec(5);
-			mobileActions.swipeUsingID("koo_time_creation_tv");
+			this.mobileActions.swipeUsingID("koo_time_creation_tv");
 			BaseTest.mobileDriver.get().manage().timeouts().implicitlyWait(70, TimeUnit.SECONDS);
-			String newKooCreationTimeText = mobileActions
-					.getText(homeScreenTabPage.kooCreationTimeStamp, homeScreenTabPage.kooCreationTimeStamp_Name, true);
+			String newKooCreationTimeText = this.mobileActions
+					.getText(kooCreationTimeStamp, kooCreationTimeStamp_Name, true);
 			String newKooCreationTimeText_1 = newKooCreationTimeText.replaceAll("[^0-9]", "");
 			
 			boolean istrue = Integer.parseInt(newKooCreationTimeText_1) < Integer.parseInt(currentKooCreationTimeText_1);
@@ -390,18 +386,18 @@ public class HomeScreenTabPage {
 	 * @throws InterruptedException
 	 */
 	public HomeScreenTabPage verifyReactionBarIcons() throws InterruptedException {
-		mobileActions.swipeDown(5);
-		mobileActions.swipeUsingID("like_holder_constraint");
-		boolean displayFlag = mobileActions.isDisplayed(homeScreenTabPage.likeHolderIconOnReactionBar, homeScreenTabPage.likeHolderIconOnReactionBar_Name);
+		this.mobileActions.swipeDown(5);
+		this.mobileActions.swipeUsingID("like_holder_constraint");
+		boolean displayFlag = this.mobileActions.isDisplayed(likeHolderIconOnReactionBar, likeHolderIconOnReactionBar_Name);
 		BaseTest.utilObj.get().getAssertManager().sAssertEquals(displayFlag, true, "Validation of Comment Holder Icon on reaction bar", false, BaseTest.mobileDriver.get(), false);
 		
-		displayFlag = mobileActions.isDisplayed(homeScreenTabPage.rekooHolderIconOnReactionBar, homeScreenTabPage.rekooHolderIconOnReactionBar_Name);
+		displayFlag = this.mobileActions.isDisplayed(rekooHolderIconOnReactionBar, rekooHolderIconOnReactionBar_Name);
 		BaseTest.utilObj.get().getAssertManager().sAssertEquals(displayFlag, true, "Validation of Re-Koo Holder Icon on reaction bar", false, BaseTest.mobileDriver.get(), false);
 		
-		displayFlag = mobileActions.isDisplayed(homeScreenTabPage.whatsappShareIconOnReactionBar, homeScreenTabPage.whatsappShareIconOnReactionBar_Name);
+		displayFlag = this.mobileActions.isDisplayed(whatsappShareIconOnReactionBar, whatsappShareIconOnReactionBar_Name);
 		BaseTest.utilObj.get().getAssertManager().sAssertEquals(displayFlag, true, "Validation of Whats App Share Icon on reaction bar", false, BaseTest.mobileDriver.get(), false);
 		
-		displayFlag = mobileActions.isDisplayed(homeScreenTabPage.shareIconOnReactionBar, homeScreenTabPage.shareIconOnReactionBar_Name);
+		displayFlag = this.mobileActions.isDisplayed(shareIconOnReactionBar, shareIconOnReactionBar_Name);
 		BaseTest.utilObj.get().getAssertManager().sAssertEquals(displayFlag, true, "Validation of share Icon on reaction bar", false, BaseTest.mobileDriver.get(), false);
 		
 		return this;
@@ -413,8 +409,8 @@ public class HomeScreenTabPage {
 	 * @return
 	 */
 	public HomeScreenTabPage verifyKooText() {
-		mobileActions.swipeUsingID("topic_title_textview");
-		boolean displayFlag = mobileActions.isDisplayed(homeScreenTabPage.kooText, homeScreenTabPage.kooText_Name);
+		this.mobileActions.swipeUsingID("topic_title_textview");
+		boolean displayFlag = this.mobileActions.isDisplayed(kooText, kooText_Name);
 		BaseTest.utilObj.get().getAssertManager().sAssertEquals(displayFlag, true, "Validation of koo text", false, BaseTest.mobileDriver.get(), false);
 		
 		return this;
@@ -426,18 +422,18 @@ public class HomeScreenTabPage {
 	 * @return
 	 */
 	public HomeScreenTabPage verifyKooMedia() {
-		mobileActions.swipeUsingID("play");
+		this.mobileActions.swipeUsingID("play");
 		BaseTest.utilObj.get().getUIUtils().waitForSec(2);
-		boolean isPlay = mobileActions.isElmPresent(By.id("com.koo.app:id/play"));
+		boolean isPlay = this.mobileActions.isElmPresent(By.id("com.koo.app:id/play"));
 		if (isPlay) {
-			mobileActions.click(By.id("com.koo.app:id/play"), "Click on Play button to play video");
+			this.mobileActions.click(By.id("com.koo.app:id/play"), "Click on Play button to play video");
 		}
-		mobileActions.swipeUp(1);
-		String actualTextOfTimeElapsed = mobileActions
-				.getText(homeScreenTabPage.timeElapsedForVideo, homeScreenTabPage.timeElapsedForVideo_Name, true);
+		this.mobileActions.swipeUp(1);
+		String actualTextOfTimeElapsed = this.mobileActions
+				.getText(timeElapsedForVideo, timeElapsedForVideo_Name, true);
 		BaseTest.utilObj.get().getUIUtils().waitForSec(2);
-		String expectedTextOfTimeElapsed = mobileActions
-				.getText(homeScreenTabPage.timeElapsedForVideo, homeScreenTabPage.timeElapsedForVideo_Name, true);
+		String expectedTextOfTimeElapsed = this.mobileActions
+				.getText(timeElapsedForVideo, timeElapsedForVideo_Name, true);
 		int actualTime = Integer.parseInt(actualTextOfTimeElapsed.split(":")[1]);
 		int expectedTime = Integer.parseInt(expectedTextOfTimeElapsed.split(":")[1]);
 		boolean isTrue = actualTime > expectedTime;
@@ -456,23 +452,23 @@ public class HomeScreenTabPage {
 	public HomeScreenTabPage verifyCommentsDetailSection(String commentsSectionHeading, String commentText,
 			String postButton, String kooText)  {
 		BaseTest.utilObj.get().getUIUtils().waitForSec(5);
-		mobileActions.swipeUp(1);
-		mobileActions.swipeUpFindElement(10,
-				mobileActions.returnByBasedOnPageNameAndObjectName(kooDetailScreenPage.postedCommentIcon, "xpath", kooText));
-		mobileActions.click(kooDetailScreenPage.writeCommentsBar, kooDetailScreenPage.writeCommentsBar_Name);
-		mobileActions.sendKeys(kooCreationPage.txt_Message, kooCreationPage.txt_Message_Name,
+		this.mobileActions.swipeUp(1);
+		this.mobileActions.swipeUpFindElement(10,
+				this.mobileActions.returnByBasedOnPageNameAndObjectName(kooDetailScreenPage.postedCommentIcon, "xpath", kooText));
+		this.mobileActions.click(kooDetailScreenPage.writeCommentsBar, kooDetailScreenPage.writeCommentsBar_Name);
+		this.mobileActions.sendKeys(kooCreationPage.txt_Message, kooCreationPage.txt_Message_Name,
 				commentText);
-		mobileActions.click(mobileActions.returnByBasedOnPageNameAndObjectName(kooCreationPage.btn_post, "xpath", postButton),
+		this.mobileActions.click(this.mobileActions.returnByBasedOnPageNameAndObjectName(kooCreationPage.btn_post, "xpath", postButton),
 				"Click on Post Button");
 		BaseTest.utilObj.get().getUIUtils().waitForSec(5);
-		mobileActions.swipeUpFindElement(10,
-				mobileActions.returnByBasedOnPageNameAndObjectName(kooDetailScreenPage.postedKooText, "xpath", kooText));
-		mobileActions.click(
-				mobileActions.returnByBasedOnPageNameAndObjectName(kooDetailScreenPage.postedCommentIcon, "xpath", kooText),
+		this.mobileActions.swipeUpFindElement(10,
+				this.mobileActions.returnByBasedOnPageNameAndObjectName(kooDetailScreenPage.postedKooText, "xpath", kooText));
+		this.mobileActions.click(
+				this.mobileActions.returnByBasedOnPageNameAndObjectName(kooDetailScreenPage.postedCommentIcon, "xpath", kooText),
 				"Click on View Comment Button");
 		BaseTest.utilObj.get().getUIUtils().waitForSec(2);
 		
-		boolean displayFlag = mobileActions.isDisplayed(mobileActions.returnByBasedOnPageNameAndObjectName(homeScreenTabPage.commentsSectionHeading, "xpath", commentsSectionHeading),commentsSectionHeading);
+		boolean displayFlag = this.mobileActions.isDisplayed(this.mobileActions.returnByBasedOnPageNameAndObjectName(commentsSectionHeading, "xpath", commentsSectionHeading),commentsSectionHeading);
 		BaseTest.utilObj.get().getAssertManager().sAssertEquals(displayFlag, true, "Validation of comment section heading:"+commentsSectionHeading, false, BaseTest.mobileDriver.get(), false);
 		
 		return this;
@@ -485,15 +481,15 @@ public class HomeScreenTabPage {
 	 * @throws InterruptedException 
 	 */
 	public HomeScreenTabPage verifyRefreshedKoo() throws InterruptedException {
-		String oldKoo = mobileActions
-				.getText(homeScreenTabPage.kooDetail, homeScreenTabPage.kooDetail_Name, true);
-		mobileActions.swipeUp(2);
-		mobileActions.swipeDown(60);
+		String oldKoo = this.mobileActions
+				.getText(kooDetail, kooDetail_Name, true);
+		this.mobileActions.swipeUp(2);
+		this.mobileActions.swipeDown(60);
 
 		BaseTest.LOGGER.get().logTestStep(BaseTest.extentTest.get(), "INFO", "Refreshed the page multiple times and thenget text of latest koo", false, BaseTest.mobileDriver.get());
 		BaseTest.mobileDriver.get().manage().timeouts().implicitlyWait(70, TimeUnit.SECONDS);
-		String refreshedKoo = mobileActions
-				.getText(homeScreenTabPage.kooDetail, homeScreenTabPage.kooDetail_Name, true);
+		String refreshedKoo = this.mobileActions
+				.getText(kooDetail, kooDetail_Name, true);
 
 		// Verify Old Koo and New/ Refreshed Koo Text should not same/equal
 		BaseTest.LOGGER.get().logTestStep(BaseTest.extentTest.get(), "INFO", "Verify Old Koo and New/ Refreshed Koo Text should not same/equal", false, BaseTest.mobileDriver.get());
