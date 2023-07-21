@@ -83,6 +83,13 @@ public class TestConfig {
 	private static String userName_1_verifyLikeCommentRekooCount;
 	private static String user2_verifyLikeCommentRekooCount;
 	private static String userHandleName_2_verifyLikeCommentRekooCount;
+	private static String NewUserOnBoarding_TC013_018;
+	private static String NewUserOnBoarding_TC012;
+	private static String NewUserOnBoarding_TC014;
+	private static String NewUserOnBoarding_TC015;
+	private static String NewUserOnBoarding_TC026;
+	private static String NewUserOnBoarding_TC027;
+	
 
 	private TestConfig() {
 	}
@@ -190,7 +197,7 @@ public class TestConfig {
 	public String getWebmobileFlag() {
 		return webmobileFlag;
 	}
-	
+		
 	//Android properties
 	public String getPlatform(){return platform;}
 	public String getUdid(){return udid;}
@@ -230,6 +237,25 @@ public class TestConfig {
 	public String getUserName_1_verifyLikeCommentRekooCount(){return userName_1_verifyLikeCommentRekooCount;}
 	public String getUser2_verifyLikeCommentRekooCount(){return user2_verifyLikeCommentRekooCount;}
 	public String getUserHandleName_2_verifyLikeCommentRekooCount(){return userHandleName_2_verifyLikeCommentRekooCount;}
+
+	public String getNewUserOnBoarding_TC013_018() {
+		return NewUserOnBoarding_TC013_018;
+	}
+	public String getNewUserOnBoarding_TC012() {
+		return NewUserOnBoarding_TC012;
+	}
+	public String getNewUserOnBoarding_TC014() {
+		return NewUserOnBoarding_TC014;
+	}
+	public String getNewUserOnBoarding_TC015() {
+		return NewUserOnBoarding_TC014;
+	}
+	public String getNewUserOnBoarding_TC026() {
+		return NewUserOnBoarding_TC026;
+	}
+	public String getNewUserOnBoarding_TC027() {
+		return NewUserOnBoarding_TC027;
+	}
 
 	// Framework Initialization
 	public void suiteSetup() {
@@ -300,7 +326,7 @@ public class TestConfig {
 			mobileDriver = new AndroidDriver<WebElement>(new URL("http://0.0.0.0:4723/wd/hub"), capabilities);
 		}
 
-		mobileDriver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
+		mobileDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		
 		return mobileDriver;		
 	}
@@ -360,6 +386,12 @@ public class TestConfig {
 		userName_1_verifyLikeCommentRekooCount = config.getPropertyValue("userName_1_verifyLikeCommentRekooCount");
 		user2_verifyLikeCommentRekooCount = config.getPropertyValue("user2_verifyLikeCommentRekooCount");
 		userHandleName_2_verifyLikeCommentRekooCount = config.getPropertyValue("userHandleName_2_verifyLikeCommentRekooCount");
+		NewUserOnBoarding_TC013_018 = config.getPropertyValue("NewUserOnBoarding_TC013_018");
+		NewUserOnBoarding_TC012 = config.getPropertyValue("NewUserOnBoarding_TC012");
+		NewUserOnBoarding_TC014 = config.getPropertyValue("NewUserOnBoarding_TC014");
+		NewUserOnBoarding_TC015 = config.getPropertyValue("NewUserOnBoarding_TC015");
+		NewUserOnBoarding_TC026 = config.getPropertyValue("NewUserOnBoarding_TC026");
+		NewUserOnBoarding_TC027 = config.getPropertyValue("NewUserOnBoarding_TC027");
 	}
 
 }

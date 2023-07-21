@@ -34,6 +34,7 @@ public class OnBoardingFlowPage {
 	public By selectedTopicOnFeed = By.xpath("//android.view.ViewGroup[@resource-id='com.koo.app:id/justification_container']//following-sibling::android.widget.TextView");
 	public By followProfilePlusButton = By.xpath("//android.widget.ImageView[@resource-id='com.koo.app:id/ivPlus']");
 	public By kooHeaderForSelectedInterest = By.id("com.koo.app:id/tv_koo_header");
+	public By addProfilePictureHeaderText = By.id("com.koo.app:id/tv_header");
 	
 	public By headerText = By.id("com.koo.app:id/tv_header");
 	public By addProfileNameCaptionText = By.id("com.koo.app:id/app_profile_caption");
@@ -52,11 +53,11 @@ public class OnBoardingFlowPage {
 	public By peopleYouCanFollowFirstProfile = By.id("com.koo.app:id/channel_name_textview");
 	public By peopleYouCanFollowPageFollowButton = By.id("com.koo.app:id/tvFollow");
 	public By followTopicsImage = By.id("com.koo.app:id/ivTopics");
-	public By followTopicsHeaderText = By.id("com.koo.app:id/tvFollow");
+	public By followTopicsHeaderText = By.xpath("//android.widget.TextView[@resource-id='com.koo.app:id/tvHeading']");
 	public By followTopicsSubHeaderText = By.id("com.koo.app:id/tvSubheading");
-	
-	
-	
+	public By followTopicsFirstTopCategory = By.xpath("(//androidx.compose.ui.platform.ComposeView[@resource-id='com.koo.app:id/topicFollowUnfollow']/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View)[1]/android.widget.TextView");
+	public By followTopicsFirstTopCategoryPlusSign = By.xpath("(//androidx.compose.ui.platform.ComposeView[@resource-id='com.koo.app:id/topicFollowUnfollow']/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View)[1]/android.view.View");
+		
 	
 	public String feedTab_Text_Name = "";
 	public String topicsArrangedCategories_Name = "";
@@ -89,6 +90,29 @@ public class OnBoardingFlowPage {
 	public String followTopicsImage_Name = "Follow Topics Image";
 	public String followTopicsHeaderText_Name = "";
 	public String followTopicsSubHeaderText_Name = "";
+	public String followTopicsFirstTopCategory_Name = "First topic category in TOP";
+	public String followTopicsFirstTopCategoryPlusSign_Name = "First topic category + sign in TOP";
+	public String addProfilePictureHeaderText_Name = "Add Profile Picture header text";
+	
+	//working latest
+	public String ValidateSelectFirstInterestTopicName() {
+		By firstPrefrencesTopic = By.xpath("(//android.widget.TextView[@resource-id='com.koo.app:id/preferenceName'])[1]");
+		String firstPrefrencesTopicName = this.mobileActions.getText(firstPrefrencesTopic, "First Prefrences Topic", true);
+		By firstPrefrencesTopicCheckbox = By.xpath("(//android.widget.CheckBox[@resource-id='com.koo.app:id/checkbox'])[1]");
+		this.mobileActions.click(firstPrefrencesTopicCheckbox, firstPrefrencesTopicName + " Checkbox");
+		String checkedAttrbuteVal = this.mobileActions.getAttribute(firstPrefrencesTopicCheckbox, "checked", firstPrefrencesTopicName + " Checkbox", true);
+		BaseTest.utilObj.get().getAssertManager().sAssertEquals(checkedAttrbuteVal, "checked", "Validation of First Prefrences Topic:"+firstPrefrencesTopicName+" selection", true, BaseTest.mobileDriver.get(), false);
+		return firstPrefrencesTopicName;
+	}
+	
+	public void selectedFirstTopicYouFollowValidationNewUser_InterestSelection(String interestSelected) {
+		
+		By firstTopicYouFollow = By.xpath("(//android.widget.TextView[@resource-id='com.koo.app:id/item_title'])[1]");
+		By firstTopicYouFollowTickMark = By.xpath("(//android.widget.ImageView[@resource-id='com.koo.app:id/iv_follow_icon'])[1]");
+		By sureYouUnfollowYesBtn = By.xpath("(//android.widget.Button[@resource-id='android:id/button1'])[1]");
+		By firstTopicYouFollowPlusMark = By.xpath("(//android.widget.ImageView[@resource-id='com.koo.app:id/follow_blink'])[1]");
+	}
+	
 	
 	public OnBoardingFlowPage verifyNewUserAbleToViewUserNamePage() throws Exception {
 		BaseTest.LOGGER.get().logTestStep(BaseTest.extentTest.get(), "INFO", "Going to Verify Add Your Name page", false, BaseTest.mobileDriver.get());

@@ -1,6 +1,6 @@
 package com.koo.utils;
 
-import java.time.Duration;
+//import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -89,8 +89,7 @@ public class UIUtils {
 		boolean flag = true;
 		try {
 			JavascriptExecutor js = (JavascriptExecutor)driver;
-			Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(Integer.parseInt(maxDurationInSec)))
-					.pollingEvery(Duration.ofMillis(100)).ignoring(NoSuchElementException.class);
+			WebDriverWait wait = new WebDriverWait(driver, Long.parseLong(maxDurationInSec));
 
 		wait.until((ExpectedConditions.presenceOfElementLocated(by)));
 		flag = driver.findElement(by).isDisplayed();
@@ -113,8 +112,7 @@ public class UIUtils {
 		boolean flag = true;
 		try {
 			JavascriptExecutor js = (JavascriptExecutor)driver;
-			Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(Integer.parseInt(maxDurationInSec)))
-					.pollingEvery(Duration.ofMillis(100)).ignoring(NoSuchElementException.class);
+			WebDriverWait wait = new WebDriverWait(driver, Long.parseLong(maxDurationInSec));
 		wait.until((ExpectedConditions.presenceOfElementLocated(by)));
 		//flag = driver.findElement(by).isDisplayed();
 		wait.until((ExpectedConditions.visibilityOfAllElementsLocatedBy(by)));
