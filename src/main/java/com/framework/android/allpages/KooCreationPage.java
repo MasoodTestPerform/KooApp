@@ -19,7 +19,7 @@ public class KooCreationPage {
 	public By btn_draft = By.xpath("//android.widget.ImageView[@content-desc='Back Button']/../android.view.View[2]");
 	public By txt_languages = By.xpath("(//android.view.View)[8]");
 	public By btn_no = By.xpath("//android.widget.TextView[@content-desc='negativeButton']");
-	public String btn_post = "//android.widget.TextView[@text=\"###\"]"; 
+	public String btn_post = "//android.widget.TextView[@text='###']"; 
 	public By txt_Message = By.xpath("//android.widget.EditText");
 	public By btn_addlanguage_plus = By.xpath("//android.view.View[@content-desc='add_language']");
 	public By checkbox_selectLanguage = By.xpath("(//android.view.View)[14]");
@@ -92,7 +92,7 @@ public class KooCreationPage {
 	public By txt_threadkoo1 = By.xpath("(//android.widget.TextView[@resource-id='com.koo.app:id/topic_title_textview'])[1]");
 	public By txt_threadkoo2 = By.xpath("(//android.widget.TextView[@resource-id='com.koo.app:id/topic_title_textview'])[2]");
 	public By btn_backinMLK = By.xpath("//android.widget.ImageView[@content-desc='Back Button']");
-	
+	public By first_menu_hamberger = By.xpath("(//*[@resource-id='com.koo.app:id/iv_options_more'])[1]");
 	
 	public String Chkbox_Select_Language_Name = ""; 
 	public String OTP_btn_Name = "";
@@ -109,7 +109,7 @@ public class KooCreationPage {
 	public String btn_draft_Name = "";
 	public String txt_languages_Name = "";
 	public String btn_no_Name = "";
-	public String btn_post_Name = "Post Button";
+	public String btn_post_Name = "Post";
 	public String txt_Message_Name = "Koo creation text field";
 	public String btn_addlanguage_plus_Name = "";
 	public String checkbox_selectLanguage_Name = "";

@@ -39,8 +39,9 @@ public class HomePage {
 	public By incorrect_otp_message = By.id("com.koo.app:id/textview_footer_otp");
 	public String app_Language = "//android.widget.TextView[@text=\\\"###\\\"]";
 	public By MobNo_txt = By.id("com.koo.app:id/phone_no_edittext");
-	public By OTP_btn = By.id("//android.widget.Button[text()='Get OTP']");
-			//+ "com.koo.app:id/phone_no_next_button");
+	public By OTP_btn = By.id("com.koo.app:id/phone_no_next_button");
+			//+ "//android.widget.Button[text()='Get OTP']");
+			
 	public By OTP_Email_btn = By.id("com.koo.app:id/email_continue_button");
 	public By btn_skip = By.id("com.starhub.csselfhelp.preview:id/txtSkip");
 	public By feed_tab = By.id("com.starhub.csselfhelp.preview:id/txtSkip");
