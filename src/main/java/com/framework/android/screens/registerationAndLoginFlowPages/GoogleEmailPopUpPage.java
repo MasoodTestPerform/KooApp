@@ -108,8 +108,8 @@ public class GoogleEmailPopUpPage {
         CommonHelper.clickOnProfile();
         CommonHelper.clickOnThreeDotsOProfilePage();
         CommonHelper.clickSettingsButton();
-        mobileActions.waitForVisible(mobileActions.returnByBasedOnPageNameAndObjectName(settingsPage.settingsSectionHeading, "xpath", expectedHeading));
-        boolean isDisplayedFlag = mobileActions.isDisplayed(mobileActions.returnByBasedOnPageNameAndObjectName(settingsPage.settingsSectionHeading, "xpath", expectedHeading),
+        mobileActions.waitForVisible(mobileActions.returnByBasedOnPageNameAndObjectName(settingsPage.settingsSectionHeading_Name, "xpath", expectedHeading));
+        boolean isDisplayedFlag = mobileActions.isDisplayed(mobileActions.returnByBasedOnPageNameAndObjectName(settingsPage.settingsSectionHeading_Name, "xpath", expectedHeading),
                 "Verify Settings page sections and it's sub heading = " + expectedHeading);
         
         BaseTest.utilObj.get().getAssertManager().sAssertEquals(isDisplayedFlag, true, "Verify Settings page sections and it's sub heading = " + expectedHeading, true, BaseTest.mobileDriver.get(), true);
