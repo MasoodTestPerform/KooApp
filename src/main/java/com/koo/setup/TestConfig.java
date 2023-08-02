@@ -312,7 +312,7 @@ public class TestConfig {
 
 
 		capabilities.setCapability("app",
-				System.getProperty("user.dir") + "/src/main/resources/MobileApps/v0.99.999905.apk");
+				System.getProperty("user.dir") + "/src/main/resources/MobileApps/474.apk");
 		capabilities.setCapability("appPackage", "com.koo.app");
 		capabilities.setCapability("appActivity", "com.koo.onboarding.OnBoardingActivity");
 
