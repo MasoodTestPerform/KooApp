@@ -2,7 +2,19 @@ package com.framework.android.allpages;
 
 import org.openqa.selenium.By;
 
+import com.koo.android.utils.MobileActions;
+import com.koo.framework.BaseTest;
+
 public class HomePage {
+	MobileActions mobileActions = null;
+	PeopleTabPage peopleTabPage = null;
+		
+	public HomePage() {
+		this.mobileActions = BaseTest.utilObj.get().getMobileActions();
+		this.peopleTabPage = new PeopleTabPage();
+		
+		
+	}
 	
 	public By select_languages = By.xpath("//android.widget.TextView[@text='Select Language']");
 	public By backButton_LanguageChange = By.id("com.koo.app:id/select_lang_popup");
@@ -148,4 +160,52 @@ public class HomePage {
 	public String btn_back_Name = "";
 	public String btn_verify_request_Name = "";
 	public String btn_pending_Name = "";
+	
+	public void validate_InterestSelection_PeoplePage(String interestSelected) {
+		By interestTopicSelectedInYourPreferences = By.xpath("(//android.view.ViewGroup[@resource-id='com.koo.app:id/leaderboard_layout']//android.widget.LinearLayout)[2]//android.view.ViewGroup[@resource-id='com.koo.app:id/main_layout']//android.widget.TextView[@resource-id='com.koo.app:id/title']");
+		String interestTopicSelectedInYourPreferencesVal = this.mobileActions.getText(interestTopicSelectedInYourPreferences, "Interested Topic in your preference", true);
+		BaseTest.utilObj.get().getAssertManager().sAssertEquals(interestTopicSelectedInYourPreferencesVal, interestSelected, "Validation of interest selected as :"+interestSelected+" selection in People screen under Your Preferences", true, BaseTest.mobileDriver.get(), false);		
+	}
+	
+	public void validate_PremiumPage() {
+		By eminentKooVerifiedHeader = By.xpath("//android.widget.TextView[@resource-id='com.koo.app:id/header_text']");
+		String eminentKooVerifiedHeaderVal = this.mobileActions.getText(eminentKooVerifiedHeader, "Eminent Koo Verified Header", true);
+		BaseTest.utilObj.get().getAssertManager().sAssertEquals(eminentKooVerifiedHeaderVal, "Koo Verified (Eminent)", "Validation of Eminent Koo Verified Header text in Premium screen", true, BaseTest.mobileDriver.get(), false);		
+	}
+	
+	public void validate_PollsPage() {
+		By numberWithVotes = By.xpath("//android.widget.TextView[@resource-id='com.koo.app:id/tv_votes']");
+		String numberWithVotesVal = this.mobileActions.getText(numberWithVotes, "Number with Votes", true);
+		BaseTest.utilObj.get().getAssertManager().sAssertContains(numberWithVotesVal, "votes", "Validation of Votes text in Polls screen", true, BaseTest.mobileDriver.get(), false);		
+	}
+	
+	public void validate_VideosPage() {
+		By videosTimeElapsed = By.xpath("//android.widget.TextView[@resource-id='com.koo.app:id/time_elapsed']");
+		String videosTimeElapsedDisplayed = this.mobileActions.getAttribute(videosTimeElapsed, "displayed","Videos Time Elapsed");
+		BaseTest.utilObj.get().getAssertManager().sAssertEquals(videosTimeElapsedDisplayed, "true", "Validation of Videos Time Elapsed in Videos screen", true, BaseTest.mobileDriver.get(), false);		
+	}
+	
+	public void validate_FriendsPage() {
+		By findYourFriendsOnKoo = By.xpath("//android.widget.Button[@resource-id='com.koo.app:id/follow_contact_tv']");
+		String findYourFriendsOnKooVal = this.mobileActions.getText(findYourFriendsOnKoo, "Find Your Friends On Koo", true);
+		BaseTest.utilObj.get().getAssertManager().sAssertEquals(findYourFriendsOnKooVal, "Find your Friends on Koo", "Validation of Find Your Friends On Koo button in Friends screen", true, BaseTest.mobileDriver.get(), false);		
+	}
+	
+	public void validate_NewPage() {
+		By whatsOnYourMind = By.xpath("//android.widget.TextView[text()='What's on your mind...']");
+		String whatsOnYourMindDisplayed = this.mobileActions.getAttribute(whatsOnYourMind, "displayed", "Whats On Your Mind");
+		BaseTest.utilObj.get().getAssertManager().sAssertEquals(whatsOnYourMindDisplayed, "true", "Validation of Whats On Your Mind placeholder text in New screen", true, BaseTest.mobileDriver.get(), false);		
+	}
+	
+	public void validate_InterestSelection_FollowingPage(String interestSelected) {
+		By firstTopicAndViewMore = By.xpath("//android.view.ViewGroup[@resource-id='com.koo.app:id/justification_container']/android.widget.TextView[@resource-id='com.koo.app:id/tv_koo_header']");
+		String firstTopicAndViewMoreVal = this.mobileActions.getText(firstTopicAndViewMore, "Topic selected and view more in Following page", true);
+		BaseTest.utilObj.get().getAssertManager().sAssertEquals(firstTopicAndViewMoreVal, interestSelected + "  • View more", "Validation of interest selected as :"+interestSelected+" in Following page", true, BaseTest.mobileDriver.get(), false);		
+	}
+	
+	public void validate_PopularPage() {
+		By yellowImageBadge = By.xpath("//android.widget.ImageView[@resource-id='com.koo.app:id/imgBadge']");
+		String yellowImageBadgeDisplayed = this.mobileActions.getAttribute(yellowImageBadge, "displayed", "Yellow Image Badge");
+		BaseTest.utilObj.get().getAssertManager().sAssertEquals(yellowImageBadgeDisplayed, "true", "Validation of Yellow Image Badge in Popular screen", true, BaseTest.mobileDriver.get(), false);		
+	}
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang3.RandomStringUtils;
+import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 import com.koo.android.utils.CommonHelper;
@@ -43,10 +44,34 @@ public class OnBoardingFlowTest extends BaseTest {
 			BaseTest.utilObj.get().getMobileActions().click(onBoardingFlowPage.continueButton, onBoardingFlowPage.continueButton_Name);
 			BaseTest.utilObj.get().getUIUtils().waitForSec(4);
 			
+			boolean isDisplayed = false;
+			for(int i=2; i<=4; i++) {
+				isDisplayed = BaseTest.utilObj.get().getMobileActions().isElementDisplayed(onBoardingFlowPage.skipButton);
+					if(isDisplayed == true) {
+						if(i==2) {
+							String yourPreferencesHeaderText = BaseTest.utilObj.get().getMobileActions().getText(onBoardingFlowPage.yourPreferencesPageHeaderText, onBoardingFlowPage.yourPreferencesPageHeaderText_Name, true);
+							BaseTest.utilObj.get().getAssertManager().sAssertEquals(yourPreferencesHeaderText.trim(), "Your Preferences", "Validation of header text and expected is Your Preferences", true, BaseTest.mobileDriver.get(), false);
+						}
+						if(i==3) {
+							String peopleYouCanFollowHeaderText = BaseTest.utilObj.get().getMobileActions().getText(onBoardingFlowPage.peopleYouCanFollowHeaderText, onBoardingFlowPage.peopleYouCanFollowHeaderText_Name, true);
+							BaseTest.utilObj.get().getAssertManager().sAssertEquals(peopleYouCanFollowHeaderText.trim(), "People you can follow", "Validation of header text and expected is People you can follow", true, BaseTest.mobileDriver.get(), false);
+						}
+						if(i==4) {
+							String followTopicsHeaderText = BaseTest.utilObj.get().getMobileActions().getText(onBoardingFlowPage.followTopicsHeaderText, onBoardingFlowPage.followTopicsHeaderText_Name, true);
+							BaseTest.utilObj.get().getAssertManager().sAssertEquals(followTopicsHeaderText.trim(), "Follow Topics", "Validation of header text and expected is Follow Topics", true, BaseTest.mobileDriver.get(), false);
+						}
+						BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO", "Screenshot for reference", true, BaseTest.mobileDriver.get());
+						BaseTest.utilObj.get().getMobileActions().click(onBoardingFlowPage.skipButton, onBoardingFlowPage.skipButton_Name);
+						BaseTest.utilObj.get().getUIUtils().waitForSec(4);	
+						
+				}
+				
+			}
+			
 			
 			BaseTest.utilObj.get().getMobileActions().dismissUpdateWindow();
 			
-			boolean isDisplayed =  BaseTest.utilObj.get().getMobileActions().isDisplayed(homePage.profile_lnk, homePage.profile_lnk_Name);
+			isDisplayed =  BaseTest.utilObj.get().getMobileActions().isDisplayed(homePage.profile_lnk, homePage.profile_lnk_Name);
 			if(! isDisplayed) {
 				BaseTest.utilObj.get().getAssertManager().sAssertEquals(isDisplayed,true, "Please investigate as not able to reach Koo home page for further validation", true, BaseTest.mobileDriver.get(), true);
 			}
@@ -209,7 +234,7 @@ public class OnBoardingFlowTest extends BaseTest {
 			HomePage homePage = new HomePage();
 			loginKooPage.EnterLoginDetails_NewUser("English",TestConfig.getInstance().getNewUserOnBoarding_TC014());
 			
-			BaseTest.utilObj.get().getMobileActions().sendKeys(onBoardingFlowPage.userName_Field, onBoardingFlowPage.userName_Field_Name, profileName);
+			//BaseTest.utilObj.get().getMobileActions().sendKeys(onBoardingFlowPage.userName_Field, onBoardingFlowPage.userName_Field_Name, profileName);
 			String addYourNameHeaderText = BaseTest.utilObj.get().getMobileActions().getText(onBoardingFlowPage.headerText, onBoardingFlowPage.headerText_Name, true);
 			BaseTest.utilObj.get().getAssertManager().sAssertEquals(addYourNameHeaderText.trim(), "Add your name", "Validation of header text and  expected is Add your name", true, BaseTest.mobileDriver.get(), false);
 			
@@ -221,10 +246,33 @@ public class OnBoardingFlowTest extends BaseTest {
 			BaseTest.utilObj.get().getMobileActions().click(onBoardingFlowPage.continueButton, onBoardingFlowPage.continueButton_Name);
 			BaseTest.utilObj.get().getUIUtils().waitForSec(4);
 			
+			boolean isDisplayed = false;
+			for(int i=2; i<=4; i++) {
+				isDisplayed = BaseTest.utilObj.get().getMobileActions().isElementDisplayed(onBoardingFlowPage.skipButton);
+					if(isDisplayed == true) {
+						if(i==2) {
+							String yourPreferencesHeaderText = BaseTest.utilObj.get().getMobileActions().getText(onBoardingFlowPage.yourPreferencesPageHeaderText, onBoardingFlowPage.yourPreferencesPageHeaderText_Name, true);
+							BaseTest.utilObj.get().getAssertManager().sAssertEquals(yourPreferencesHeaderText.trim(), "Your Preferences", "Validation of header text and expected is Your Preferences", true, BaseTest.mobileDriver.get(), false);
+						}
+						if(i==3) {
+							String peopleYouCanFollowHeaderText = BaseTest.utilObj.get().getMobileActions().getText(onBoardingFlowPage.peopleYouCanFollowHeaderText, onBoardingFlowPage.peopleYouCanFollowHeaderText_Name, true);
+							BaseTest.utilObj.get().getAssertManager().sAssertEquals(peopleYouCanFollowHeaderText.trim(), "People you can follow", "Validation of header text and expected is People you can follow", true, BaseTest.mobileDriver.get(), false);
+						}
+						if(i==4) {
+							String followTopicsHeaderText = BaseTest.utilObj.get().getMobileActions().getText(onBoardingFlowPage.followTopicsHeaderText, onBoardingFlowPage.followTopicsHeaderText_Name, true);
+							BaseTest.utilObj.get().getAssertManager().sAssertEquals(followTopicsHeaderText.trim(), "Follow Topics", "Validation of header text and expected is Follow Topics", true, BaseTest.mobileDriver.get(), false);
+						}
+						BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO", "Screenshot for reference", true, BaseTest.mobileDriver.get());
+						BaseTest.utilObj.get().getMobileActions().click(onBoardingFlowPage.skipButton, onBoardingFlowPage.skipButton_Name);
+						BaseTest.utilObj.get().getUIUtils().waitForSec(4);	
+						
+				}
+				
+			}
 			
 			BaseTest.utilObj.get().getMobileActions().dismissUpdateWindow();
 			
-			boolean isDisplayed =  BaseTest.utilObj.get().getMobileActions().isDisplayed(homePage.profile_lnk, homePage.profile_lnk_Name);
+			isDisplayed =  BaseTest.utilObj.get().getMobileActions().isDisplayed(homePage.profile_lnk, homePage.profile_lnk_Name);
 			if(! isDisplayed) {
 				BaseTest.utilObj.get().getAssertManager().sAssertEquals(isDisplayed,true, "Please investigate as not able to reach Koo home page for further validation", true, BaseTest.mobileDriver.get(), true);
 			}
@@ -247,6 +295,12 @@ public class OnBoardingFlowTest extends BaseTest {
             loginKooPage.logout("English");
             loginKooPage.EnterLoginDetails_NewUser("English",TestConfig.getInstance().getNewUserOnBoarding_TC014());
             
+            addYourNameHeaderText = BaseTest.utilObj.get().getMobileActions().getText(onBoardingFlowPage.headerText, onBoardingFlowPage.headerText_Name, true);
+			BaseTest.utilObj.get().getAssertManager().sAssertEquals(addYourNameHeaderText.trim(), "Add your name", "Validation of header text and  expected is Add your name", true, BaseTest.mobileDriver.get(), false);
+			
+			BaseTest.utilObj.get().getMobileActions().click(onBoardingFlowPage.continueButton, onBoardingFlowPage.continueButton_Name);
+			BaseTest.utilObj.get().getUIUtils().waitForSec(4);
+			
             addProfilePictureHeaderText = BaseTest.utilObj.get().getMobileActions().getText(onBoardingFlowPage.addProfilePictureHeaderText, onBoardingFlowPage.addProfilePictureHeaderText_Name, true);
 			BaseTest.utilObj.get().getAssertManager().sAssertEquals(addProfilePictureHeaderText.trim(), "Add Profile Picture", "Validation of header text and  expected is Add Profile Picture", true, BaseTest.mobileDriver.get(), false);
 			BaseTest.utilObj.get().getMobileActions().click(onBoardingFlowPage.continueButton, onBoardingFlowPage.continueButton_Name);
@@ -273,14 +327,14 @@ public class OnBoardingFlowTest extends BaseTest {
 		}
     }
 	
-	@Test(description = "[TC_015] - Verify interest (preference) selection screen & user is able to select/deselect options.",
+	@Test(description = "[TC_015,TC_019,TC_020] - Verify interest (preference) selection screen & user is able to select/deselect options.",
             groups = {"regression", "HomeScreen"})
-    public void TC_015_verifyNewUser_Interest_SelectDeselect_DuringOnBoarding() {
+    public void TC_015_019_020_verifyNewUser_Interest_SelectDeselect_DuringOnBoarding() {
 		LanguageDataProvider.setCurrentLanguage("English");
     	try{
     		//Test Data setup
     		
-    		String profileName = "autonewuser"+RandomStringUtils.randomAlphabetic(10);
+    		String firstTopicInterest = null;
     		
     		BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO", "<b><----Test case execution started for Test: TC_015 - Verify interest (preference) selection screen & user is able to select/deselect options. ------><b>", false, BaseTest.mobileDriver.get());
 			LoginKooPage loginKooPage = new LoginKooPage();
@@ -288,7 +342,7 @@ public class OnBoardingFlowTest extends BaseTest {
 			HomeScreenTabPage homeScreenTabPage = new HomeScreenTabPage();
 			HomePage homePage = new HomePage();
 			loginKooPage.EnterLoginDetails_NewUser("English",TestConfig.getInstance().getNewUserOnBoarding_TC015());
-    	    			
+    	    
 			//loginKooPage.loginEmailTillClickingVerifyButton("English", "sunil.bgp+69@gmail.com");
 			
 			boolean isDisplayed = false;
@@ -309,7 +363,7 @@ public class OnBoardingFlowTest extends BaseTest {
 						if(i==2) {
 							String yourPreferencesHeaderText = BaseTest.utilObj.get().getMobileActions().getText(onBoardingFlowPage.yourPreferencesPageHeaderText, onBoardingFlowPage.yourPreferencesPageHeaderText_Name, true);
 							BaseTest.utilObj.get().getAssertManager().sAssertEquals(yourPreferencesHeaderText.trim(), "Your Preferences", "Validation of header text and expected is Your Preferences", true, BaseTest.mobileDriver.get(), false);
-							onBoardingFlowPage.ValidateSelectFirstInterestTopicName();
+							firstTopicInterest = onBoardingFlowPage.ValidateSelectFirstInterestTopicName();
 						}
 						if(i==3) {
 							String peopleYouCanFollowHeaderText = BaseTest.utilObj.get().getMobileActions().getText(onBoardingFlowPage.peopleYouCanFollowHeaderText, onBoardingFlowPage.peopleYouCanFollowHeaderText_Name, true);
@@ -339,13 +393,219 @@ public class OnBoardingFlowTest extends BaseTest {
 				BaseTest.utilObj.get().getAssertManager().sAssertEquals(isDisplayed,true, "Please investigate as not able to reach Koo home page for further validation", true, BaseTest.mobileDriver.get(), true);
 			}
 			
+			homeScreenTabPage.clickOnAnyTabFromHomePage(LanguageDataProvider.getLanguageDataValue("TopicsTabTextOnHomePage"));
+						
+			onBoardingFlowPage.selectedFirstTopicYouFollowValidationNewUser_InterestSelection(firstTopicInterest);
 			
-           	
-    	    BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO", "<b><----Test case execution completed for Test:Successfully executed - TC_014 - Verify interest (preference) selection screen & user is able to select/deselect options. ------><b>", true, BaseTest.mobileDriver.get());
+			homeScreenTabPage.clickOnAnyTabFromHomePage(LanguageDataProvider.getLanguageDataValue("FeedTabText"));
+			BaseTest.utilObj.get().getUIUtils().waitForSec(6);
+			BaseTest.utilObj.get().getMobileActions().swipeToBotton();
+			onBoardingFlowPage.selectedFirstTopicYouFollowValidationNewUser_InterestSelection_FeedPage(firstTopicInterest);
+			//onBoardingFlowPage.selectedFirstTopic_InterestSelection_FeedPage_KooValidation_OnBoarding(firstTopicInterest);
+    	    BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO", "<b><----Test case execution completed for Test:Successfully executed - TC_015_019_020 - Verify interest (preference) selection screen & user is able to select/deselect options. ------><b>", true, BaseTest.mobileDriver.get());
     	    BaseTest.afterMethodDriver.set(BaseTest.mobileDriver.get());
     	    BaseTest.sAssert.get().assertAll();
     	}catch(Exception e) {
-			BaseTest.utilObj.get().getAssertManager().sAssertException("Something went wrong in TC_014_verifyNewUser_Interest_SelectDeselect_DuringOnBoarding. Exception:"+e.getMessage(), true, BaseTest.mobileDriver.get());
+			BaseTest.utilObj.get().getAssertManager().sAssertException("Something went wrong in TC_015_019_020_verifyNewUser_Interest_SelectDeselect_DuringOnBoarding. Exception:"+e.getMessage(), true, BaseTest.mobileDriver.get());
+			BaseTest.afterMethodDriver.set(BaseTest.mobileDriver.get());
+			BaseTest.sAssert.get().assertAll();
+		}
+    }
+	
+	@Test(description = "[TC_016,TC_020] - Verify follow people screen & user is able to follow / unfollow users.",
+            groups = {"regression", "HomeScreen"})
+    public void TC_016_020_verifyNewUser_FollowUnfollowUser_DuringOnBoarding() {
+		LanguageDataProvider.setCurrentLanguage("English");
+    	try{
+    		//Test Data setup
+    		
+    		String firstPeopleFollowedName = null;
+    		
+    		BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO", "<b><----Test case execution started for Test: TC_016 - Verify follow people screen & user is able to follow / unfollow users. ------><b>", false, BaseTest.mobileDriver.get());
+			LoginKooPage loginKooPage = new LoginKooPage();
+			OnBoardingFlowPage onBoardingFlowPage = new OnBoardingFlowPage();
+			HomeScreenTabPage homeScreenTabPage = new HomeScreenTabPage();
+			HomePage homePage = new HomePage();
+			loginKooPage.EnterLoginDetails_NewUser("English",TestConfig.getInstance().getNewUserOnBoarding_TC016());
+    	   
+			boolean isDisplayed = false;
+			for(int i=1; i<=4; i++) {
+				if(i==1) {
+					isDisplayed = BaseTest.utilObj.get().getMobileActions().isElementDisplayed(onBoardingFlowPage.continueButton);
+					if(isDisplayed == true) {
+						BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO", "Screenshot for reference", true, BaseTest.mobileDriver.get());
+						String addYourNameHeaderText = BaseTest.utilObj.get().getMobileActions().getText(onBoardingFlowPage.headerText, onBoardingFlowPage.headerText_Name, true);
+						BaseTest.utilObj.get().getAssertManager().sAssertEquals(addYourNameHeaderText.trim(), "Add your name", "Validation of header text and  expected is Add your name", true, BaseTest.mobileDriver.get(), false);
+						
+						BaseTest.utilObj.get().getMobileActions().click(onBoardingFlowPage.continueButton, onBoardingFlowPage.continueButton_Name);
+						BaseTest.utilObj.get().getUIUtils().waitForSec(4);	
+					}
+				}else {
+					isDisplayed = BaseTest.utilObj.get().getMobileActions().isElementDisplayed(onBoardingFlowPage.skipButton);
+					if(isDisplayed == true) {
+						if(i==2) {
+							String yourPreferencesHeaderText = BaseTest.utilObj.get().getMobileActions().getText(onBoardingFlowPage.yourPreferencesPageHeaderText, onBoardingFlowPage.yourPreferencesPageHeaderText_Name, true);
+							BaseTest.utilObj.get().getAssertManager().sAssertEquals(yourPreferencesHeaderText.trim(), "Your Preferences", "Validation of header text and expected is Your Preferences", true, BaseTest.mobileDriver.get(), false);
+							
+						}
+						if(i==3) {
+							String peopleYouCanFollowHeaderText = BaseTest.utilObj.get().getMobileActions().getText(onBoardingFlowPage.peopleYouCanFollowHeaderText, onBoardingFlowPage.peopleYouCanFollowHeaderText_Name, true);
+							BaseTest.utilObj.get().getAssertManager().sAssertEquals(peopleYouCanFollowHeaderText.trim(), "People you can follow", "Validation of header text and expected is People you can follow", true, BaseTest.mobileDriver.get(), false);
+							firstPeopleFollowedName = onBoardingFlowPage.ValidatePeopleFollow();
+						}
+						if(i==4) {
+							String followTopicsHeaderText = BaseTest.utilObj.get().getMobileActions().getText(onBoardingFlowPage.followTopicsHeaderText, onBoardingFlowPage.followTopicsHeaderText_Name, true);
+							BaseTest.utilObj.get().getAssertManager().sAssertEquals(followTopicsHeaderText.trim(), "Follow Topics", "Validation of header text and expected is Follow Topics", true, BaseTest.mobileDriver.get(), false);
+						}
+						BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO", "Screenshot for reference", true, BaseTest.mobileDriver.get());
+						BaseTest.utilObj.get().getMobileActions().click(onBoardingFlowPage.skipButton, onBoardingFlowPage.skipButton_Name);
+						BaseTest.utilObj.get().getUIUtils().waitForSec(4);	
+											
+						continue;
+					}else {
+						BaseTest.utilObj.get().getAssertManager().sAssertEquals(isDisplayed, true, "Skip/Continue button not present. Please investigate for new user", true, BaseTest.mobileDriver.get(), true);
+					}
+				}
+				
+			}
+			
+			
+			BaseTest.utilObj.get().getMobileActions().dismissUpdateWindow();
+			
+			isDisplayed =  BaseTest.utilObj.get().getMobileActions().isDisplayed(homePage.profile_lnk, homePage.profile_lnk_Name);
+			if(! isDisplayed) {
+				BaseTest.utilObj.get().getAssertManager().sAssertEquals(isDisplayed,true, "Please investigate as not able to reach Koo home page for further validation", true, BaseTest.mobileDriver.get(), true);
+			}
+			
+			//onBoardingFlowPage.dismissJackportDisplay();
+			BaseTest.utilObj.get().getMobileActions().swipeToBotton();
+			onBoardingFlowPage.ValidatePeopleFollowInFeedTab(firstPeopleFollowedName);			
+           	
+    	    BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO", "<b><----Test case execution completed for Test:Successfully executed - TC_016 - Verify follow people screen & user is able to follow / unfollow users. ------><b>", true, BaseTest.mobileDriver.get());
+    	    BaseTest.afterMethodDriver.set(BaseTest.mobileDriver.get());
+    	    BaseTest.sAssert.get().assertAll();
+    	}catch(Exception e) {
+			BaseTest.utilObj.get().getAssertManager().sAssertException("Something went wrong in TC_016_verifyNewUser_FollowUnfollowUser_DuringOnBoarding. Exception:"+e.getMessage(), true, BaseTest.mobileDriver.get());
+			BaseTest.afterMethodDriver.set(BaseTest.mobileDriver.get());
+			BaseTest.sAssert.get().assertAll();
+		}
+    }
+	
+	@Test(description = "[TC_017] - Verify follow topics screen & user is able to follow / unfollow topics.",
+            groups = {"regression", "HomeScreen"})
+    public void TC_017_verifyNewUser_FollowUnfollowTopics_DuringOnBoarding() {
+		LanguageDataProvider.setCurrentLanguage("English");
+    	try{
+    		//Test Data setup
+    		
+    		String firstTopicFollowedName = null;
+    		
+    		BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO", "<b><----Test case execution started for Test: TC_017 - Verify follow topics screen & user is able to follow / unfollow topics. ------><b>", false, BaseTest.mobileDriver.get());
+			LoginKooPage loginKooPage = new LoginKooPage();
+			OnBoardingFlowPage onBoardingFlowPage = new OnBoardingFlowPage();
+			HomeScreenTabPage homeScreenTabPage = new HomeScreenTabPage();
+			HomePage homePage = new HomePage();
+			loginKooPage.EnterLoginDetails_NewUser("English",TestConfig.getInstance().getNewUserOnBoarding_TC017());
+    	   
+			boolean isDisplayed = false;
+			for(int i=1; i<=4; i++) {
+				if(i==1) {
+					isDisplayed = BaseTest.utilObj.get().getMobileActions().isElementDisplayed(onBoardingFlowPage.continueButton);
+					if(isDisplayed == true) {
+						BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO", "Screenshot for reference", true, BaseTest.mobileDriver.get());
+						String addYourNameHeaderText = BaseTest.utilObj.get().getMobileActions().getText(onBoardingFlowPage.headerText, onBoardingFlowPage.headerText_Name, true);
+						BaseTest.utilObj.get().getAssertManager().sAssertEquals(addYourNameHeaderText.trim(), "Add your name", "Validation of header text and  expected is Add your name", true, BaseTest.mobileDriver.get(), false);
+						
+						BaseTest.utilObj.get().getMobileActions().click(onBoardingFlowPage.continueButton, onBoardingFlowPage.continueButton_Name);
+						BaseTest.utilObj.get().getUIUtils().waitForSec(4);	
+					}
+				}else {
+					isDisplayed = BaseTest.utilObj.get().getMobileActions().isElementDisplayed(onBoardingFlowPage.skipButton);
+					if(isDisplayed == true) {
+						if(i==2) {
+							String yourPreferencesHeaderText = BaseTest.utilObj.get().getMobileActions().getText(onBoardingFlowPage.yourPreferencesPageHeaderText, onBoardingFlowPage.yourPreferencesPageHeaderText_Name, true);
+							BaseTest.utilObj.get().getAssertManager().sAssertEquals(yourPreferencesHeaderText.trim(), "Your Preferences", "Validation of header text and expected is Your Preferences", true, BaseTest.mobileDriver.get(), false);
+							
+						}
+						if(i==3) {
+							String peopleYouCanFollowHeaderText = BaseTest.utilObj.get().getMobileActions().getText(onBoardingFlowPage.peopleYouCanFollowHeaderText, onBoardingFlowPage.peopleYouCanFollowHeaderText_Name, true);
+							BaseTest.utilObj.get().getAssertManager().sAssertEquals(peopleYouCanFollowHeaderText.trim(), "People you can follow", "Validation of header text and expected is People you can follow", true, BaseTest.mobileDriver.get(), false);
+							
+						}
+						if(i==4) {
+							String followTopicsHeaderText = BaseTest.utilObj.get().getMobileActions().getText(onBoardingFlowPage.followTopicsHeaderText, onBoardingFlowPage.followTopicsHeaderText_Name, true);
+							BaseTest.utilObj.get().getAssertManager().sAssertEquals(followTopicsHeaderText.trim(), "Follow Topics", "Validation of header text and expected is Follow Topics", true, BaseTest.mobileDriver.get(), false);
+							firstTopicFollowedName = onBoardingFlowPage.ClickTopicFollow();
+						}
+						BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO", "Screenshot for reference", true, BaseTest.mobileDriver.get());
+						BaseTest.utilObj.get().getMobileActions().click(onBoardingFlowPage.skipButton, onBoardingFlowPage.skipButton_Name);
+						BaseTest.utilObj.get().getUIUtils().waitForSec(4);	
+											
+						continue;
+					}else {
+						BaseTest.utilObj.get().getAssertManager().sAssertEquals(isDisplayed, true, "Skip/Continue button not present. Please investigate for new user", true, BaseTest.mobileDriver.get(), true);
+					}
+				}
+				
+			}
+			
+			
+			BaseTest.utilObj.get().getMobileActions().dismissUpdateWindow();
+			
+			isDisplayed =  BaseTest.utilObj.get().getMobileActions().isDisplayed(homePage.profile_lnk, homePage.profile_lnk_Name);
+			if(! isDisplayed) {
+				BaseTest.utilObj.get().getAssertManager().sAssertEquals(isDisplayed,true, "Please investigate as not able to reach Koo home page for further validation", true, BaseTest.mobileDriver.get(), true);
+			}
+			
+			//onBoardingFlowPage.dismissJackportDisplay();
+			//BaseTest.utilObj.get().getMobileActions().swiptToBottom();
+			homeScreenTabPage.clickOnAnyTabFromHomePage(LanguageDataProvider.getLanguageDataValue("TopicsTabTextOnHomePage"));
+			onBoardingFlowPage.ValidateTopicFollowInTopicTab(firstTopicFollowedName);
+			
+           	
+    	    BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO", "<b><----Test case execution completed for Test:Successfully executed - TC_017 - Verify follow topics screen & user is able to follow / unfollow topics. ------><b>", true, BaseTest.mobileDriver.get());
+    	    BaseTest.afterMethodDriver.set(BaseTest.mobileDriver.get());
+    	    BaseTest.sAssert.get().assertAll();
+    	}catch(Exception e) {
+			BaseTest.utilObj.get().getAssertManager().sAssertException("Something went wrong in TC_017_verifyNewUser_FollowUnfollowTopics_DuringOnBoarding. Exception:"+e.getMessage(), true, BaseTest.mobileDriver.get());
+			BaseTest.afterMethodDriver.set(BaseTest.mobileDriver.get());
+			BaseTest.sAssert.get().assertAll();
+		}
+    }
+	
+	
+	@Test(description = "Test Debug",
+            groups = {"regression", "HomeScreen"})
+    public void TC_debug() {
+		LanguageDataProvider.setCurrentLanguage("English");
+    	try{
+    		//Test Data setup
+    		
+    		String firstPeopleFollowedName = null;
+    		
+    		BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO", "<b><----Test case execution started for Test: TC_016 - Verify follow people screen & user is able to follow / unfollow users. ------><b>", false, BaseTest.mobileDriver.get());
+			LoginKooPage loginKooPage = new LoginKooPage();
+			OnBoardingFlowPage onBoardingFlowPage = new OnBoardingFlowPage();
+			HomeScreenTabPage homeScreenTabPage = new HomeScreenTabPage();
+			HomePage homePage = new HomePage();
+			loginKooPage.EnterLoginDetails_NewUser("English","1119100132");
+			//By firstPeopleFollowNameObj = By.xpath("//*[@id='com.koo.app:id/channel_name_textview' and text()='Piramal Capital & Housing Finance Limited']");
+			
+			onBoardingFlowPage.dismissJackportDisplay();
+			
+			//By firstPeopleFollowNameObj = By.xpath("//channel_name_textview[text()='Piramal Capital & Housing Finance Limited']");
+			
+			By firstPeopleFollowNameObj = By.xpath("//android.view.ViewGroup[@resource-id='com.koo.app:id/koo_feed_item_container']/android.view.ViewGroup[@resource-id='com.koo.app:id/layout_profile']/android.widget.TextView");
+			By firstObj=By.xpath("//android.widget.TextView[@resource-id='com.koo.app:id/creation_view']");
+			//BaseTest.utilObj.get().getMobileActions().swipeElementAndroid(firstObj,"DOWN",firstPeopleFollowNameObj,5);
+			BaseTest.utilObj.get().getMobileActions().swipeToBotton();
+			BaseTest.utilObj.get().getMobileActions().getText(firstPeopleFollowNameObj,"first People Followed Name in Feed page", true);
+           	
+    	    BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO", "<b><----Test case execution completed for Test:Successfully executed - TC_016 - Verify follow people screen & user is able to follow / unfollow users. ------><b>", true, BaseTest.mobileDriver.get());
+    	    BaseTest.afterMethodDriver.set(BaseTest.mobileDriver.get());
+    	    BaseTest.sAssert.get().assertAll();
+    	}catch(Exception e) {
+			BaseTest.utilObj.get().getAssertManager().sAssertException("Something went wrong in TC_016_verifyNewUser_FollowUnfollowUser_DuringOnBoarding. Exception:"+e.getMessage(), true, BaseTest.mobileDriver.get());
 			BaseTest.afterMethodDriver.set(BaseTest.mobileDriver.get());
 			BaseTest.sAssert.get().assertAll();
 		}

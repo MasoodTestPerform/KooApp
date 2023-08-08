@@ -21,7 +21,7 @@ public class SettingsPage {
 	public String privacyPolicyAndAboutUsPage = "//android.view.View[@text='###']";
 	public String changeInEnglishText = "//android.widget.TextView[@text='###']";
 	public String switchButton = "//android.widget.TextView[@text='###']/../..//android.widget.Switch";
-	public By logoutBtn = By.id("com.koo.app:id/tvFollow");
+	public By logoutBtn = By.id("com.koo.app:id/submit_view");
 	public String settingsSectionHeading_Name = "";
 	public String continueBtnForBrowserPermission_Name = "";
 	public String editProfileHeading_Name = "";

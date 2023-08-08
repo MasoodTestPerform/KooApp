@@ -45,6 +45,7 @@ public class TestConfig {
 	private static String webmobileFlag;
 	
 	//
+	private static String apkfilename;
 	private static String platform;
 	private static String udid;
 	private static String port;
@@ -87,8 +88,11 @@ public class TestConfig {
 	private static String NewUserOnBoarding_TC012;
 	private static String NewUserOnBoarding_TC014;
 	private static String NewUserOnBoarding_TC015;
+	private static String NewUserOnBoarding_TC016;
+	private static String NewUserOnBoarding_TC017;
 	private static String NewUserOnBoarding_TC026;
 	private static String NewUserOnBoarding_TC027;
+	private static String NewUser_HomePage_TC_028;
 	
 
 	private TestConfig() {
@@ -199,6 +203,7 @@ public class TestConfig {
 	}
 		
 	//Android properties
+	public String getAPKFileName() {return apkfilename;};
 	public String getPlatform(){return platform;}
 	public String getUdid(){return udid;}
 	public String getPort(){return port;}
@@ -248,13 +253,23 @@ public class TestConfig {
 		return NewUserOnBoarding_TC014;
 	}
 	public String getNewUserOnBoarding_TC015() {
-		return NewUserOnBoarding_TC014;
+		return NewUserOnBoarding_TC015;
+	}
+	public String getNewUserOnBoarding_TC016() {
+		return NewUserOnBoarding_TC016;
+	}
+	public String getNewUserOnBoarding_TC017() {
+		return NewUserOnBoarding_TC017;
 	}
 	public String getNewUserOnBoarding_TC026() {
 		return NewUserOnBoarding_TC026;
 	}
 	public String getNewUserOnBoarding_TC027() {
 		return NewUserOnBoarding_TC027;
+	}
+	
+	public String getNewUser_HomePage_TC_028() {
+		return NewUser_HomePage_TC_028;
 	}
 
 	// Framework Initialization
@@ -312,7 +327,7 @@ public class TestConfig {
 
 
 		capabilities.setCapability("app",
-				System.getProperty("user.dir") + "/src/main/resources/MobileApps/v0.99.999905.apk");
+				System.getProperty("user.dir") + "/src/main/resources/MobileApps/"+apkfilename);
 		capabilities.setCapability("appPackage", "com.koo.app");
 		capabilities.setCapability("appActivity", "com.koo.onboarding.OnBoardingActivity");
 
@@ -326,7 +341,7 @@ public class TestConfig {
 			mobileDriver = new AndroidDriver<WebElement>(new URL("http://0.0.0.0:4723/wd/hub"), capabilities);
 		}
 
-		mobileDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		mobileDriver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		
 		return mobileDriver;		
 	}
@@ -349,6 +364,7 @@ public class TestConfig {
 		webmobileFlag = config.getPropertyValue("webmobileFlag");
 		
 		//Android properties
+		apkfilename = config.getPropertyValue("apkfilename");
 		platform = config.getPropertyValue("platform");
 		udid = config.getPropertyValue("udid");
 		port = config.getPropertyValue("port");
@@ -390,8 +406,11 @@ public class TestConfig {
 		NewUserOnBoarding_TC012 = config.getPropertyValue("NewUserOnBoarding_TC012");
 		NewUserOnBoarding_TC014 = config.getPropertyValue("NewUserOnBoarding_TC014");
 		NewUserOnBoarding_TC015 = config.getPropertyValue("NewUserOnBoarding_TC015");
+		NewUserOnBoarding_TC016 = config.getPropertyValue("NewUserOnBoarding_TC016");
+		NewUserOnBoarding_TC017 = config.getPropertyValue("NewUserOnBoarding_TC017");
 		NewUserOnBoarding_TC026 = config.getPropertyValue("NewUserOnBoarding_TC026");
 		NewUserOnBoarding_TC027 = config.getPropertyValue("NewUserOnBoarding_TC027");
+		NewUser_HomePage_TC_028 = config.getPropertyValue("NewUser_HomePage_TC_028");
 	}
 
 }
