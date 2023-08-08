@@ -57,6 +57,7 @@ public class HomeScreenTabPage {
 	public By shareIconOnReactionBar = By.id("com.koo.app:id/share_holder_constraint");
 	public By kooText = By.id("com.koo.app:id/topic_title_textview");
 	public By kooImage = By.id("com.koo.app:id/single_image");
+	public By newKooBtn = By.xpath("//android.widget.LinearLayout[@resource-id='com.koo.app:id/circular_fab']");
 	
 	public String trendingTagsIcon_Name = "Trending Tag fire icon on main page";
 	public String timeElapsedForVideo_Name = "Time Elapsed For Video";
@@ -87,6 +88,7 @@ public class HomeScreenTabPage {
 	public String shareIconOnReactionBar_Name = "share Icon on reaction bar";
 	public String kooText_Name = "koo text";
 	public String kooImage_Name = "";
+	public String newKooBtn_Name = "new Koo button";
 	
 	
 	
@@ -203,6 +205,11 @@ public class HomeScreenTabPage {
 		}
 		
 		return this;
+	}
+	
+	public void verifyNewKooButton() {
+		String newKooDisplayed = this.mobileActions.getAttribute(newKooBtn, "displayed", newKooBtn_Name);
+		BaseTest.utilObj.get().getAssertManager().sAssertEquals(newKooDisplayed, "true", "Validation of new Koo button", true, BaseTest.mobileDriver.get(), true);		
 	}
 	
 	public HomeScreenTabPage verifyHeaderTabsNotPresent(List<String> expectedTabText) {

@@ -14,7 +14,7 @@ public class OnBoardingFlowPage {
 	MobileActions mobileActions = null;
 	PeopleTabPage peopleTabPage = null;
 		
-	public void PeopleTabPage() {
+	public OnBoardingFlowPage() {
 		this.mobileActions = BaseTest.utilObj.get().getMobileActions();
 		this.peopleTabPage = new PeopleTabPage();
 		
@@ -101,7 +101,7 @@ public class OnBoardingFlowPage {
 		By firstPrefrencesTopicCheckbox = By.xpath("(//android.widget.CheckBox[@resource-id='com.koo.app:id/checkbox'])[1]");
 		this.mobileActions.click(firstPrefrencesTopicCheckbox, firstPrefrencesTopicName + " Checkbox");
 		String checkedAttrbuteVal = this.mobileActions.getAttribute(firstPrefrencesTopicCheckbox, "checked", firstPrefrencesTopicName + " Checkbox", true);
-		BaseTest.utilObj.get().getAssertManager().sAssertEquals(checkedAttrbuteVal, "checked", "Validation of First Prefrences Topic:"+firstPrefrencesTopicName+" selection", true, BaseTest.mobileDriver.get(), false);
+		BaseTest.utilObj.get().getAssertManager().sAssertEquals(checkedAttrbuteVal, "true", "Validation of First Prefrences Topic:"+firstPrefrencesTopicName+" selection", true, BaseTest.mobileDriver.get(), true);
 		return firstPrefrencesTopicName;
 	}
 	
@@ -111,7 +111,83 @@ public class OnBoardingFlowPage {
 		By firstTopicYouFollowTickMark = By.xpath("(//android.widget.ImageView[@resource-id='com.koo.app:id/iv_follow_icon'])[1]");
 		By sureYouUnfollowYesBtn = By.xpath("(//android.widget.Button[@resource-id='android:id/button1'])[1]");
 		By firstTopicYouFollowPlusMark = By.xpath("(//android.widget.ImageView[@resource-id='com.koo.app:id/follow_blink'])[1]");
+		String firstTopicYouFollowVal = this.mobileActions.getText(firstTopicYouFollow, "first Topic You Follow", true);
+		BaseTest.utilObj.get().getAssertManager().sAssertEquals(firstTopicYouFollowVal, interestSelected, "Validation of interest selected as :"+interestSelected+" selection", true, BaseTest.mobileDriver.get(), true);
+		String displayedAttr = this.mobileActions.getAttribute(firstTopicYouFollowTickMark, "displayed", "first Topic You Follow tick icon");
+		BaseTest.utilObj.get().getAssertManager().sAssertEquals(displayedAttr, "true", "Validation of interest selected tick icon expected Checked as true", true, BaseTest.mobileDriver.get(), true);
 	}
+	
+	public void selectedFirstTopicYouFollowValidationNewUser_InterestSelection_FeedPage(String interestSelected) {
+		By firstTopicAndViewMore = By.xpath("//android.view.ViewGroup[@resource-id='com.koo.app:id/justification_container']/android.widget.TextView[@resource-id='com.koo.app:id/tv_koo_header']");
+		String firstTopicAndViewMoreVal = this.mobileActions.getText(firstTopicAndViewMore, "first Topic and view more Carousel header", true);
+		BaseTest.utilObj.get().getAssertManager().sAssertEquals(firstTopicAndViewMoreVal, interestSelected + "  • View more", "Validation of interest selected as :"+interestSelected+" selection", true, BaseTest.mobileDriver.get(), true);		
+	}
+	
+	public void selectedFirstTopic_InterestSelection_FeedPage_KooValidation_OnBoarding(String interestSelected) {
+		By firstKooOnTopicSelectedSubHeader = By.xpath("//android.view.ViewGroup[@resource-id='com.koo.app:id/koo_feed_item_container']/android.view.ViewGroup[@resource-id='com.koo.app:id/layout_profile']/android.widget.TextView[@resource-id='com.koo.app:id/subhead_textview']");
+		String firstKooOnTopicSelectedSubHeaderVal = this.mobileActions.getText(firstKooOnTopicSelectedSubHeader, "first Koo On Topic Selected SubHeader", true);
+		BaseTest.utilObj.get().getAssertManager().sAssertEquals(firstKooOnTopicSelectedSubHeaderVal.trim(), interestSelected, "Validation of Koo related to interest selected as :"+interestSelected+" selection", true, BaseTest.mobileDriver.get(), true);		
+	}
+	
+	//working latest
+		public String ValidatePeopleFollow() {
+			By firstPeopleNameObj = By.xpath("(//android.widget.TextView[@resource-id='com.koo.app:id/channel_name_textview'])[1]");
+			String firstPeopleName = this.mobileActions.getText(firstPeopleNameObj, "First People Name", true);
+			By firstPeopleFollowPlusIcon = By.xpath("(//android.widget.ImageView[@resource-id='com.koo.app:id/ivPlus'])[1]");
+			By firstPeopleFollowText = By.xpath("(//android.widget.TextView[@resource-id='com.koo.app:id/tvFollow'])[1]");
+			String followText = this.mobileActions.getText(firstPeopleFollowText, "First people Follow text", true);
+			BaseTest.utilObj.get().getAssertManager().sAssertEquals(followText, "Follow", "Validation of First first people Follow text:Follow", true, BaseTest.mobileDriver.get(), true);
+						
+			this.mobileActions.click(firstPeopleFollowPlusIcon, "First people follow Plus button");
+			By firstPeopleFollowTickObj = By.xpath("(//android.widget.LinearLayout[@resource-id='com.koo.app:id/btnFollowView'])[1]");
+			String isDisplayed = this.mobileActions.getAttribute(firstPeopleFollowTickObj, "displayed", "People followed tick", true);
+			BaseTest.utilObj.get().getAssertManager().sAssertEquals(isDisplayed, "true", "Validation of First People followed tick", true, BaseTest.mobileDriver.get(), true);
+			return firstPeopleName;
+		}
+		
+		public void ValidatePeopleFollowInFeedTab(String peopleFollowed) {
+			By firstPeopleFollowNameObj = By.xpath("//android.view.ViewGroup[@resource-id='com.koo.app:id/koo_feed_item_container']/android.view.ViewGroup[@resource-id='com.koo.app:id/layout_profile']/android.widget.TextView");
+			String peopleName = BaseTest.utilObj.get().getMobileActions().getText(firstPeopleFollowNameObj,"first People Followed Name in Feed page", true);
+           	BaseTest.utilObj.get().getAssertManager().sAssertEquals(peopleName, peopleFollowed, "Validation of First People followed appeared in Feed tab", true, BaseTest.mobileDriver.get(), true);
+			
+		}
+		
+		public String ClickTopicFollow() {
+			By firstTopicNameObj = By.xpath("//androidx.compose.ui.platform.ComposeView[@resource-id='com.koo.app:id/topicFollowUnfollow']/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.TextView");
+			String firstTopicName = this.mobileActions.getText(firstTopicNameObj, "First Topic Name", true);
+			By firstTopicFollowPlusIcon = By.xpath("//androidx.compose.ui.platform.ComposeView[@resource-id='com.koo.app:id/topicFollowUnfollow']/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View");
+			
+			this.mobileActions.click(firstTopicFollowPlusIcon, "First Topic follow Plus button");
+			
+			return firstTopicName;
+		}
+		
+		public void ValidateTopicFollowInTopicTab(String topicFollowed) {
+			By firstTopicFollowNameObj = By.xpath("//androidx.appcompat.widget.LinearLayoutCompat[@resource-id='com.koo.app:id/pill_child']//android.widget.TextView[@resource-id='com.koo.app:id/item_title']");
+			String topicName = BaseTest.utilObj.get().getMobileActions().getText(firstTopicFollowNameObj,"first Topic Followed Name in Topics page", true);
+           	BaseTest.utilObj.get().getAssertManager().sAssertEquals(topicName, topicFollowed, "Validation of First Topic followed appeared in Topics tab", true, BaseTest.mobileDriver.get(), true);
+			
+		}
+		
+		public void dismissJackportDisplay() {
+			
+			int objSize = BaseTest.mobileDriver.get().findElements(By.xpath("//android.widget.Switch[@resource-id='com.koo.app:id/rewardsSwitch']")).size();
+			if(objSize>0) {
+				this.mobileActions.tapElement(By.xpath("//android.widget.Switch[@resource-id='com.koo.app:id/rewardsSwitch']"), "Jackport toggle button");
+				this.mobileActions.click(By.xpath("//android.widget.Button[@resource-id='android:id/button1']"), "turn off button");
+			}
+		
+		}
+		
+		public void ValidatePeopleFollowInPeopleTab(String peopleFollowed) {
+			By firstPeopleNameObj = By.xpath("(//android.widget.TextView[@resource-id='com.koo.app:id/channel_name_textview'])[1]");
+			String firstPeopleName = this.mobileActions.getText(firstPeopleNameObj, "First People Name", true);
+			BaseTest.utilObj.get().getAssertManager().sAssertEquals(firstPeopleName, peopleFollowed, "Validation of First People followed expected in People tab as:"+peopleFollowed, true, BaseTest.mobileDriver.get(), true);
+			By firstPeopleFollowTickObj = By.xpath("(//android.widget.ImageView[@id='com.koo.app:id/ivFollow'])[1]");
+			String isDisplayed = this.mobileActions.getAttribute(firstPeopleFollowTickObj, "true", "People followed tick", true);
+			BaseTest.utilObj.get().getAssertManager().sAssertEquals(isDisplayed, "true", "Validation of First People followed tick", true, BaseTest.mobileDriver.get(), true);
+			
+		}
 	
 	
 	public OnBoardingFlowPage verifyNewUserAbleToViewUserNamePage() throws Exception {

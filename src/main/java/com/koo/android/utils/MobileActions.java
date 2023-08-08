@@ -16,6 +16,7 @@ import io.appium.java_client.android.AndroidDriver;
 
 
 import java.util.List;
+import java.util.HashMap;
 import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
@@ -28,11 +29,21 @@ import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import io.appium.java_client.TouchAction;
+import static io.appium.java_client.touch.TapOptions.tapOptions;
+import static io.appium.java_client.touch.WaitOptions.waitOptions;
+import static io.appium.java_client.touch.offset.ElementOption.element;
+import static io.appium.java_client.touch.offset.PointOption.point;
+import static java.time.Duration.ofMillis;
+import static java.time.Duration.ofSeconds;
+
+import java.time.Duration;
+
 import static io.appium.java_client.touch.TapOptions.tapOptions;
 import static io.appium.java_client.touch.offset.ElementOption.element;
 
@@ -292,7 +303,7 @@ public class MobileActions {
     	try {
 	    	Dimension size = driver.manage().window().getSize();
 	        // calculate coordinates for horizontal swipe
-	        int startY = (int) (size.height / 2);
+	        int startY = (int) (size.height / 4);
 	        int startX = (int) (size.width * 0.90);
 	        int endX = (int) (size.width * 0.10);
         
@@ -346,7 +357,7 @@ public class MobileActions {
             }
         } catch (Exception e) {
         	e.printStackTrace();
-			BaseTest.utilObj.get().getAssertManager().sAssertException("Unable to swipeUpFindElementClick.Exception"+e.getMessage(), true, this.driver, false);
+			BaseTest.utilObj.get().getAssertManager().sAssertException("Unable to swipeUpFindElementClick.Exception"+e.getMessage(), true, this.driver, true);
         }
     }
     
@@ -374,6 +385,7 @@ public class MobileActions {
 			BaseTest.utilObj.get().getAssertManager().sAssertException("Unable to swipeUpFindElementClick.Exception"+e.getMessage(), true, this.driver, false);
         }
     }
+    
     
     public boolean isElmPresent(By locator) {
         boolean isElmPresent = driver.findElements(locator).size() > 0;
@@ -494,13 +506,24 @@ public class MobileActions {
     	MobileElement element = null;
     	
     	try {   		
-    		((AndroidDriver<WebElement>)BaseTest.mobileDriver.get()).findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().text(\"" + text + "\"))");
+    		((AndroidDriver<WebElement>)BaseTest.mobileDriver.get()).findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().textContains(\"" + text + "\"))");
 	        LOGGER.logTestStep(extentTest, "INFO", "Swipe using text completed using Text:"+text, false, this.driver);
     	}catch(Exception e) {
     		e.printStackTrace();
 			BaseTest.utilObj.get().getAssertManager().sAssertException("Something went wrong in swipeUsingText. Text:"+text+". "+e.getMessage(), true, this.driver, true);
     	}
         return element;
+    }
+    
+       
+    public void swipeUsingElement(By by) {
+    	RemoteWebElement element = (RemoteWebElement)BaseTest.mobileDriver.get().findElement(by);
+    	String elementID = element.getId();
+    	HashMap<String, String> scrollObject = new HashMap<String, String>();
+    	scrollObject.put("element", elementID); // Only for ‘scroll in element’
+    	scrollObject.put("direction", "down");
+    	JavascriptExecutor js = (JavascriptExecutor)BaseTest.mobileDriver.get();
+    	js.executeScript("mobile:scroll", scrollObject);
     }
     
     public MobileElement swipeUsingID(String id) {
@@ -694,5 +717,31 @@ public class MobileActions {
 	    	setImplicitNormal();
     	}
     }
+    
+    public void verticalSwipeByPercentages(double startPercentage, double endPercentage, double anchorPercentage) {
+        Dimension size = driver.manage().window().getSize();
+        int anchor = (int) (size.width * anchorPercentage);
+        int startPoint = (int) (size.height * startPercentage);
+        int endPoint = (int) (size.height * endPercentage);
+        new TouchAction((PerformsTouchActions) BaseTest.mobileDriver.get())
+            .press(point(anchor, startPoint))
+            .waitAction(waitOptions(ofMillis(1000)))
+            .moveTo(point(anchor, endPoint))
+            .release().perform();
+    }
+    public void swipeToBotton()
+	{
+		Dimension dim = driver.manage().window().getSize();
+		int height = dim.getHeight();
+		int width = dim.getWidth();
+		int x = width/2;
+		int top_y = (int)(height*0.80);
+		int bottom_y = (int)(height*0.20);
+		System.out.println("coordinates :" + x + "  "+ top_y + " "+ bottom_y);
+		TouchAction ts = new TouchAction((PerformsTouchActions) driver);
+		ts.press(PointOption.point(x, top_y))
+		  .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
+		  .moveTo(PointOption.point(top_y, bottom_y)).release().perform();
+	}
 
 }
