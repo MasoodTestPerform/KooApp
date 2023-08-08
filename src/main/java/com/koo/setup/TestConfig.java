@@ -326,8 +326,8 @@ public class TestConfig {
 		capabilities.setCapability(MobileCapabilityType.UDID, udid);
 
 
-		capabilities.setCapability("app",
-				System.getProperty("user.dir") + "/src/main/resources/MobileApps/"+apkfilename);
+		capabilities.setCapability("app", System.getProperty("user.dir") + "/src/main/resources/MobileApps/"+apkfilename);
+
 		capabilities.setCapability("appPackage", "com.koo.app");
 		capabilities.setCapability("appActivity", "com.koo.onboarding.OnBoardingActivity");
 

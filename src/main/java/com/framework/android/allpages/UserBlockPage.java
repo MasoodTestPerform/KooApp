@@ -30,7 +30,11 @@ public class UserBlockPage {
 	public String postedCommentWithSpecificUser = "(//android.widget.TextView[@text='###']//..//..)[1]//following-sibling::android.view.ViewGroup//android.widget.TextView[@resource-id='com.koo.app:id/topic_title_textview']";
 	public By multipleBlockedUsers = By.xpath("//android.widget.TextView[@resource-id='com.koo.app:id/unblock']");
 	public By deleteAccount = By.id("com.koo.app:id/delete_account_layout");
-	
+	public By urlShare = By.id("com.koo.app:id/share_url");
+	public By editProfile = By.id("com.koo.app:id/item_edit_profile");
+	public By scheduledAndDrafts = By.id("com.koo.app:id/item_scheduled_posts");
+	public By detailedStatistics = By.id("com.koo.app:id/detailed_statistics");
+	public By manageTopics = By.id("com.koo.app:id/manage_topic");
 	
 	public String viewMore_options_Name = "";
 	public String blockUnblockButton_Name = "";
@@ -41,7 +45,7 @@ public class UserBlockPage {
 	public String searchedUserResult_Name = "";
 	public String searchedUserName_Name = "";
 	public String threeDots_Name = "three dots";
-	public String closeButton_Name = "";
+	public String closeButton_Name = "Close button";
 	public String backButton_Name = "Back button";
 	public String homeButton_Name = "Home button";
 	public String settings_Name = "Settings button";
@@ -58,5 +62,10 @@ public class UserBlockPage {
 	public String postedCommentWithSpecificUser_Name = "";
 	public String multipleBlockedUsers_Name = "";
 	public String deleteAccount_Name = "";
+	public String urlShare_Name = "Share button";
+	public String editProfile_Name = "Edit Profile button";
+	public String scheduledAndDrafts_Name = "Scheduled & Drafts button";
+	public String detailedStatistics_Name = "Detailed Statistics button";
+	public String manageTopics_Name = "Manage Topics button";
 	
 }

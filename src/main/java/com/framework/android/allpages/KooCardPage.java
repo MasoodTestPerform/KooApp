@@ -36,11 +36,13 @@ public class KooCardPage {
 	public By btn_rekoo = By.id("com.koo.app:id/rekoo_imageview");
 	public By btn_rekoono = By.id("com.koo.app:id/rekooNo");
 	public By btn_rekooyes = By.id("com.koo.app:id/rekooYes");
-	public By back_button = By.id("com.koo.app:id/backArrow");
+	public By back_button = By.id("com.koo.app:id/layoutBack");
 	public By rekoocounttext = By.id("com.koo.app:id/rekoo_textview");
 	public By btn_whatsapp = By.id("com.koo.app:id/whatsapp_share_iv");
 	public By btn_share = By.id("com.koo.app:id/generic_share_iv");
 	public By webLink = By.id("com.koo.app:id/link_preview_link");
+	public By btn_yes = By.xpath("//android.widget.TextView[@content-desc='positiveButton']");
+	public By btn_no = By.xpath("//android.widget.TextView[@content-desc='negativeButton']");
 	
 	
 	public String profile_icon_Name = "Profile icon";

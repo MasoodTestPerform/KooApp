@@ -56,7 +56,7 @@ public class LoginKooPage {
 				
 			}
 			mobileActions.dismissUpdateWindow();
-			
+			Thread.sleep(1000);
 			boolean objFlag = mobileActions.isDisplayed(homePage.profile_lnk, homePage.profile_lnk_Name);
 						
 			if (objFlag== false) {
