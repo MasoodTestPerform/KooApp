@@ -169,28 +169,71 @@ public class Settings_AccountPage {
 	 */
 	public Settings_AccountPage optionsInAccountSection() {
 		try {
-			List<WebElement> options = mobileActions.elements(optionTextinAccountCount12);
-			List<WebElement> options1 = mobileActions.elements(optionTextinAccountCount2);
-			System.out.println("Account Section Options Size: " + options.size());
-			System.out.println("Account Section Options Size" + options1.size());
-			int size1 = options.size();
-			for (int i = 0; i < size1; i++) {
-				String actualAccountSectionOptionText1 = options.get(i).getText();
-				System.out.println("Actual Option: " + actualAccountSectionOptionText1);
-				String expectedAccountSectionOption1 = LanguageDataProvider
-						.getLanguageDataValue("AccountSectionOption" + (i + 1) + "Text");
-				System.out.println("Expected Option: " + expectedAccountSectionOption1);
-				softAssert.assertEquals(actualAccountSectionOptionText1, expectedAccountSectionOption1);
-			}
-			int size2 = options1.size();
-			for (int j = 0; j < size2; j++) {
-				String actualAccountSectionOptionText2 = options1.get(j).getText();
-				System.out.println("Actual Option: " + actualAccountSectionOptionText2);
-				String expectedAccountSectionOption2 = LanguageDataProvider
-						.getLanguageDataValue("AccountSectionOption" + (j + 1) + "TextById");
-				System.out.println("Expected Option: " + expectedAccountSectionOption2);
-				softAssert.assertEquals(actualAccountSectionOptionText2, expectedAccountSectionOption2);
-			}
+
+			actualText = mobileActions.getText(editProfile_Settings, editProfile_Settings_Name, true).trim();
+			expectedText = LanguageDataProvider.getLanguageDataValue("AccountsSectionEditProfileSubHeading");
+			BaseTest.utilObj.get().getAssertManager().sAssertEquals(actualText, expectedText, "Both names are matched",
+					false, BaseTest.mobileDriver.get(), true);
+			actualText = mobileActions.getText(accountInformation_Settings, accountInformation_Settings_Name, true)
+					.trim();
+			expectedText = LanguageDataProvider.getLanguageDataValue("AccountsSectionAccountInformationSubHeading");
+			BaseTest.utilObj.get().getAssertManager().sAssertEquals(actualText, expectedText, "Both names are matched",
+					false, BaseTest.mobileDriver.get(), true);
+
+			actualText = mobileActions.getText(language_Settings, language_Settings_Name, true).trim();
+			expectedText = LanguageDataProvider.getLanguageDataValue("AccountsSectionLanguageSubHeading");
+			BaseTest.utilObj.get().getAssertManager().sAssertEquals(actualText, expectedText, "Both names are matched",
+					false, BaseTest.mobileDriver.get(), true);
+			actualText = mobileActions.getText(theme_Settigs, theme_Settigs_Name, true).trim();
+			expectedText = LanguageDataProvider.getLanguageDataValue("AccountsSectionThemeSubHeading");
+			BaseTest.utilObj.get().getAssertManager().sAssertEquals(actualText, expectedText, "Both names are matched",
+					false, BaseTest.mobileDriver.get(), true);
+			actualText = mobileActions.getText(shareYourKooProfile_Settings, shareYourKooProfile_Settings_Name, true)
+					.trim();
+			expectedText = LanguageDataProvider.getLanguageDataValue("AccountsSectionShareKooProfileSubHeading");
+			BaseTest.utilObj.get().getAssertManager().sAssertEquals(actualText, expectedText, "Both names are matched",
+					false, BaseTest.mobileDriver.get(), true);
+			actualText = mobileActions.getText(manageSubscriptions_Settings, manageSubscriptions_Settings_Name, true).trim();
+			expectedText = LanguageDataProvider.getLanguageDataValue("AccountsSectionManageSubscriptionsSubHeading");
+			BaseTest.utilObj.get().getAssertManager().sAssertEquals(actualText, expectedText, "Both names are matched",
+					false, BaseTest.mobileDriver.get(), true);
+			actualText = mobileActions.getText(manageBlockedUsers_Settings, manageBlockedUsers_Settings_Name, true)
+					.trim();
+			expectedText = LanguageDataProvider.getLanguageDataValue("AccountsSectionManageBlockedUsersSubHeading");
+			BaseTest.utilObj.get().getAssertManager().sAssertEquals(actualText, expectedText, "Both names are matched",
+					false, BaseTest.mobileDriver.get(), true);
+
+			actualText = mobileActions
+					.getText(applyForSelfVerification_Settings, applyForSelfVerification_Settings_Name, true).trim();
+			expectedText = LanguageDataProvider.getLanguageDataValue("AccountsSectionApplySelfSubHeading");
+			BaseTest.utilObj.get().getAssertManager().sAssertEquals(actualText, expectedText, "Both names are matched",
+					false, BaseTest.mobileDriver.get(), true);
+			actualText = mobileActions.getText(applyForEminence_Settings, applyForEminence_Settings_Name, true).trim();
+			expectedText = LanguageDataProvider.getLanguageDataValue("AccountsSectionApplyEminenceSubHeading");
+			BaseTest.utilObj.get().getAssertManager().sAssertEquals(actualText, expectedText, "Both names are matched",
+					false, BaseTest.mobileDriver.get(), true);
+			actualText = mobileActions.getText(migrateFromTwitter_Settings, migrateFromTwitter_Settings_Name, true)
+					.trim();
+			expectedText = LanguageDataProvider.getLanguageDataValue("AccountsSectionMigrateTwitterSubHeading");
+			BaseTest.utilObj.get().getAssertManager().sAssertEquals(actualText, expectedText, "Both names are matched",
+					false, BaseTest.mobileDriver.get(), true);
+			actualText = mobileActions.getText(addAccount_Settings, addAccount_Settings_Name, true).trim();
+			expectedText = LanguageDataProvider.getLanguageDataValue("AccountsSectionAddAccountSubHeading");
+			BaseTest.utilObj.get().getAssertManager().sAssertEquals(actualText, expectedText, "Both names are matched",
+					false, BaseTest.mobileDriver.get(), true);
+			actualText = mobileActions.getText(manageAccount_Settings, manageAccount_Settings_Name, true).trim();
+			expectedText = LanguageDataProvider.getLanguageDataValue("AccountsSectionManageAccountSubHeading");
+			BaseTest.utilObj.get().getAssertManager().sAssertEquals(actualText, expectedText, "Both names are matched",
+					false, BaseTest.mobileDriver.get(), true);
+			actualText = mobileActions.getText(logout_Settings, logout_Settings_Name, true).trim();
+			expectedText = LanguageDataProvider.getLanguageDataValue("AccountsSectionLogoutSubHeading");
+			BaseTest.utilObj.get().getAssertManager().sAssertEquals(actualText, expectedText, "Both names are matched",
+					false, BaseTest.mobileDriver.get(), true);
+			actualText = mobileActions.getText(delete_Settings, delete_Settings_Name, true).trim();
+			expectedText = LanguageDataProvider.getLanguageDataValue("AccountsSectionDeleteSubHeading");
+			BaseTest.utilObj.get().getAssertManager().sAssertEquals(actualText, expectedText, "Both names are matched",
+					false, BaseTest.mobileDriver.get(), true);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			BaseTest.LOGGER.get().logError("Options are not displaying");
@@ -416,7 +459,7 @@ public class Settings_AccountPage {
 						BaseTest.mobileDriver.get(), true);
 			} else {
 				BaseTest.LOGGER.get()
-				.logInfo(applyForSelfVerification_Settings_Name + "/Self-Verify Page not Displayed");
+						.logInfo(applyForSelfVerification_Settings_Name + "/Self-Verify Page not Displayed");
 				BaseTest.utilObj.get().getAssertManager().sAssertTrue(false,
 						applyForSelfVerification_Settings_Name + "/Self-Verify Page not Displayed", true,
 						BaseTest.mobileDriver.get(), true);
@@ -447,13 +490,13 @@ public class Settings_AccountPage {
 			if (mobileActions.isDisplayed(closeButton, closeButton_Name)) {
 				mobileActions.click(closeButton, closeButton_Name);
 				BaseTest.LOGGER.get()
-				.logInfo("Chrome/Browser Page for " + applyForEminence_Settings_Name + " Displayed");
+						.logInfo("Chrome/Browser Page for " + applyForEminence_Settings_Name + " Displayed");
 				BaseTest.utilObj.get().getAssertManager().sAssertTrue(true,
 						"Chrome/Browser Page for " + applyForEminence_Settings_Name + " Displayed", true,
 						BaseTest.mobileDriver.get(), true);
 			} else {
 				BaseTest.LOGGER.get()
-				.logInfo("Chrome/Browser Page for" + applyForEminence_Settings_Name + " not Displayed");
+						.logInfo("Chrome/Browser Page for" + applyForEminence_Settings_Name + " not Displayed");
 				BaseTest.utilObj.get().getAssertManager().sAssertTrue(false,
 						"Chrome/Browser Page for" + applyForEminence_Settings_Name + " not Displayed", true,
 						BaseTest.mobileDriver.get(), true);

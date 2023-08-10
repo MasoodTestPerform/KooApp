@@ -27,6 +27,7 @@ public class CommonHelper {
 	 public static CarouselPage carouselPage = new CarouselPage();
 	 public static PeopleTabPage peopleTabPg = new PeopleTabPage();
 	 public static ExploreScreenPage exploreScreenPage = new ExploreScreenPage();
+	 public static SearchPage searchPage = new SearchPage();
 
 	    /**
 	     * This method is to click on Home icon from footer bar
@@ -137,6 +138,7 @@ public class CommonHelper {
 	     * @throws IOException
 	     */
 	    public static void clickOnSearchIcon() {
+	    	mobileActions.waitForVisible(hashTagScreenPage.search_icon);
 	        mobileActions.click(hashTagScreenPage.search_icon, hashTagScreenPage.search_icon_Name);
 	    }
 
@@ -169,7 +171,8 @@ public class CommonHelper {
 	     * @throws IOException
 	     */
 	    public static void clickOnSearchBarField() {
-	        mobileActions.click(hashTagScreenPage.searchBar_field, hashTagScreenPage.searchBar_field_Name);
+	    	mobileActions.click(searchPage.searchBar, searchPage.searchBar_Name);
+	       // mobileActions.click(hashTagScreenPage.searchBar_field, hashTagScreenPage.searchBar_field_Name);
 	    }
 
 	    /**
@@ -178,7 +181,8 @@ public class CommonHelper {
 	     * @throws IOException
 	     */
 	    public static void enterValueInSearchBar(String value) {
-	        mobileActions.sendKeys(hashTagScreenPage.searchBar_field, hashTagScreenPage.searchBar_field_Name, value) ;
+	    	mobileActions.click(searchPage.searchBar, searchPage.searchBar_Name);
+	       // mobileActions.sendKeys(hashTagScreenPage.searchBar_field, hashTagScreenPage.searchBar_field_Name, value) ;
 	    }
 
 	    /**

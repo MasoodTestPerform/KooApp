@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.server.DriverFactory;
 import org.testng.Assert;
@@ -53,8 +54,7 @@ public class SearchPage {
 	public By tabForSearchResult = By.xpath("//android.widget.TextView[@text='###']");
 	public By profileResults = By.xpath(
 			"//android.widget.LinearLayout/android.widget.TextView[@resource-id='com.koo.app:id/channel_name_textview']");
-	public By kooResults = By
-			.xpath("//android.widget.TextView[@resource-id='com.koo.app:id/topic_title_textview']");
+	public By kooResults = By.xpath("//android.widget.TextView[@resource-id='com.koo.app:id/topic_title_textview']");
 	public By hashTagResults = By.id("com.koo.app:id/topic_title");
 	public By pagination = By.xpath("//android.widget.LinearLayout[@resource-id='com.koo.app:id/name_score_layout']");
 	public By userFollowButton = By.xpath(
@@ -98,7 +98,6 @@ public class SearchPage {
 		return this;
 	}
 
-
 	/**
 	 * This method is to verify and click on search Bar jagath
 	 */
@@ -121,11 +120,19 @@ public class SearchPage {
 	}
 
 	/**
+	 * This method is to verify and Click left Search icon of Search Bar
+	 */
+	public SearchPage verifyAndClickLeftSearchIcon() throws IOException {
+		mobileActions.waitForVisible(leftSearchIcon);
+		Assert.assertTrue(mobileActions.isDisplayed(leftSearchIcon, leftSearchIcon_Name));
+		mobileActions.click(leftSearchIcon, leftSearchIcon_Name);
+		return this;
+	}
+
+	/**
 	 * This method is to verify search all result link
 	 */
 	public SearchPage verifyAndClickSearchAllResultsLink() throws IOException {
-		Assert.assertTrue(mobileActions.isDisplayed(leftSearchIcon, leftSearchIcon_Name));
-		mobileActions.click(leftSearchIcon, leftSearchIcon_Name);
 		mobileActions.waitForVisible(searchAllResultLink);
 		Assert.assertTrue(mobileActions.isDisplayed(searchAllResultLink, searchAllResultLink_Name));
 		mobileActions.click(searchAllResultLink, searchAllResultLink_Name);
@@ -153,7 +160,7 @@ public class SearchPage {
 	}
 
 	/**
-	 * This method is to click on ta name
+	 * This method is to click on tab
 	 * 
 	 * @param tabName
 	 * @throws IOException
@@ -205,19 +212,23 @@ public class SearchPage {
 		mobileActions.getText(hashTagResults, hashTagResults_Name, true);
 		Assert.assertTrue(mobileActions.isDisplayed(hashTagResults, hashTagResults_Name));
 	}
+
+	/**
+	 * This method is to verify and click on Tab
+	 */
+	public void verifyAndClickOnTab(String expectedTabName) {
+		mobileActions.waitForVisible(hashTagResults);
+		mobileActions.getText(hashTagResults, hashTagResults_Name, true);
+		Assert.assertTrue(mobileActions.isDisplayed(hashTagResults, hashTagResults_Name));
+	}
+
 	/**
 	 * This method is to verify data for three types of Results in All tab
 	 */
-	public void verifyallThreeTypesResults()
-	{
-		mobileActions.swipeUpFindElement(3, hashTagResults);
-		mobileActions.waitForVisible(hashTagResults);
-		Assert.assertTrue(mobileActions.isDisplayed(hashTagResults, hashTagResults_Name));
-		mobileActions.swipeUpFindElement(3,profileResults );
-		mobileActions.waitForVisible(profileResults);
-		Assert.assertTrue(mobileActions.isDisplayed(profileResults, profileResults_Name));
-		mobileActions.swipeUpFindElement(3,kooResults);
-		mobileActions.waitForVisible(kooResults);
-		Assert.assertTrue(mobileActions.isDisplayed(kooResults, kooResults_Name));
+	public void verifyallThreeTypesResults() {
+		verifyHashTags();
+		verifyProfileResults();
+		verifyKoos();
 	}
+
 }
