@@ -1,4 +1,4 @@
-package com.koo.tests.search;
+package com.koo.SearchTests;
 
 import org.testng.annotations.Test;
 

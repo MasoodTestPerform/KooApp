@@ -45,9 +45,11 @@ public class TestConfig {
 	private static String webmobileFlag;
 	
 	//
+	private static String apkfilename;
 	private static String platform;
 	private static String udid;
 	private static String port;
+	private static String googleplayupdatenotification;
 	private static String browserstack;
 	private static String UserName;
 	private static String ChildUserName;
@@ -82,6 +84,16 @@ public class TestConfig {
 	private static String userName_1_verifyLikeCommentRekooCount;
 	private static String user2_verifyLikeCommentRekooCount;
 	private static String userHandleName_2_verifyLikeCommentRekooCount;
+	private static String NewUserOnBoarding_TC013_018;
+	private static String NewUserOnBoarding_TC012;
+	private static String NewUserOnBoarding_TC014;
+	private static String NewUserOnBoarding_TC015;
+	private static String NewUserOnBoarding_TC016;
+	private static String NewUserOnBoarding_TC017;
+	private static String NewUserOnBoarding_TC026;
+	private static String NewUserOnBoarding_TC027;
+	private static String NewUser_HomePage_TC_028;
+	
 
 	private TestConfig() {
 	}
@@ -189,11 +201,13 @@ public class TestConfig {
 	public String getWebmobileFlag() {
 		return webmobileFlag;
 	}
-	
+		
 	//Android properties
+	public String getAPKFileName() {return apkfilename;};
 	public String getPlatform(){return platform;}
 	public String getUdid(){return udid;}
 	public String getPort(){return port;}
+	public String getGooglePlayUpdateNotification() {return googleplayupdatenotification;};
 	public String getBrowserStack(){return browserstack;}
 	public String getUserName(){return UserName;}
 	public String getChildUserName(){return ChildUserName;}
@@ -228,6 +242,35 @@ public class TestConfig {
 	public String getUserName_1_verifyLikeCommentRekooCount(){return userName_1_verifyLikeCommentRekooCount;}
 	public String getUser2_verifyLikeCommentRekooCount(){return user2_verifyLikeCommentRekooCount;}
 	public String getUserHandleName_2_verifyLikeCommentRekooCount(){return userHandleName_2_verifyLikeCommentRekooCount;}
+
+	public String getNewUserOnBoarding_TC013_018() {
+		return NewUserOnBoarding_TC013_018;
+	}
+	public String getNewUserOnBoarding_TC012() {
+		return NewUserOnBoarding_TC012;
+	}
+	public String getNewUserOnBoarding_TC014() {
+		return NewUserOnBoarding_TC014;
+	}
+	public String getNewUserOnBoarding_TC015() {
+		return NewUserOnBoarding_TC015;
+	}
+	public String getNewUserOnBoarding_TC016() {
+		return NewUserOnBoarding_TC016;
+	}
+	public String getNewUserOnBoarding_TC017() {
+		return NewUserOnBoarding_TC017;
+	}
+	public String getNewUserOnBoarding_TC026() {
+		return NewUserOnBoarding_TC026;
+	}
+	public String getNewUserOnBoarding_TC027() {
+		return NewUserOnBoarding_TC027;
+	}
+	
+	public String getNewUser_HomePage_TC_028() {
+		return NewUser_HomePage_TC_028;
+	}
 
 	// Framework Initialization
 	public void suiteSetup() {
@@ -269,11 +312,11 @@ public class TestConfig {
 
 	public WebDriver setMobileDriver(String platform, String udid, String systemPort, String deviceName,
 			String deviceVersion) throws Exception {
-		platform="Android 13";
-		udid = "emulator-5554";
+		platform=TestConfig.getInstance().getPlatform();
+		udid = TestConfig.getInstance().getUdid();
 		systemPort = "8200";
-		deviceName = "";
-		deviceVersion = "Android 13";
+		deviceName = "RZCW60YWT1R";
+		deviceVersion = "android13";
 		WebDriver mobileDriver = null;
 		String[] platformInfo = platform.split(" ");
 		DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -283,8 +326,8 @@ public class TestConfig {
 		capabilities.setCapability(MobileCapabilityType.UDID, udid);
 
 
-		capabilities.setCapability("app",
-				System.getProperty("user.dir") + "/src/main/resources/MobileApps/v0.99.999905.apk");
+		capabilities.setCapability("app", System.getProperty("user.dir") + "/src/main/resources/MobileApps/474.apk");
+
 		capabilities.setCapability("appPackage", "com.koo.app");
 		capabilities.setCapability("appActivity", "com.koo.onboarding.OnBoardingActivity");
 
@@ -298,7 +341,7 @@ public class TestConfig {
 			mobileDriver = new AndroidDriver<WebElement>(new URL("http://0.0.0.0:4723/wd/hub"), capabilities);
 		}
 
-		mobileDriver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
+		mobileDriver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		
 		return mobileDriver;		
 	}
@@ -321,9 +364,11 @@ public class TestConfig {
 		webmobileFlag = config.getPropertyValue("webmobileFlag");
 		
 		//Android properties
+		apkfilename = config.getPropertyValue("apkfilename");
 		platform = config.getPropertyValue("platform");
 		udid = config.getPropertyValue("udid");
 		port = config.getPropertyValue("port");
+		googleplayupdatenotification = config.getPropertyValue("googleplayupdatenotification");
 		UserName = config.getPropertyValue("UserName");
 		ChildUserName = config.getPropertyValue("ChildUserName");
 		userNameAuto = config.getPropertyValue("userNameAuto");
@@ -357,6 +402,15 @@ public class TestConfig {
 		userName_1_verifyLikeCommentRekooCount = config.getPropertyValue("userName_1_verifyLikeCommentRekooCount");
 		user2_verifyLikeCommentRekooCount = config.getPropertyValue("user2_verifyLikeCommentRekooCount");
 		userHandleName_2_verifyLikeCommentRekooCount = config.getPropertyValue("userHandleName_2_verifyLikeCommentRekooCount");
+		NewUserOnBoarding_TC013_018 = config.getPropertyValue("NewUserOnBoarding_TC013_018");
+		NewUserOnBoarding_TC012 = config.getPropertyValue("NewUserOnBoarding_TC012");
+		NewUserOnBoarding_TC014 = config.getPropertyValue("NewUserOnBoarding_TC014");
+		NewUserOnBoarding_TC015 = config.getPropertyValue("NewUserOnBoarding_TC015");
+		NewUserOnBoarding_TC016 = config.getPropertyValue("NewUserOnBoarding_TC016");
+		NewUserOnBoarding_TC017 = config.getPropertyValue("NewUserOnBoarding_TC017");
+		NewUserOnBoarding_TC026 = config.getPropertyValue("NewUserOnBoarding_TC026");
+		NewUserOnBoarding_TC027 = config.getPropertyValue("NewUserOnBoarding_TC027");
+		NewUser_HomePage_TC_028 = config.getPropertyValue("NewUser_HomePage_TC_028");
 	}
 
 }

@@ -1,11 +1,8 @@
-package com.koo.tests.settings;
+package com.koo.SettingsTests;
 
 import org.testng.annotations.Test;
 
 import com.framework.android.allpages.SettingsPage;
-import com.framework.android.allpages.Settings_AccountPage;
-import com.framework.android.allpages.Settings_OptionsPage;
-import com.framework.android.allpages.UserBlockPage;
 import com.framework.android.screens.registerationAndLoginFlowPages.LoginKooPage;
 import com.koo.android.utils.LanguageDataProvider;
 import com.koo.android.utils.MobileActions;
@@ -26,14 +23,12 @@ public class SettingsTest extends BaseTest {
 					BaseTest.mobileDriver.get());
 			LanguageDataProvider.setCurrentLanguage(language);
 			LoginKooPage loginKooPage = new LoginKooPage();
-			Settings_AccountPage settingsPage = new Settings_AccountPage();
-			SettingsPage settingsPages = new SettingsPage();
-			UserBlockPage userBlockPage = new UserBlockPage();
+			SettingsPage settingsPage = new SettingsPage();
 			loginKooPage.loginValidUser(language, TestConfig.getInstance().getUserName());
-			settingsPages.clickOnProfile();
-			userBlockPage.clickOnThreeDots();
-			settingsPages.verifySettingsButton();
-			settingsPages.clickSettingsButton();
+			settingsPage.clickOnProfile();
+			settingsPage.clickOnThreeDots();
+			settingsPage.verifySettingsButton();
+			settingsPage.clickSettingsButton();
 			settingsPage.optionsInAccountSection();
 			settingsPage.verifyEditProfilePage_inSettings();
 			settingsPage.verifyAccountInformationPage_inSettings();
@@ -58,6 +53,7 @@ public class SettingsTest extends BaseTest {
 		}
 
 	}
+
 	@Test(dataProvider = "Languages", dataProviderClass = LanguageDataProvider.class, description = "[TC_190] Verify following options in Account section:(a) Edit Porfile (b) Language (c) Share (d) Theme options (e) Manage Subscriptions (f) Manage Blocked users (g) Apply for Verified Account (h) Add Account (i) Manage Accounts (j) Logout (k) Delete.", groups = {
 			"regression", "topicsTab_home" })
 	public void verifyShareYourKooProfile(String language) {
@@ -69,14 +65,12 @@ public class SettingsTest extends BaseTest {
 					BaseTest.mobileDriver.get());
 			LanguageDataProvider.setCurrentLanguage(language);
 			LoginKooPage loginKooPage = new LoginKooPage();
-			Settings_AccountPage settingsPage = new Settings_AccountPage();
-			SettingsPage settingsPages = new SettingsPage();
-			UserBlockPage userBlockPage = new UserBlockPage();
+			SettingsPage settingsPage = new SettingsPage();
 			loginKooPage.loginValidUser(language, TestConfig.getInstance().getUserName());
-			settingsPages.clickOnProfile();
-			userBlockPage.clickOnThreeDots();
-			settingsPages.verifySettingsButton();
-			settingsPages.clickSettingsButton();
+			settingsPage.clickOnProfile();
+			settingsPage.clickOnThreeDots();
+			settingsPage.verifySettingsButton();
+			settingsPage.clickSettingsButton();
 			settingsPage.verifyShareYourKooProfileAction_inSettings();
 			BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO",
 					"<b><----Test case execution completed for Test:Successfully verified Options in Account Section ------><b>",
@@ -90,6 +84,7 @@ public class SettingsTest extends BaseTest {
 		}
 
 	}
+
 	@Test(dataProvider = "Languages", dataProviderClass = LanguageDataProvider.class, description = "[TC_190] Verify following options in Account section:(a) Edit Porfile (b) Language (c) Share (d) Theme options (e) Manage Subscriptions (f) Manage Blocked users (g) Apply for Verified Account (h) Add Account (i) Manage Accounts (j) Logout (k) Delete.", groups = {
 			"regression", "topicsTab_home" })
 	public void verifyAddAccount(String language) {
@@ -101,14 +96,12 @@ public class SettingsTest extends BaseTest {
 					BaseTest.mobileDriver.get());
 			LanguageDataProvider.setCurrentLanguage(language);
 			LoginKooPage loginKooPage = new LoginKooPage();
-			Settings_AccountPage settingsPage = new Settings_AccountPage();
-			SettingsPage settingsPages = new SettingsPage();
-			UserBlockPage userBlockPage = new UserBlockPage();
+			SettingsPage settingsPage = new SettingsPage();
 			loginKooPage.loginValidUser(language, TestConfig.getInstance().getUserName());
-			settingsPages.clickOnProfile();
-			userBlockPage.clickOnThreeDots();
-			settingsPages.verifySettingsButton();
-			settingsPages.clickSettingsButton();
+			settingsPage.clickOnProfile();
+			settingsPage.clickOnThreeDots();
+			settingsPage.verifySettingsButton();
+			settingsPage.clickSettingsButton();
 			settingsPage.verifyAddAccountPage_inSettings();
 			BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO",
 					"<b><----Test case execution completed for Test:Successfully verified Options in Account Section ------><b>",
@@ -122,6 +115,7 @@ public class SettingsTest extends BaseTest {
 		}
 
 	}
+
 	@Test(dataProvider = "Languages", dataProviderClass = LanguageDataProvider.class, description = "[TC_190] Verify following options in Account section:(a) Edit Porfile (b) Language (c) Share (d) Theme options (e) Manage Subscriptions (f) Manage Blocked users (g) Apply for Verified Account (h) Add Account (i) Manage Accounts (j) Logout (k) Delete.", groups = {
 			"regression", "topicsTab_home" })
 	public void verifyLanguage(String language) {
@@ -133,14 +127,12 @@ public class SettingsTest extends BaseTest {
 					BaseTest.mobileDriver.get());
 			LanguageDataProvider.setCurrentLanguage(language);
 			LoginKooPage loginKooPage = new LoginKooPage();
-			Settings_AccountPage settingsPage = new Settings_AccountPage();
-			SettingsPage settingsPages = new SettingsPage();
-			UserBlockPage userBlockPage = new UserBlockPage();
+			SettingsPage settingsPage = new SettingsPage();
 			loginKooPage.loginValidUser(language, TestConfig.getInstance().getUserName());
-			settingsPages.clickOnProfile();
-			userBlockPage.clickOnThreeDots();
-			settingsPages.verifySettingsButton();
-			settingsPages.clickSettingsButton();
+			settingsPage.clickOnProfile();
+			settingsPage.clickOnThreeDots();
+			settingsPage.verifySettingsButton();
+			settingsPage.clickSettingsButton();
 			settingsPage.verifyLanguageOption_inSettings();
 			BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO",
 					"<b><----Test case execution completed for Test:Successfully verified Options in Account Section ------><b>",
@@ -167,14 +159,12 @@ public class SettingsTest extends BaseTest {
 					BaseTest.mobileDriver.get());
 			LanguageDataProvider.setCurrentLanguage(language);
 			LoginKooPage loginKooPage = new LoginKooPage();
-			Settings_OptionsPage settingsPage = new Settings_OptionsPage();
-			SettingsPage settingsPages = new SettingsPage();
-			UserBlockPage userBlockPage = new UserBlockPage();
+			SettingsPage settingsPage = new SettingsPage();
 			loginKooPage.loginValidUser(language, TestConfig.getInstance().getUserName());
-			settingsPages.clickOnProfile();
-			userBlockPage.clickOnThreeDots();
-			settingsPages.verifySettingsButton();
-			settingsPages.clickSettingsButton();
+			settingsPage.clickOnProfile();
+			settingsPage.clickOnThreeDots();
+			settingsPage.verifySettingsButton();
+			settingsPage.clickSettingsButton();
 			settingsPage.verifyOptionsinOthers();
 			settingsPage.verifyNotifications_inSettings();
 			settingsPage.verifyWhatsappUpdates_inSettings();
