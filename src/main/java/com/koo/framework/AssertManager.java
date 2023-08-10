@@ -49,7 +49,7 @@ public class AssertManager {
 		}		
 	}
 	public void sAssertContains(String actual, String expected, String message, boolean screenshot, WebDriver driver, Boolean...hardAssert) {
-		if (expected.equals(actual)) {
+		if (actual.contains(expected)) {
 			if(screenshot) {
 				LOGGER.logTestStep(extentTest, "PASS", message + " - Successful.Contains Expected match with Actual value:"+expected, true, driver);
 			}else {

@@ -710,7 +710,7 @@ public class MobileActions {
 	    	setImplicitWaitMinimum();
 	    	int updatesNotificationCnt = BaseTest.mobileDriver.get().findElements(By.xpath("//android.widget.ImageView[@content-desc='Dismiss update dialogue']")).size();
 	    	if(updatesNotificationCnt>0) {
-	    		click(By.xpath("//android.widget.ImageView[@content-desc='Dismiss update dialogue']"), " to dismiss Google Play Update");
+	    		click(By.xpath("//android.widget.ImageView[contains(@content-desc,'Dismiss update dialog')]"), " to dismiss Google Play Update");
 	    	}else {
 	    		System.out.println("seems not present Good Update Dialogue");
 	    	}
