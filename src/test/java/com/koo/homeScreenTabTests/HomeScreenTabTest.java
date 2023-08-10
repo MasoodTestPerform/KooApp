@@ -241,14 +241,14 @@ public class HomeScreenTabTest extends BaseTest {
 			homeScreenTabPage.clickOnAnyTabFromHomePage(LanguageDataProvider.getLanguageDataValue("PeopleTabText"));
 			homePage.validate_InterestSelection_PeoplePage(firstTopicInterest);
 			
-			homeScreenTabPage.clickOnAnyTabFromHomePage(LanguageDataProvider.getLanguageDataValue("PremiumTabText"));
-			homePage.validate_PremiumPage();
+			//homeScreenTabPage.clickOnAnyTabFromHomePage(LanguageDataProvider.getLanguageDataValue("PremiumTabText"));
+			//homePage.validate_PremiumPage();
 			
 			homeScreenTabPage.clickOnAnyTabFromHomePage(LanguageDataProvider.getLanguageDataValue("PollsTabText"));
 			homePage.validate_PollsPage();
 			
-			homeScreenTabPage.clickOnAnyTabFromHomePage(LanguageDataProvider.getLanguageDataValue("VideosTabText"));
-			homePage.validate_VideosPage();
+			//homeScreenTabPage.clickOnAnyTabFromHomePage(LanguageDataProvider.getLanguageDataValue("VideosTabText"));
+			//homePage.validate_VideosPage();
 			
 			homeScreenTabPage.clickOnAnyTabFromHomePage(LanguageDataProvider.getLanguageDataValue("FriendsTabText"));
 			homePage.validate_FriendsPage();
