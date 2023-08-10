@@ -1,5 +1,7 @@
 package com.koo.android.utils;
 
+import java.util.concurrent.TimeUnit;
+//import java.time.Duration;
 import com.aventstack.extentreports.ExtentTest;
 import com.koo.framework.BaseTest;
 import com.koo.framework.LogMe;
@@ -12,9 +14,11 @@ import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import io.appium.java_client.android.AndroidDriver;
 
-import java.time.Duration;
+
 import java.util.List;
+import java.util.HashMap;
 import java.util.NoSuchElementException;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
@@ -25,11 +29,21 @@ import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import io.appium.java_client.TouchAction;
+import static io.appium.java_client.touch.TapOptions.tapOptions;
+import static io.appium.java_client.touch.WaitOptions.waitOptions;
+import static io.appium.java_client.touch.offset.ElementOption.element;
+import static io.appium.java_client.touch.offset.PointOption.point;
+import static java.time.Duration.ofMillis;
+import static java.time.Duration.ofSeconds;
+
+import java.time.Duration;
+
 import static io.appium.java_client.touch.TapOptions.tapOptions;
 import static io.appium.java_client.touch.offset.ElementOption.element;
 
@@ -48,7 +62,7 @@ public class MobileActions {
 		this.driver = BaseTest.mobileDriver.get();
 		this.extentTest = BaseTest.extentTest.get();
 		this.sAssert = BaseTest.sAssert.get();
-		action = new Actions(BaseTest.mobileDriver.get());
+		this.action = new Actions(BaseTest.mobileDriver.get());
 	}
 	
 	public void waitForSec(int i) {
@@ -89,23 +103,34 @@ public class MobileActions {
 
     
     public WebElement waitForVisible(By locator) {
-        WebDriverWait wait = new WebDriverWait(BaseTest.mobileDriver.get(), 20);
+        WebDriverWait wait = new WebDriverWait(BaseTest.mobileDriver.get(),Long.parseLong(TestConfig.getInstance().getOBJWAITTIME()));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+    
+    public boolean isElementDisplayed(By locator) {
+    	boolean flag = false;
+    	try {
+        WebDriverWait wait = new WebDriverWait(BaseTest.mobileDriver.get(),Long.parseLong(TestConfig.getInstance().getOBJWAITTIME()));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        flag=true;
+    	}catch(Exception e) {
+    		flag=false;
+    	}
+    	
+    	return flag;
     }
     
     public boolean objWait(String elementName, By by, String maxDurationInSec, boolean hardAssert) {
 		boolean flag = true;
 		try {
 			JavascriptExecutor js = (JavascriptExecutor)driver;
-			Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(Integer.parseInt(maxDurationInSec)))
-					.pollingEvery(Duration.ofMillis(100)).ignoring(NoSuchElementException.class);
-
+			WebDriverWait wait = new WebDriverWait(driver, Integer.parseInt(maxDurationInSec)) ;
 		wait.until((ExpectedConditions.presenceOfElementLocated(by)));
-		flag = driver.findElement(by).isDisplayed();
+		//flag = driver.findElement(by).isDisplayed();
 		wait.until((ExpectedConditions.visibilityOfAllElementsLocatedBy(by)));
 		wait.until((ExpectedConditions.elementToBeClickable(by)));
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(500);
 		}catch(Exception e) {
 			
 		}
@@ -131,7 +156,7 @@ public class MobileActions {
 	        LOGGER.logTestStep(extentTest, "INFO", elementName + " isDisplayed value is "+isPresent, false, this.driver);
         }catch(Exception e) {
         	e.printStackTrace();
-			BaseTest.utilObj.get().getAssertManager().sAssertException("Something went wrong in isDisplayed for "+elementName+".Exception"+e.getMessage(), true, this.driver, false);
+			BaseTest.utilObj.get().getAssertManager().sAssertException("Something went wrong in isDisplayed for "+elementName+".Exception"+e.getMessage(), true, this.driver, true);
         }
     	return isPresent;
     }
@@ -143,7 +168,7 @@ public class MobileActions {
 	        LOGGER.logTestStep(extentTest, "INFO", "Clicked on element:"+elementName+".", false, this.driver);
         }catch(Exception e) {
         	e.printStackTrace();
-			BaseTest.utilObj.get().getAssertManager().sAssertException("Clicked on element:"+elementName+".Exception"+e.getMessage(), true, this.driver, false);
+			BaseTest.utilObj.get().getAssertManager().sAssertException("Clicked on element:"+elementName+".Exception"+e.getMessage(), true, this.driver, true);
         }
     }
     
@@ -207,9 +232,27 @@ public class MobileActions {
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-			BaseTest.utilObj.get().getAssertManager().sAssertException("Unable to retrieve text of element:"+elementName+ ".Exception"+e.getMessage(), true, this.driver, false);
+			BaseTest.utilObj.get().getAssertManager().sAssertException("Unable to retrieve text of element:"+elementName+ ".Exception"+e.getMessage(), true, this.driver, true);
 		}
 		return text;
+	}
+    
+    public String getAttribute(By by, String attributeValue, String elementName, boolean logMsg) {
+		String attributeVal = null;
+		WebElement element;
+		try {
+			element = findElement(elementName, by, TestConfig.getInstance().getOBJWAITTIME(), false);
+			attributeVal = element.getAttribute(attributeValue).trim();
+			
+			if(logMsg==true) {
+				LOGGER.logTestStep(extentTest, "INFO", "Element:"+elementName+" attribute value:"+attributeValue+" is "+attributeVal, false, this.driver);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			BaseTest.utilObj.get().getAssertManager().sAssertException("Unable to retrieve attribute value of element:"+elementName+ ".Exception"+e.getMessage(), true, this.driver, false);
+		}
+		return attributeVal;
 	}
     
     public List<WebElement> elements(By locator) {
@@ -260,7 +303,7 @@ public class MobileActions {
     	try {
 	    	Dimension size = driver.manage().window().getSize();
 	        // calculate coordinates for horizontal swipe
-	        int startY = (int) (size.height / 2);
+	        int startY = (int) (size.height / 4);
 	        int startX = (int) (size.width * 0.90);
 	        int endX = (int) (size.width * 0.10);
         
@@ -314,7 +357,7 @@ public class MobileActions {
             }
         } catch (Exception e) {
         	e.printStackTrace();
-			BaseTest.utilObj.get().getAssertManager().sAssertException("Unable to swipeUpFindElementClick.Exception"+e.getMessage(), true, this.driver, false);
+			BaseTest.utilObj.get().getAssertManager().sAssertException("Unable to swipeUpFindElementClick.Exception"+e.getMessage(), true, this.driver, true);
         }
     }
     
@@ -342,6 +385,7 @@ public class MobileActions {
 			BaseTest.utilObj.get().getAssertManager().sAssertException("Unable to swipeUpFindElementClick.Exception"+e.getMessage(), true, this.driver, false);
         }
     }
+    
     
     public boolean isElmPresent(By locator) {
         boolean isElmPresent = driver.findElements(locator).size() > 0;
@@ -400,7 +444,7 @@ public class MobileActions {
 	        }
     	}catch(Exception e) {
     		e.printStackTrace();
-			BaseTest.utilObj.get().getAssertManager().sAssertException("Unable to tap the element."+e.getMessage(), true, this.driver, false);
+			BaseTest.utilObj.get().getAssertManager().sAssertException("Unable to tap the element."+e.getMessage(), true, this.driver, true);
     	}
     }
     
@@ -462,13 +506,24 @@ public class MobileActions {
     	MobileElement element = null;
     	
     	try {   		
-    		((AndroidDriver<WebElement>)BaseTest.mobileDriver.get()).findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().text(\"" + text + "\"))");
+    		((AndroidDriver<WebElement>)BaseTest.mobileDriver.get()).findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(new UiSelector().textContains(\"" + text + "\"))");
 	        LOGGER.logTestStep(extentTest, "INFO", "Swipe using text completed using Text:"+text, false, this.driver);
     	}catch(Exception e) {
     		e.printStackTrace();
 			BaseTest.utilObj.get().getAssertManager().sAssertException("Something went wrong in swipeUsingText. Text:"+text+". "+e.getMessage(), true, this.driver, true);
     	}
         return element;
+    }
+    
+       
+    public void swipeUsingElement(By by) {
+    	RemoteWebElement element = (RemoteWebElement)BaseTest.mobileDriver.get().findElement(by);
+    	String elementID = element.getId();
+    	HashMap<String, String> scrollObject = new HashMap<String, String>();
+    	scrollObject.put("element", elementID); // Only for ‘scroll in element’
+    	scrollObject.put("direction", "down");
+    	JavascriptExecutor js = (JavascriptExecutor)BaseTest.mobileDriver.get();
+    	js.executeScript("mobile:scroll", scrollObject);
     }
     
     public MobileElement swipeUsingID(String id) {
@@ -537,7 +592,7 @@ public class MobileActions {
         }
         try {
             new TouchAction((PerformsTouchActions) driver).press(pointOptionStart)
-                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(PRESS_TIME))).moveTo(pointOptionEnd).release()
+                    .moveTo(pointOptionEnd).release()
                     .perform();
             LOGGER.logTestStep(extentTest, "INFO", "swipe completed for direction:"+direction, false, this.driver);
             
@@ -606,7 +661,7 @@ public class MobileActions {
                     System.out.println(i);
                     new TouchAction((PerformsTouchActions) driver).press(pointOptionStart)
                             // a bit more reliable when we add small wait
-                            .waitAction(WaitOptions.waitOptions(Duration.ofMillis(PRESS_TIME))).moveTo(pointOptionEnd)
+                            .moveTo(pointOptionEnd)
                             .release().perform();
                     
                     LOGGER.logTestStep(extentTest, "INFO", "swipe element completed for direction:"+dir, false, this.driver);
@@ -639,5 +694,54 @@ public class MobileActions {
         }
         return elmText;
     }
+    
+    public void setImplicitWaitMinimum() {
+    	BaseTest.mobileDriver.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    }
+    public void setImplicitWaitMinimum(int timeInSec) {
+    	BaseTest.mobileDriver.get().manage().timeouts().implicitlyWait(timeInSec, TimeUnit.SECONDS);
+    }
+    public void setImplicitNormal() {
+    	BaseTest.mobileDriver.get().manage().timeouts().implicitlyWait(Long.parseLong(TestConfig.getInstance().getOBJWAITTIME()), TimeUnit.SECONDS);
+    }
+    
+    public void dismissUpdateWindow() {
+    	if(TestConfig.getInstance().getGooglePlayUpdateNotification().equalsIgnoreCase("true")) {
+	    	setImplicitWaitMinimum();
+	    	int updatesNotificationCnt = BaseTest.mobileDriver.get().findElements(By.xpath("//android.widget.ImageView[@content-desc='Dismiss update dialogue']")).size();
+	    	if(updatesNotificationCnt>0) {
+	    		click(By.xpath("//android.widget.ImageView[@content-desc='Dismiss update dialogue']"), " to dismiss Google Play Update");
+	    	}else {
+	    		System.out.println("seems not present Good Update Dialogue");
+	    	}
+	    	setImplicitNormal();
+    	}
+    }
+    
+    public void verticalSwipeByPercentages(double startPercentage, double endPercentage, double anchorPercentage) {
+        Dimension size = driver.manage().window().getSize();
+        int anchor = (int) (size.width * anchorPercentage);
+        int startPoint = (int) (size.height * startPercentage);
+        int endPoint = (int) (size.height * endPercentage);
+        new TouchAction((PerformsTouchActions) BaseTest.mobileDriver.get())
+            .press(point(anchor, startPoint))
+            .waitAction(waitOptions(ofMillis(1000)))
+            .moveTo(point(anchor, endPoint))
+            .release().perform();
+    }
+    public void swipeToBotton()
+	{
+		Dimension dim = driver.manage().window().getSize();
+		int height = dim.getHeight();
+		int width = dim.getWidth();
+		int x = width/2;
+		int top_y = (int)(height*0.80);
+		int bottom_y = (int)(height*0.20);
+		System.out.println("coordinates :" + x + "  "+ top_y + " "+ bottom_y);
+		TouchAction ts = new TouchAction((PerformsTouchActions) driver);
+		ts.press(PointOption.point(x, top_y))
+		  .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
+		  .moveTo(PointOption.point(top_y, bottom_y)).release().perform();
+	}
 
 }

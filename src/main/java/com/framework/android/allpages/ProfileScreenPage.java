@@ -25,6 +25,7 @@ public class ProfileScreenPage {
 	public By txt_socialMedialinksHeadinginMorePopup = By.xpath("(//android.widget.TextView)[7]");
 	public By btn_closeinMorePopup = By.xpath("(//android.widget.TextView)[9]");
 	public String tab_people = "//android.widget.LinearLayout[@content-desc='###']";
+	public String tab = "//android.widget.LinearLayout[@content-desc='###']";
 	public By btn_arrowInPeopleTab = By.id("com.koo.app:id/header_icon_right");
 	public String btn_arrowForSpecificSectionUnderPeopleTa = "//android.widget.TextView[@text='###']//following-sibling::android.widget.ImageView[@resource-id='com.koo.app:id/header_icon_right']";
 	public By btn_publicProfile = By.xpath("(//android.widget.TextView)[3]");
@@ -76,7 +77,10 @@ public class ProfileScreenPage {
 	public By noKoos = By.id("com.koo.app:id/tv_title");
 	public By commentsKoos = By.xpath("//android.widget.ImageView[@content-desc='COMMENT_KOOS']");
 	public By mentionsKoos = By.xpath("//android.widget.ImageView[@content-desc='MENTIONS']");
-	
+	public By kooFabPlus = By.id("com.koo.app:id/circular_fab_plus");
+	public By list_heartButton = By.id("com.koo.app:id/favourite_button");
+	public By txt_explanatory = By.xpath("//*[@resource-id='com.koo.app:id/favourite_Accounts_Info_ComposeView']/android.view.View/android.view.View/android.widget.TextView[2]");
+		
 	
 	public String img_profilePic_Name = "";
 	public String txt_profileName_Name = "";
@@ -150,7 +154,7 @@ public class ProfileScreenPage {
 	public String noKoos_Name = "";
 	public String commentsKoos_Name = "";
 	public String mentionsKoos_Name = "";
-	
+	public String txt_explanatory_name = "Favorite accounts";
 	
 			
 }

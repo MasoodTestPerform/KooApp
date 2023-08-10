@@ -8,7 +8,7 @@ public class HashTagScreenPage {
 	public String hasTag_PopUp = "//android.widget.TextView[contains(@text,'#')]";
 	public By search_icon = By.id("com.koo.app:id/lottie_search");
 	public By back_button = By.xpath("//android.widget.ImageView[@content-desc=\"Back Button\"]");
-	public By searchBar_field = By.id("com.koo.app:id/search_edit_text");
+	public By searchBar_field = By.id("com.koo.app:id/search_edit_tex");
 	public By viewMore_link = By.xpath("//android.widget.TextView[contains(@text,'View more')]");
 	public By hashtagExplore_icon = By.id("com.koo.app:id/lottie_explore");
 	public String hashtag_screen_tab = "//android.widget.TextView[@text='###']";

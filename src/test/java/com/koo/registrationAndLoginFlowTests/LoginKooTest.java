@@ -21,9 +21,11 @@ public class LoginKooTest extends BaseTest {
     	    loginKooPage.loginValidUser("English",TestConfig.getInstance().getUserName());
     	    BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO", "<b><----Test case execution completed for Test:Successfully executed - TC_006 - Verify user is able to login with phone number ------><b>", true, BaseTest.mobileDriver.get());
     	    BaseTest.afterMethodDriver.set(BaseTest.mobileDriver.get());
+    	    BaseTest.sAssert.get().assertAll();
     	}catch(Exception e) {
 			BaseTest.utilObj.get().getAssertManager().sAssertException("Something went wrong in verifyUserLoginWithOTP. Exception:"+e.getMessage(), true, BaseTest.mobileDriver.get());
 			BaseTest.afterMethodDriver.set(BaseTest.mobileDriver.get());
+			BaseTest.sAssert.get().assertAll();
 		}
     }
 }

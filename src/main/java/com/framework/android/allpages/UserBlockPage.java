@@ -1,13 +1,8 @@
 package com.framework.android.allpages;
 
 import org.openqa.selenium.By;
-import org.testng.Assert;
-
-import com.koo.android.utils.MobileActions;
-import com.koo.framework.BaseTest;
 
 public class UserBlockPage {
-	MobileActions mobileActions = BaseTest.utilObj.get().getMobileActions();
 	
 	public String viewMore_options = "//android.widget.TextView[not(contains(@text,'###')) and @resource-id='com.koo.app:id/channel_name_textview']//..//android.widget.ImageView[@resource-id='com.koo.app:id/iv_options_more']";
 	public By blockUnblockButton = By.id("com.koo.app:id/itemblockUser");
@@ -35,7 +30,11 @@ public class UserBlockPage {
 	public String postedCommentWithSpecificUser = "(//android.widget.TextView[@text='###']//..//..)[1]//following-sibling::android.view.ViewGroup//android.widget.TextView[@resource-id='com.koo.app:id/topic_title_textview']";
 	public By multipleBlockedUsers = By.xpath("//android.widget.TextView[@resource-id='com.koo.app:id/unblock']");
 	public By deleteAccount = By.id("com.koo.app:id/delete_account_layout");
-	
+	public By urlShare = By.id("com.koo.app:id/share_url");
+	public By editProfile = By.id("com.koo.app:id/item_edit_profile");
+	public By scheduledAndDrafts = By.id("com.koo.app:id/item_scheduled_posts");
+	public By detailedStatistics = By.id("com.koo.app:id/detailed_statistics");
+	public By manageTopics = By.id("com.koo.app:id/manage_topic");
 	
 	public String viewMore_options_Name = "";
 	public String blockUnblockButton_Name = "";
@@ -45,8 +44,8 @@ public class UserBlockPage {
 	public String okButton_Name = "";
 	public String searchedUserResult_Name = "";
 	public String searchedUserName_Name = "";
-	public String threeDots_Name = "Ellipses(three dots)";
-	public String closeButton_Name = "";
+	public String threeDots_Name = "three dots";
+	public String closeButton_Name = "Close button";
 	public String backButton_Name = "Back button";
 	public String homeButton_Name = "Home button";
 	public String settings_Name = "Settings button";
@@ -63,15 +62,10 @@ public class UserBlockPage {
 	public String postedCommentWithSpecificUser_Name = "";
 	public String multipleBlockedUsers_Name = "";
 	public String deleteAccount_Name = "";
+	public String urlShare_Name = "Share button";
+	public String editProfile_Name = "Edit Profile button";
+	public String scheduledAndDrafts_Name = "Scheduled & Drafts button";
+	public String detailedStatistics_Name = "Detailed Statistics button";
+	public String manageTopics_Name = "Manage Topics button";
 	
-	/**
-     * This method is to click on three dots/ellipses from profile of user
-     * Jagath
-     * @throws IOException
-     */
-    public void clickOnThreeDots() {
-        mobileActions.waitForVisible(threeDots);
-        Assert.assertTrue(mobileActions.isDisplayed(threeDots, threeDots_Name));
-        mobileActions.click(threeDots,threeDots_Name);
-    }
 }

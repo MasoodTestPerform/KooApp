@@ -9,12 +9,12 @@ import com.koo.framework.BaseTest;
 
 public class LanguagesSelectionPage {   
     
-    /**
+	/**
      * THis method is for verification of all available languages
      *
      * @throws FilloException
      */
-    public void verifyAvailableLanguagesInEnglishLanguage() {
+    public void verifyAvailableLanguages() {
     	MobileActions mobileActions = BaseTest.utilObj.get().getMobileActions();
     	HomePage homePage = new HomePage();
         // Verify Select Languages heading
@@ -27,14 +27,26 @@ public class LanguagesSelectionPage {
 
         // Verify all available languages in english language keyword
         for (Map.Entry<String, String> entry : availableLanguages.entrySet()) {
-           boolean backButtonSize = BaseTest.mobileDriver.get().findElements(homePage.backButton_LanguageChange).size() > 0;
-            BaseTest.LOGGER.get().logTestStep(BaseTest.extentTest.get(), "INFO", "Get size of back button and size is = "+backButtonSize, false, BaseTest.mobileDriver.get());
+        	BaseTest.utilObj.get().getMobileActions().setImplicitWaitMinimum();
+        	boolean backButtonSize = BaseTest.mobileDriver.get().findElements(homePage.backButton_LanguageChange).size() > 0;
+        	BaseTest.utilObj.get().getMobileActions().setImplicitNormal();
+        	
+        	BaseTest.LOGGER.get().logTestStep(BaseTest.extentTest.get(), "INFO", "Get size of back button and size is = "+backButtonSize, false, BaseTest.mobileDriver.get());
             if (backButtonSize) {
                 mobileActions.click(homePage.backButton_LanguageChange, homePage.backButton_LanguageChange_Name);
             }
             mobileActions.swipeUsingText(entry.getKey());
             boolean languageFlag = mobileActions.isDisplayed(mobileActions.returnByBasedOnPageNameAndObjectName(homePage.englishTyped_language,"xpath", entry.getKey()), entry.getKey());
-            BaseTest.utilObj.get().getAssertManager().sAssertEquals(languageFlag, true, "Verification of available language which is displaying in english language = " + entry.getKey(), true, BaseTest.mobileDriver.get());            
+           
+            BaseTest.utilObj.get().getAssertManager().sAssertEquals(languageFlag, true, "Verification of available language which is displaying in english language in middle = " + entry.getKey(), true, BaseTest.mobileDriver.get());            
+            
+            
+            BaseTest.utilObj.get().getAssertManager().sAssertEquals(TextView.get(entry.getValue(), 1).isDisplayed(),true,
+                    "Verify available language which is displaying in same language typed keyword = " + entry.getValue() + " in left side", true, BaseTest.mobileDriver.get());
+            
+            BaseTest.utilObj.get().getAssertManager().sAssertEquals(mobileActions.isDisplayed(mobileActions.returnByBasedOnPageNameAndObjectName(homePage.checkBoxes_language,"xpath",entry.getKey()),entry.getKey()),
+                    true,"Verify checkboxes for available language = " + entry.getKey() + " in right side", true, BaseTest.mobileDriver.get());
+        
         }
     }
 
