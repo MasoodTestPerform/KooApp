@@ -30,7 +30,6 @@ public class SearchTest extends BaseTest {
 			searchPage.enterValueInSearchBar("Yogi Adityanath");
 			searchPage.verifyAndClickLeftSearchIcon();
 			searchPage.verifyAndClickSearchAllResultsLink();
-			mobileActions.swipeUp(2);
 			BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO",
 					"<b><----Test case execution completed for Test:Successfully verified Options Search Bar is Taking inputs & see appropriate search results ------><b>",
 					true, BaseTest.mobileDriver.get());
@@ -121,10 +120,10 @@ public class SearchTest extends BaseTest {
 			searchPage.verifyAndClickSearchAllResultsLink();
 			searchPage.verifyTabsInSearchResult();
 			searchPage.verifyallThreeTypesResults();
-			searchPage.clickOnTab(searchPage.tab_All, searchPage.tab_All_Name);
-			searchPage.clickOnTab(searchPage.tab_People, searchPage.tab_People_Name);
-			searchPage.clickOnTab(searchPage.tab_HashTags, searchPage.tab_HashTags_Name);
-			searchPage.clickOnTab(searchPage.tab_Koos, searchPage.tab_Koos_Name);
+			searchPage.verifyAndClickOnTab(searchPage.tab_All, searchPage.tab_All_Name);
+			searchPage.verifyAndClickOnTab(searchPage.tab_People, searchPage.tab_People_Name);
+			searchPage.verifyAndClickOnTab(searchPage.tab_HashTags, searchPage.tab_HashTags_Name);
+			searchPage.verifyAndClickOnTab(searchPage.tab_Koos, searchPage.tab_Koos_Name);
 			BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO",
 					"<b><----Test case execution completed for Test:Successfully verified Tabs Search Results ------><b>",
 					true, BaseTest.mobileDriver.get());

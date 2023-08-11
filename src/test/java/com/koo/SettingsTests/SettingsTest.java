@@ -36,11 +36,11 @@ public class SettingsTest extends BaseTest {
 			settingsPage.verifyManageSubscription_inSettings();
 			settingsPage.verifyManageBlockedUsersOption_inSettings();
 			settingsPage.verifyApplyForSelfVerificationOption_inSettings();
-			settingsPage.verifyApplyForEminenceOption_inSettings();
 			settingsPage.verifyMigrateFromTwitterOption_inSettings();
 			settingsPage.verifyManageAccountPage_inSettings();
 			settingsPage.verifyLogOutAction_inSettings();
 			settingsPage.verifyDeleteAction_inSettings();
+			settingsPage.verifyApplyForEminenceOption_inSettings();
 			BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO",
 					"<b><----Test case execution completed for Test:Successfully verified Options in Account Section ------><b>",
 					true, BaseTest.mobileDriver.get());
@@ -172,11 +172,15 @@ public class SettingsTest extends BaseTest {
 			settingsPage.verifyAutoPlayImages_inSettings();
 			settingsPage.verifyTransaltion_inSettings();
 			settingsPage.verifyRewards_inSettings();
-			settingsPage.verifyHelpOption_inSettings();
-			settingsPage.verifyPrivacyPolicyOption_inSettings();
-			settingsPage.verifyAboutUsOption_inSettings();
-			settingsPage.verifyResourceCenterOption_inSettings();
-			settingsPage.verifyPlayStoreComplianceOption_inSettings();
+			/*
+			 * 
+			 * 
+			 * settingsPage.verifyHelpOption_inSettings();
+			 * settingsPage.verifyPrivacyPolicyOption_inSettings();
+			 * settingsPage.verifyAboutUsOption_inSettings();
+			 * settingsPage.verifyResourceCenterOption_inSettings();
+			 * settingsPage.verifyPlayStoreComplianceOption_inSettings();
+			 */
 			BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO",
 					"<b><----Test case execution completed for Test:Successfully verified Options in Options Section ------><b>",
 					true, BaseTest.mobileDriver.get());

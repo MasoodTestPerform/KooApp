@@ -153,6 +153,11 @@ public class SettingsPage {
 	public String googlePageForEminenceText_Name = "Chrome/Browser Page for do Eminence";
 	public By chromeCloseButton = By.id("com.android.chrome:id/close_button");
 	public String chromeCloseButton_Name = "Close button from browser";
+	
+	public By action_Backward_Button = By.xpath("//android.widget.ImageButton[@content-desc=\"Back\"]");
+	public String action_Backward_Button_Name = "Back button from chrome/web pages";
+	
+	
 	// Migrate from Twitter
 	public By migrateFromTwitter_Settings = By.id("com.koo.app:id/migrate_from_twitter_text");
 	public String migrateFromTwitter_Settings_Name = "Migrate from Twitter Option in Account Section";
@@ -680,9 +685,9 @@ public class SettingsPage {
 			mobileActions.waitForVisible(applyForEminence_Settings);
 			Assert.assertTrue(mobileActions.isDisplayed(applyForEminence_Settings, applyForEminence_Settings_Name));
 			mobileActions.click(applyForEminence_Settings, applyForEminence_Settings_Name);
-			mobileActions.waitForVisible(closeButton);
-			if (mobileActions.isDisplayed(closeButton, closeButton_Name)) {
-				mobileActions.click(closeButton, closeButton_Name);
+			mobileActions.waitForVisible(action_Backward_Button);
+			if (mobileActions.isDisplayed(action_Backward_Button, action_Backward_Button_Name)) {
+				//mobileActions.click(action_Backward_Button, action_Backward_Button_Name);
 				BaseTest.LOGGER.get()
 						.logInfo("Chrome/Browser Page for " + applyForEminence_Settings_Name + " Displayed");
 				BaseTest.utilObj.get().getAssertManager().sAssertTrue(true,
