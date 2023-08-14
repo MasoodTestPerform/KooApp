@@ -1,6 +1,12 @@
 package com.framework.android.allpages;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import com.koo.android.utils.MobileActions;
+import com.koo.framework.BaseTest;
 
 import com.koo.android.utils.CommonHelper;
 import com.koo.android.utils.MobileActions;
@@ -13,23 +19,44 @@ import com.koo.utils.UIUtils;
 
 public class SettingsPage {
 
-	MobileActions mobileActions = BaseTest.utilObj.get().getMobileActions();
-	PeopleTabPage peopleTabPage = new PeopleTabPage();
-	HomePage homePage = new HomePage();
-	CommonHelper commonHelperPage = new CommonHelper();
-	UIUtils uiUtilsPage = new UIUtils();
-	SoftAssert softAssert = new SoftAssert();
-	ProfileScreenPage profileScreenPage = new ProfileScreenPage();
-	KooCardPage kooCardPage = new KooCardPage();
-	UserBlockPage userBlockPage = new UserBlockPage();
-	KooRewardsProgramPage kooRewardsProgramPage = new KooRewardsProgramPage();
-	ManageTopicsPage manageTopicsPage = new ManageTopicsPage();
+//	MobileActions mobileActions = BaseTest.utilObj.get().getMobileActions();
+//	PeopleTabPage peopleTabPage = new PeopleTabPage();
+//	HomePage homePage = new HomePage();
+//	CommonHelper commonHelperPage = new CommonHelper();
+//	UIUtils uiUtilsPage = new UIUtils();
+//	SoftAssert softAssert = new SoftAssert();
+//	ProfileScreenPage profileScreenPage = new ProfileScreenPage();
+//	KooCardPage kooCardPage = new KooCardPage();
+//	UserBlockPage userBlockPage = new UserBlockPage();
+//	KooRewardsProgramPage kooRewardsProgramPage = new KooRewardsProgramPage();
+//	ManageTopicsPage manageTopicsPage = new ManageTopicsPage();
 
+		
+	MobileActions mobileActions = null;
+	KooCreationPage kooCreationPage = null;
+	ProfileScreenPage profileScreenPage = null;
+	EditProfilePage editProfilePage = null;
+	UserBlockPage userBlockPage = null;
+	KooCardPage kooCardPage = null;
+	KooRewardsProgramPage kooRewardsProgramPage = null;
+	HomePage homePage = null;
+	SoftAssert softAssert = null;
+
+	public SettingsPage() {
+
+		this.mobileActions = BaseTest.utilObj.get().getMobileActions();
+		this.userBlockPage = new UserBlockPage();
+		this.profileScreenPage = new ProfileScreenPage();
+		this.editProfilePage = new EditProfilePage();
+		this.kooCardPage = new KooCardPage();
+		this.kooCreationPage = new KooCreationPage();
+		this.kooRewardsProgramPage = new KooRewardsProgramPage();
+		this.softAssert = new SoftAssert();
+	}
+	
 	String actualText;
 	String expectedText;
-
-	// com.koo.app:id/settings
-	public String settingsSectionHeading = ("//android.widget.TextView[@text=\\\"###\\\"]");
+	public String settingsSectionHeading = "//android.widget.TextView[@text=\\\"###\\\"]";
 	public By continueBtnForBrowserPermission = By.id("com.android.chrome:id/positive_button");
 	public By editProfileHeading = By.id("com.koo.app:id/toolbar_heading_textview");
 	public By shareKooPopUpHeading = By.id("miui:id/alertTitle");
@@ -48,9 +75,40 @@ public class SettingsPage {
 	public String switchButton = "//android.widget.TextView[@text='###']/../..//android.widget.Switch";
 	public By threeDots = By.id("com.koo.app:id/layoutOptionMenu");
 	public By logoutBtn = By.id("com.koo.app:id/tvFollow");
-	public String logoutBtn_Name = "Logout Button";
+	
 
-	public String settingsSectionHeading_Name = "Heading";
+	public By txt_heading = By.id("com.koo.app:id/toolbar_heading_textview");
+	public By txt_email = By.id("com.koo.app:id/tv_mail");
+	public By txt_mobile = By.id("com.koo.app:id/tv_mobile_number");
+	public By lnk_editProfile = By.xpath("//*[@text='Edit Profile']");
+	public By lnk_accInfo = By.xpath("//*[@text='Account Information']");
+	public By lnk_language = By.xpath("//*[@text='Language']");
+	public By lnk_theme = By.xpath("//*[@text='Theme']");
+	public By lnk_shareYourKooProfile = By.xpath("//*[@text='Share your Koo profile']");
+	public By lnk_superLikes = By.xpath("//*[@text='Super Likes']");
+	public By lnk_manageSubscriptions = By.xpath("//*[@text='Manage Subscriptions']");
+	public By lnk_manageBlockedUsers = By.xpath("//*[@text='Manage Blocked Users']");
+	public By lnk_applySelfVerification = By.xpath("//*[@text='Apply for Self Verification']");
+	public By lnk_applyEminence = By.xpath("//*[@text='Apply for Eminence']");
+	public By lnk_migrateTwitter= By.xpath("//*[@text='Migrate From Twitter']");
+	public By lnk_addAccount = By.xpath("//*[@text='Add Account']");
+	public By lnk_manageAccount = By.xpath("//*[@text='Manage Account']");
+	public By lnk_logout = By.xpath("//*[@text='Logout']");
+	public By lnk_delete = By.xpath("//*[@text='Delete']");
+	public By lnk_notifications = By.xpath("//*[@text='Notifications']");
+	public By lnk_whatsappUpdates = By.xpath("//*[@text='WhatsApp Updates']");
+	public By lnk_videoAutoplay = By.xpath("//*[@text='Video autoplay']");
+	public By lnk_autoplayImages = By.xpath("//*[@text='Auto play images']");
+	public By lnk_translation = By.xpath("//*[@text='Translation']");
+	public By lnk_kooRewards = By.xpath("//*[@text='Koo Rewards']");
+	public By lnk_help = By.xpath("//*[@text='Help']");
+	public By lnk_privacyPolicy = By.xpath("//*[@text='Privacy Policy']");
+	public By lnk_aboutUs = By.xpath("//*[@text='About Us']");
+	public By lnk_resourceCenter = By.xpath("//*[@text='Resource Center']");
+	public By lnk_playstoreCompliance = By.xpath("//*[@text='PlayStore Compliance']");
+	public By dd_translation = By.id("com.koo.app:id/translationText");
+	
+
 	public String continueBtnForBrowserPermission_Name = "";
 	public String editProfileHeading_Name = "";
 	public String shareKooPopUpHeading_Name = "";
@@ -273,6 +331,10 @@ public class SettingsPage {
 	// Chrome Title
 	public By chromePageTitle = By.id("com.android.chrome:id/title");
 	public String chromePageTitle_Name = "Redirected to Chrome Page";
+	
+	public String logoutBtn_Name = "Logout Button";
+	public String settingsSectionHeading_Name = "Heading";
+	public String accountInfo_name = "Account Information";
 
 	/**
 	 * This method is to click on Profile button
@@ -1354,4 +1416,5 @@ public class SettingsPage {
 		mobileActions.click(threeDots, threeDots_Name);
 	}
 
+	
 }

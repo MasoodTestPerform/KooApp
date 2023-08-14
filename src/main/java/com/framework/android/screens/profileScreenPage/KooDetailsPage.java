@@ -8,7 +8,6 @@ import com.framework.android.allpages.KooCardPage;
 import com.framework.android.allpages.KooCreationPage;
 import com.framework.android.allpages.KooRewardsProgramPage;
 import com.framework.android.allpages.ProfileScreenPage;
-import com.framework.android.allpages.SettingsPage;
 import com.framework.android.allpages.UserBlockPage;
 import com.koo.android.utils.MobileActions;
 import com.koo.framework.BaseTest;
@@ -16,7 +15,7 @@ import com.koo.framework.BaseTest;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-public class InformationPage {
+public class KooDetailsPage {
 	MobileActions mobileActions = null;
 	KooCreationPage kooCreationPage = null;
 	ProfileScreenPage profileScreenPage = null;
@@ -24,9 +23,8 @@ public class InformationPage {
 	UserBlockPage userBlockPage = null;
 	KooCardPage kooCardPage = null;
 	KooRewardsProgramPage kooRewardsProgramPage = null;
-	SettingsPage settingsPage = null;
 
-	public InformationPage() {
+	public KooDetailsPage() {
 
 		this.mobileActions = BaseTest.utilObj.get().getMobileActions();
 		this.userBlockPage = new UserBlockPage();
@@ -35,7 +33,6 @@ public class InformationPage {
 		this.kooCardPage = new KooCardPage();
 		this.kooCreationPage = new KooCreationPage();
 		this.kooRewardsProgramPage = new KooRewardsProgramPage();
-		this.settingsPage = new SettingsPage();
 	}
 
 	public void profilePhotos(String language) throws IOException, InterruptedException {
@@ -179,39 +176,4 @@ public class InformationPage {
 			e.printStackTrace();
 		}
 	}
-
-	public void accountInfoDetails(String language) {
-		BaseTest.LOGGER.get().logTestStep(BaseTest.extentTest.get(), "INFO", "Going to use Language:" + language, false,
-				BaseTest.mobileDriver.get());
-		try {
-			mobileActions.click(kooCreationPage.btn_profile, "profile button");
-			mobileActions.click(userBlockPage.threeDots, "three dots button");
-			mobileActions.click(userBlockPage.settings, "Settings link");
-			if (mobileActions.isElmPresent(profileScreenPage.txt_heading)) {
-				BaseTest.utilObj.get().getAssertManager().sAssertEquals(
-						mobileActions.getText(profileScreenPage.txt_heading, profileScreenPage.settings_hdrname, false),
-						profileScreenPage.settings_hdrname, "Settings Header", false, BaseTest.mobileDriver.get(),
-						true);
-
-				mobileActions.click(settingsPage.lnk_accInfo, "Account Information link");
-				if (mobileActions.isElmPresent(settingsPage.txt_heading)) {
-					BaseTest.utilObj.get().getAssertManager().sAssertEquals(
-							mobileActions.getText(settingsPage.txt_heading, settingsPage.accountInfo_name, false),
-							settingsPage.accountInfo_name, "Account Info Header", false, BaseTest.mobileDriver.get(),
-							true);
-
-					mobileActions.isDisplayed(settingsPage.txt_email, "Account Information heading");
-					mobileActions.isDisplayed(settingsPage.txt_mobile, "Account Information heading");
-				}
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			BaseTest.LOGGER.get().logWithScreenshot("INFO", "Screenshot for heart button clicked",
-					BaseTest.mobileDriver.get());
-			BaseTest.utilObj.get().getAssertManager().sAssertTrue(false, "Not able to perform Pinned and Unpinned koos",
-					true, BaseTest.mobileDriver.get(), true);
-		}
-	}
-
 }

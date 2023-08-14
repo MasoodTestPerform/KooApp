@@ -214,6 +214,15 @@ public class SearchPage {
 	}
 
 	/**
+	 * This method is to verify data for three types of Results in All tab
+	 */
+	public void verifyallThreeTypesResults() {
+		verifyHashTags();
+		verifyProfileResults();
+		verifyKoos();
+	}
+	
+	/**
 	 * This method is to verify and click on Tab
 	 */
 	public void verifyAndClickOnTab(String expectedTabName) {
@@ -221,14 +230,14 @@ public class SearchPage {
 		mobileActions.getText(hashTagResults, hashTagResults_Name, true);
 		Assert.assertTrue(mobileActions.isDisplayed(hashTagResults, hashTagResults_Name));
 	}
-
+	
 	/**
-	 * This method is to verify data for three types of Results in All tab
+	 * This method is to verify and click on Tab
 	 */
-	public void verifyallThreeTypesResults() {
-		verifyHashTags();
-		verifyProfileResults();
-		verifyKoos();
+	public void verifyAndClickOnTab(By by, String expectedTabName) {
+		mobileActions.waitForVisible(by);
+		mobileActions.getText(by, expectedTabName, true);
+		Assert.assertTrue(mobileActions.isDisplayed(by, expectedTabName));
 	}
 
 }
