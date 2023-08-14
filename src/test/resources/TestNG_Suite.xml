@@ -15,9 +15,8 @@
 			<class name="com.koo.OnBoardingFlowTests.OnBoardingFlowTest" />
 			<class name="com.koo.SettingsTests.SettingsTest" />
 			<class name="com.koo.SearchTests.SearchTest" />
+			<class name="com.framework.android.testcases.kooTests.KooCreationTest" />
 
 		</classes>
-	</test> <!--
-	Test -->
-</suite> <!--
-Suite -->
+    </test> <!-- Test -->
+</suite> <!-- Suite -->

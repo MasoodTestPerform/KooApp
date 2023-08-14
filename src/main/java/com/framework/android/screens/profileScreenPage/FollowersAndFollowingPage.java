@@ -170,7 +170,6 @@ public class FollowersAndFollowingPage {
 					if (i == num) {
 						By heartButton = By
 								.xpath("(//*[@resource-id='com.koo.app:id/favourite_button'])[" + (i - 1) + "]");
-//					String channelName = mobileActions.getText(heartButton, "Channel Name", true);
 						mobileActions.click(heartButton, "Favourite button");
 						BaseTest.LOGGER.get().logWithScreenshot("INFO", "Screenshot for heart button clicked",
 								BaseTest.mobileDriver.get());
@@ -187,6 +186,11 @@ public class FollowersAndFollowingPage {
 						true, BaseTest.mobileDriver.get(), true);
 			}
 			mobileActions.click(editProfilePage.btn_backArrow, "back button");
+			
+//			mobileActions.click(profileScreenPage.btn_superLikes, "super likes button");
+//			mobileActions.isDisplayed(profileScreenPage.txt_superLikesHeading, "super likes heading");
+//			String followersText = mobileActions.getText(profileScreenPage.txt_followersheading,
+//					profileScreenPage.txt_followersheading_Name, true);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -197,5 +201,29 @@ public class FollowersAndFollowingPage {
 					true, BaseTest.mobileDriver.get(), true);
 		}
 	}
+	public void verifyPagination(String language) {
+		BaseTest.LOGGER.get().logTestStep(BaseTest.extentTest.get(), "INFO", "Going to use Language:" + language, false,
+				BaseTest.mobileDriver.get());
+		try {
+			//Followers 
+			mobileActions.click(kooCreationPage.btn_profile, "profile button");
+			mobileActions.click(profileScreenPage.btn_followers, "followers button");
+			mobileActions.isDisplayed(profileScreenPage.txt_followersheading, "followers heading");
+			mobileActions.click(editProfilePage.btn_backArrow, "back button");
+			mobileActions.click(profileScreenPage.btn_following, "following button");
+			mobileActions.isDisplayed(profileScreenPage.txt_followingheading, "following heading");						
+			mobileActions.click(editProfilePage.btn_backArrow, "back button");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			BaseTest.LOGGER.get().logError("Not able to perform Pinned and Unpinned koos");
+			BaseTest.LOGGER.get().logWithScreenshot("INFO", "Screenshot for heart button clicked",
+					BaseTest.mobileDriver.get());
+			BaseTest.utilObj.get().getAssertManager().sAssertTrue(false, "Not able to perform Pinned and Unpinned koos",
+					true, BaseTest.mobileDriver.get(), true);
+		}
+	}
+
+
 
 }
