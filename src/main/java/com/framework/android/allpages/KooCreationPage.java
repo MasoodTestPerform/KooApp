@@ -101,6 +101,7 @@ public class KooCreationPage {
 	public By btn_capturePhoto = By.id("com.sec.android.app.camera:id/rl_shutterbutton");
 	public By btn_ok = By.id("com.sec.android.app.camera:id/done_button");
 	public By btn_retry = By.id("com.sec.android.app.camera:id/btn_preview_retry");
+	public By gallery_video = By.xpath("//android.view.View[@content-desc='media_grid']/android.view.View[1]");
 	
 	public String Chkbox_Select_Language_Name = ""; 
 	public String OTP_btn_Name = "";

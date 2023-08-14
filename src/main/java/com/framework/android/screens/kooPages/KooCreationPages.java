@@ -114,10 +114,10 @@ public class KooCreationPages {
 						mobileActions.click(kooCreationPage.btn_allowApp, "while using the app button");
 						mobileActions.click(kooCreationPage.btn_allow, "allow button");
 					}
-					mobileActions.click(kooCreationPage.btn_camera, "camera button");
-					mobileActions.click(kooCreationPage.btn_capturePhoto, "capture photo button");
-					mobileActions.click(kooCreationPage.btn_ok, "ok button");
-					mobileActions.click(mobileActions.returnByBasedOnPageNameAndObjectName(kooCreationPage.btn_post, "xpath", kooCreationPage.btn_post_Name), "kooCreationPage.btn_post_Name");
+					mobileActions.click(kooCreationPage.gallery_video, "choose video");
+					mobileActions.click(mobileActions.returnByBasedOnPageNameAndObjectName(
+							kooCreationPage.btn_post, "xpath", kooCreationPage.btn_post_Name), 
+							"kooCreationPage.btn_post_Name");
 					mobileActions.click(kooCreationPage.btn_no_multipleLang, "no button");
 					twoDotsWithDelete();
 				} else {
