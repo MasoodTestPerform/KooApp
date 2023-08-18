@@ -41,6 +41,10 @@ public class SettingsPage {
 	KooRewardsProgramPage kooRewardsProgramPage = null;
 	HomePage homePage = null;
 	SoftAssert softAssert = null;
+	PeopleTabPage peopleTabPage=null;
+	CommonHelper commonHelperPage = null;
+	UIUtils uiUtilsPage= null;
+	ManageTopicsPage manageTopicsPage = null;
 
 	public SettingsPage() {
 
@@ -52,6 +56,11 @@ public class SettingsPage {
 		this.kooCreationPage = new KooCreationPage();
 		this.kooRewardsProgramPage = new KooRewardsProgramPage();
 		this.softAssert = new SoftAssert();
+		this.homePage=new HomePage();
+		this.peopleTabPage=new PeopleTabPage();
+		this.commonHelperPage=new CommonHelper();
+		this.uiUtilsPage=new UIUtils();
+		this.manageTopicsPage = new ManageTopicsPage();
 	}
 	
 	String actualText;
@@ -747,9 +756,9 @@ public class SettingsPage {
 			mobileActions.waitForVisible(applyForEminence_Settings);
 			Assert.assertTrue(mobileActions.isDisplayed(applyForEminence_Settings, applyForEminence_Settings_Name));
 			mobileActions.click(applyForEminence_Settings, applyForEminence_Settings_Name);
-			mobileActions.waitForVisible(action_Backward_Button);
-			if (mobileActions.isDisplayed(action_Backward_Button, action_Backward_Button_Name)) {
-				//mobileActions.click(action_Backward_Button, action_Backward_Button_Name);
+			mobileActions.waitForVisible(closeButton);
+			if (mobileActions.isDisplayed(closeButton, closeButton_Name)) {
+				mobileActions.click(closeButton, closeButton_Name);
 				BaseTest.LOGGER.get()
 						.logInfo("Chrome/Browser Page for " + applyForEminence_Settings_Name + " Displayed");
 				BaseTest.utilObj.get().getAssertManager().sAssertTrue(true,

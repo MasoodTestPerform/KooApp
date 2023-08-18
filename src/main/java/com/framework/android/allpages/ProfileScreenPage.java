@@ -89,7 +89,7 @@ public class ProfileScreenPage {
 	public String img_profilePic_Name = "";
 	public String txt_profileName_Name = "";
 	public String btn_selfVerifyTag_Name = "";
-	public String btn_backInProfileScreen_Name = "";
+	public String btn_backInProfileScreen_Name = "Back Button in Prfoile Screen";
 	public String btn_threeDots_Name = "";
 	public String btn_addImages_Name = "";
 	public String btn_backInAddphotos_Name = "";
