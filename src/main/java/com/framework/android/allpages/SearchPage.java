@@ -220,6 +220,7 @@ public class SearchPage {
 	 * This method is to verify data for koo sub tab Results
 	 */
 	public void verifyKoos() {
+		mobileActions.swipeUpFindElement(30, kooResults);
 		mobileActions.waitForVisible(kooResults);
 		mobileActions.getText(kooResults, kooResults_Name, true);
 		Assert.assertTrue(mobileActions.isDisplayed(kooResults, kooResults_Name));
