@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 
 import com.koo.android.utils.MobileActions;
 import com.koo.framework.BaseTest;
-
+import com.koo.setup.TestConfig;
 import com.koo.android.utils.CommonHelper;
 import com.koo.android.utils.MobileActions;
 import org.testng.Assert;
@@ -31,7 +31,6 @@ public class SettingsPage {
 //	KooRewardsProgramPage kooRewardsProgramPage = new KooRewardsProgramPage();
 //	ManageTopicsPage manageTopicsPage = new ManageTopicsPage();
 
-		
 	MobileActions mobileActions = null;
 	KooCreationPage kooCreationPage = null;
 	ProfileScreenPage profileScreenPage = null;
@@ -41,9 +40,9 @@ public class SettingsPage {
 	KooRewardsProgramPage kooRewardsProgramPage = null;
 	HomePage homePage = null;
 	SoftAssert softAssert = null;
-	PeopleTabPage peopleTabPage=null;
+	PeopleTabPage peopleTabPage = null;
 	CommonHelper commonHelperPage = null;
-	UIUtils uiUtilsPage= null;
+	UIUtils uiUtilsPage = null;
 	ManageTopicsPage manageTopicsPage = null;
 
 	public SettingsPage() {
@@ -56,13 +55,13 @@ public class SettingsPage {
 		this.kooCreationPage = new KooCreationPage();
 		this.kooRewardsProgramPage = new KooRewardsProgramPage();
 		this.softAssert = new SoftAssert();
-		this.homePage=new HomePage();
-		this.peopleTabPage=new PeopleTabPage();
-		this.commonHelperPage=new CommonHelper();
-		this.uiUtilsPage=new UIUtils();
+		this.homePage = new HomePage();
+		this.peopleTabPage = new PeopleTabPage();
+		this.commonHelperPage = new CommonHelper();
+		this.uiUtilsPage = new UIUtils();
 		this.manageTopicsPage = new ManageTopicsPage();
 	}
-	
+
 	String actualText;
 	String expectedText;
 	public String settingsSectionHeading = "//android.widget.TextView[@text=\\\"###\\\"]";
@@ -84,7 +83,6 @@ public class SettingsPage {
 	public String switchButton = "//android.widget.TextView[@text='###']/../..//android.widget.Switch";
 	public By threeDots = By.id("com.koo.app:id/layoutOptionMenu");
 	public By logoutBtn = By.id("com.koo.app:id/tvFollow");
-	
 
 	public By txt_heading = By.id("com.koo.app:id/toolbar_heading_textview");
 	public By txt_email = By.id("com.koo.app:id/tv_mail");
@@ -99,7 +97,7 @@ public class SettingsPage {
 	public By lnk_manageBlockedUsers = By.xpath("//*[@text='Manage Blocked Users']");
 	public By lnk_applySelfVerification = By.xpath("//*[@text='Apply for Self Verification']");
 	public By lnk_applyEminence = By.xpath("//*[@text='Apply for Eminence']");
-	public By lnk_migrateTwitter= By.xpath("//*[@text='Migrate From Twitter']");
+	public By lnk_migrateTwitter = By.xpath("//*[@text='Migrate From Twitter']");
 	public By lnk_addAccount = By.xpath("//*[@text='Add Account']");
 	public By lnk_manageAccount = By.xpath("//*[@text='Manage Account']");
 	public By lnk_logout = By.xpath("//*[@text='Logout']");
@@ -116,7 +114,6 @@ public class SettingsPage {
 	public By lnk_resourceCenter = By.xpath("//*[@text='Resource Center']");
 	public By lnk_playstoreCompliance = By.xpath("//*[@text='PlayStore Compliance']");
 	public By dd_translation = By.id("com.koo.app:id/translationText");
-	
 
 	public String continueBtnForBrowserPermission_Name = "";
 	public String editProfileHeading_Name = "";
@@ -220,11 +217,10 @@ public class SettingsPage {
 	public String googlePageForEminenceText_Name = "Chrome/Browser Page for do Eminence";
 	public By chromeCloseButton = By.id("com.android.chrome:id/close_button");
 	public String chromeCloseButton_Name = "Close button from browser";
-	
+
 	public By action_Backward_Button = By.xpath("//android.widget.ImageButton[@content-desc=\"Back\"]");
 	public String action_Backward_Button_Name = "Back button from chrome/web pages";
-	
-	
+
 	// Migrate from Twitter
 	public By migrateFromTwitter_Settings = By.id("com.koo.app:id/migrate_from_twitter_text");
 	public String migrateFromTwitter_Settings_Name = "Migrate from Twitter Option in Account Section";
@@ -340,10 +336,14 @@ public class SettingsPage {
 	// Chrome Title
 	public By chromePageTitle = By.id("com.android.chrome:id/title");
 	public String chromePageTitle_Name = "Redirected to Chrome Page";
-	
+
 	public String logoutBtn_Name = "Logout Button";
 	public String settingsSectionHeading_Name = "Heading";
 	public String accountInfo_name = "Account Information";
+
+	// Setting Button after Child account added
+	public By settingOfChildAccount = By.id("com.koo.app:id/appCompatTextView3");
+	public String settingOfChildAccount_Name = "Settings Button after adding Child Account";
 
 	/**
 	 * This method is to click on Profile button
@@ -395,10 +395,31 @@ public class SettingsPage {
 	public SettingsPage clickSettingsButton() {
 		try {
 			mobileActions.waitForVisible(userBlockPage.settings);
+			mobileActions.isDisplayed(userBlockPage.settings, userBlockPage.settings_Name);
 			mobileActions.click(userBlockPage.settings, userBlockPage.settings_Name);
 		} catch (Exception e) {
 			e.printStackTrace();
 			BaseTest.LOGGER.get().logError(userBlockPage.settings_Name + " Validation Failed");
+			BaseTest.utilObj.get().getAssertManager().sAssertTrue(false,
+					userBlockPage.settings_Name + " Validation Failed", true, BaseTest.mobileDriver.get(), true);
+		}
+		return this;
+	}
+
+	/**
+	 * This method is to click on settings button of Adding child account
+	 *
+	 * @return
+	 * @throws IOException
+	 */
+	public SettingsPage clickSettingsButtonChildAccount() {
+		try {
+			mobileActions.waitForVisible(settingOfChildAccount);
+			mobileActions.isDisplayed(settingOfChildAccount, settingOfChildAccount_Name);
+			mobileActions.click(settingOfChildAccount, settingOfChildAccount_Name);
+		} catch (Exception e) {
+			e.printStackTrace();
+			BaseTest.LOGGER.get().logError(settingOfChildAccount_Name + " Validation Failed");
 			BaseTest.utilObj.get().getAssertManager().sAssertTrue(false,
 					userBlockPage.settings_Name + " Validation Failed", true, BaseTest.mobileDriver.get(), true);
 		}
@@ -944,6 +965,57 @@ public class SettingsPage {
 	}
 
 	/**
+	 * This method is to do Logout
+	 *
+	 */
+
+	public SettingsPage doLogout() {
+		mobileActions.waitForVisible(logout_Settings);
+		mobileActions.isDisplayed(logout_Settings, logout_Settings_Name);
+		mobileActions.click(logout_Settings, logout_Settings_Name);
+		return this;
+	}
+
+	/**
+	 * This method is to verify Logout Popup
+	 *
+	 */
+	public SettingsPage verifyLogoutPopupAndClick() {
+		mobileActions.isDisplayed(logoutPopupMessageText, logoutPopupMessageText_Name);
+		String actualPopupText = mobileActions.getText(logoutPopupMessageText, logoutPopupMessageText_Name, true).trim();
+		BaseTest.utilObj.get().getAssertManager().sAssertEquals(actualPopupText, expectedText, "Both names are matched",
+				true, BaseTest.mobileDriver.get(), true);
+		mobileActions.isElmPresent(logoutPopupText);
+		mobileActions.click(logoutPopupText, logoutPopupText_Name);
+		mobileActions.getText(homePage.select_languages, homePage.select_languages_Name, true);
+		mobileActions.isDisplayed(homePage.profile_lnk, homePage.profile_lnk_Name);
+		return this;
+	}
+
+	/**
+	 * This method is to do Logout
+	 *
+	 */
+	public SettingsPage doAddAccount() {
+		mobileActions.waitForVisible(addAccount_Settings);
+		mobileActions.isDisplayed(addAccount_Settings, addAccount_Settings_Name);
+		mobileActions.click(addAccount_Settings, addAccount_Settings_Name);
+		// do login with child number
+		return this;
+	}
+
+	public SettingsPage doDelete() {
+		mobileActions.waitForVisible(delete_Settings);
+		mobileActions.isDisplayed(delete_Settings, delete_Settings_Name);
+		mobileActions.click(delete_Settings, delete_Settings_Name);
+		mobileActions.isDisplayed(deletePopupMessageText, deletePopupMessageText_Name);
+		String afterText = mobileActions.getText(deletePopupMessageText, deletePopupMessageText_Name, true).trim();
+		mobileActions.isElmPresent(deletePopupText);
+		mobileActions.click(deletePopupText, deletePopUPText_Name);
+		return this;
+	}
+
+	/**
 	 * This method is to verify Delete action
 	 *
 	 * @return
@@ -1425,5 +1497,4 @@ public class SettingsPage {
 		mobileActions.click(threeDots, threeDots_Name);
 	}
 
-	
 }
