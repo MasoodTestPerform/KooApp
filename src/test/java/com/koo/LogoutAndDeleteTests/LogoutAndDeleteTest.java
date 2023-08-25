@@ -2,7 +2,7 @@ package com.koo.LogoutAndDeleteTests;
 
 import org.testng.annotations.Test;
 
-import com.framework.android.allpages.CommentDetailsScreenPage;
+import com.framework.android.allpages.LogoutAndDeletePage;
 import com.framework.android.allpages.SettingsPage;
 import com.framework.android.screens.registerationAndLoginFlowPages.LoginKooPage;
 import com.koo.android.utils.LanguageDataProvider;
@@ -23,6 +23,7 @@ public class LogoutAndDeleteTest extends BaseTest {
 			LoginKooPage loginKooPage = new LoginKooPage();
 			loginKooPage.loginValidUser(language, TestConfig.getInstance().getUserName());
 			SettingsPage settingsPage = new SettingsPage();
+			LogoutAndDeletePage logoutAndDeletePage = new LogoutAndDeletePage();
 			settingsPage.clickOnProfile();
 			settingsPage.clickOnThreeDots();
 			settingsPage.clickSettingsButton();
@@ -43,4 +44,44 @@ public class LogoutAndDeleteTest extends BaseTest {
 			BaseTest.afterMethodDriver.set(BaseTest.mobileDriver.get());
 		}
 	}
+
+	@Test(dataProvider = "Languages", dataProviderClass = LanguageDataProvider.class, description = "[TC-203] Verify user is able to logout of added account, logging out of child, user should land on parent feed & logging out of parent account all added acount should be logged out.", groups = {
+			"regression", "LogoutAndDelete" })
+	public void verifyUserAbleViewDeleteOptionInParentAccount(String language) {
+		try {
+			// Saving dynamically created test data into excel
+			BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO",
+					"<b><----Test case execution started for Test: Verify user is able to see delete option only in parent account & is only able to delete the parent user. ------><b>",
+					false, BaseTest.mobileDriver.get());
+			LanguageDataProvider.setCurrentLanguage(language);
+			LoginKooPage loginKooPage = new LoginKooPage();
+			loginKooPage.loginValidUser(language, TestConfig.getInstance().getUserName());
+			SettingsPage settingsPage = new SettingsPage();
+			LogoutAndDeletePage logoutAndDeletePage = new LogoutAndDeletePage();
+			settingsPage.clickOnProfile();
+			settingsPage.clickOnThreeDots();
+			settingsPage.clickSettingsButton();
+			settingsPage.doAddAccount();
+			loginKooPage.loginValidUser(language, TestConfig.getInstance().getChildUserName());
+			settingsPage.clickOnProfile();
+			settingsPage.clickSettingsButtonChildAccount();
+			logoutAndDeletePage.verifyDeleteOptionInChildAccount();
+			settingsPage.clickOnProfile();
+			logoutAndDeletePage.verifySwitchAccountFromChildAccount();
+			settingsPage.clickOnProfile();
+			settingsPage.clickSettingsButtonChildAccount();
+			settingsPage.doDelete();
+			BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO",
+					"<b><----Test case execution completed for Test:Successfully verified user is able to see delete option only in parent account & is only able to delete the parent user. ------><b>",
+					true, BaseTest.mobileDriver.get());
+			BaseTest.afterMethodDriver.set(BaseTest.mobileDriver.get());
+		} catch (Exception e) {
+			BaseTest.utilObj.get().getAssertManager().sAssertException(
+					"Something went wrong in doing Verify user is able to see delete option only in parent account & is only able to delete the parent user. Exception:"
+							+ e.getMessage(),
+					true, BaseTest.mobileDriver.get());
+			BaseTest.afterMethodDriver.set(BaseTest.mobileDriver.get());
+		}
+	}
+
 }

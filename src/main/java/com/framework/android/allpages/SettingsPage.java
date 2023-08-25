@@ -1029,6 +1029,10 @@ public class SettingsPage {
 				String afterText = mobileActions.getText(deletePopupText, deletePopupText_Name, true).trim();
 				BaseTest.utilObj.get().getAssertManager().sAssertEquals(afterText, beforeText, "Both names are matched",
 						true, BaseTest.mobileDriver.get(), true);
+				String actaulText = mobileActions.getText(deletePopupMessageText, deletePopupMessageText_Name, true).trim();
+				String expectedText = LanguageDataProvider.getLanguageDataValue("DeletePopUpText");
+				BaseTest.utilObj.get().getAssertManager().sAssertEquals(actaulText, expectedText, "Both names are matched",
+						false, BaseTest.mobileDriver.get(), true);
 				BaseTest.LOGGER.get().logInfo(delete_Settings_Name + " Pop-Up Message Displayed");
 				BaseTest.utilObj.get().getAssertManager().sAssertTrue(true,
 						delete_Settings_Name + " Pop-Up Message Displayed", false, BaseTest.mobileDriver.get(), true);
