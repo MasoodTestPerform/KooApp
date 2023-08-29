@@ -38,7 +38,7 @@ public class PinnedKoos {
 						"xpath", kooCreationPage.btn_post_Name),"koo card Post button");
 				if(mobileActions.isElmPresent(kooCardPage.btn_no)) {
 					mobileActions.click(kooCardPage.btn_no, "no button");
-					mobileActions.click(profileScreenPage.btn_backInProfileScreen, profileScreenPage.btn_backInProfileScreen_Name);
+//					mobileActions.click(profileScreenPage.btn_backInProfileScreen, profileScreenPage.btn_backInProfileScreen_Name);
 				}	
 			mobileActions.swipeDown(2);
 				String kooSavedTime = mobileActions.getText(profileScreenPage.txt_kooSavedTime,

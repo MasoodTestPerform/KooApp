@@ -73,7 +73,6 @@ public class KooCreationPages {
 				mobileActions.click(feedTabPage.btn_plus, "plus button");			
 				
 				if (mobileActions.isElmPresent(kooCreationPage.btn_add_image)) {
-//					mobileActions.sendKeys(kooCreationPage.txt_bftEditTxt, kooCreationPage.txt_bftEditTxt_Name, "Testing purpose");
 					mobileActions.click(kooCreationPage.btn_add_image, "image button");
 					if(mobileActions.isElmPresent(kooCreationPage.btn_enablePermission)) {
 						mobileActions.click(kooCreationPage.btn_enablePermission, "enable permission button");
@@ -137,7 +136,6 @@ public class KooCreationPages {
 				mobileActions.click(feedTabPage.btn_plus, "plus button");			
 				
 				if (mobileActions.isElmPresent(kooCreationPage.btn_add_video)) {
-//					mobileActions.sendKeys(kooCreationPage.txt_bftEditTxt, kooCreationPage.txt_bftEditTxt_Name, "Testing purpose");
 					mobileActions.click(kooCreationPage.btn_add_video, "video button");
 					if(mobileActions.isElmPresent(kooCreationPage.btn_enablePermission)) {
 						mobileActions.click(kooCreationPage.btn_enablePermission, "enable permission button");
