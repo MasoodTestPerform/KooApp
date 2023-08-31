@@ -3,6 +3,7 @@ package com.framework.android.allpages;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
+import com.koo.android.utils.LanguageDataProvider;
 import com.koo.android.utils.MobileActions;
 import com.koo.framework.BaseTest;
 import com.koo.utils.UIUtils;
@@ -32,6 +33,7 @@ public class CommentDetailsScreenPage {
 	public By firstKooProfileNameText = By.id("com.koo.app:id/channel_name_textview");
 	public By backButtonAfterPostComment = By.xpath("//android.view.View/android.view.View[2]/android.view.View[1]");
 	public By commentsText = By.xpath("//android.widget.TextView[@text='Comments']");
+	public By commentsTextNo = By.xpath("//android.widget.TextView[@resource-id='com.koo.app:id/comment_textview']");
 	public By navigateButton = By.xpath("//android.widget.TextView[@content-desc='negativeButton']");
 	public By alertDailogTitle = By.xpath("//android.widget.TextView[@content-desc='alertDialogTitle']");
 
@@ -50,6 +52,7 @@ public class CommentDetailsScreenPage {
 	public String firstKooProfileNameText_Name = "Profile of Koo which is Displaying most first";
 	public String backButtonAfterPostComment_Name = "Back Button (<--) after Post your comment";
 	public String commentsText_Name = "Comments Headear";
+	public String commentsTextNo_Name = "Number of comments";
 	public String navigateButton_Name = "Yes Button from Are You Sure? Page";
 	public String alertDailogTitle_Name = "Are you Sure?  Alert";
 
@@ -83,8 +86,8 @@ public class CommentDetailsScreenPage {
 		return this;
 	}
 
-	public CommentDetailsScreenPage verifyCommentConstaint() {
-		mobileActions.swipeUpFindElement(10, commentHolderConstraint);
+	public CommentDetailsScreenPage verifyCommentConstaint(int swipes) {
+		mobileActions.swipeUpFindElement(swipes, commentsTextNo);
 		mobileActions.waitForVisible(commentHolderConstraint);
 		Assert.assertTrue(mobileActions.isDisplayed(commentHolderConstraint, commentHolderConstraint_Name));
 		mobileActions.click(commentHolderConstraint, commentHolderConstraint_Name);
@@ -105,9 +108,11 @@ public class CommentDetailsScreenPage {
 		return this;
 	}
 
-	public CommentDetailsScreenPage clickOnPostButton() {
+	public CommentDetailsScreenPage clickOnPostButton(String expected) {
 		mobileActions.waitForVisible(commentPostButton);
 		Assert.assertTrue(mobileActions.isDisplayed(commentPostButton, commentPostButton_Name));
+		String actual = mobileActions.getText(commentPostButton, commentPostButton_Name, true);
+		expected = LanguageDataProvider.getLanguageDataValue("PostButtonText");
 		mobileActions.click(commentPostButton, commentPostButton_Name);
 		return this;
 	}
@@ -150,8 +155,8 @@ public class CommentDetailsScreenPage {
 		return this;
 	}
 
-	public CommentDetailsScreenPage verifyCommentsHeader(String expectedHeader) {
-		mobileActions.swipeUpFindElement(10, commentsText);
+	public CommentDetailsScreenPage verifyCommentsSectionHeader(int swipes,String expectedHeader) {
+		mobileActions.swipeUpFindElement(swipes, commentsText);
 		mobileActions.waitForVisible(commentsText);
 		String actualHeader = mobileActions.getText(commentsText, commentsText_Name, true).trim();
 		if (mobileActions.isDisplayed(commentsText, commentsText_Name)) {

@@ -1,50 +1,184 @@
 package com.framework.android.allpages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.remote.server.handler.GetCurrentWindowHandle;
+import org.testng.Assert;
+
+import com.framework.android.screens.registerationAndLoginFlowPages.LoginKooPage;
+import com.koo.android.utils.LanguageDataProvider;
+import com.koo.android.utils.MobileActions;
+import com.koo.framework.BaseTest;
+import com.koo.setup.TestConfig;
 
 public class ChatsPage {
-	
-	public By chat_icon = By.id("com.koo.app:id/lottie_messages");
-	public String btn_followingInChat = "//android.widget.LinearLayout[@content-desc='###']";
-	public String btn_othersInChat = "//android.widget.LinearLayout[@content-desc='###']";
-	public By btn_channelIconInChat = By.id("com.koo.app:id/channel_imageview");
-	public By btn_followsYou = By.id("com.koo.app:id/follows_you_view");
-	public By btn_messagechatbox = By.id("com.koo.app:id/message_fab");
-	public By txt_messageheadingInChat = By.id("com.koo.app:id/toolbar_heading_textview");
-	public By btn_searchInChat = By.id("com.koo.app:id/search");
-	public By btn_selectProfile = By.xpath("(//android.widget.RelativeLayout[@index=1])[1]");
-	public By btn_request = By.id("com.koo.app:id/chat_button_text");
-	public By btn_backInChat = By.id("com.koo.app:id/toolbar_back");
-	public By btn_settingsInChat = By.id("com.koo.app:id/iv_notif_pref");
-	public By btn_onOffChat = By.id("com.koo.app:id/chat_mode");
-	public By btn_profileinChat = By.id("com.koo.app:id/lobby_item_layout");
-	public By txt_sendmsg = By.id("com.koo.app:id/edittext_chat");
-	public By btn_profileImageinChat = By.id("com.koo.app:id/toolbar_image");
-	public By txt_profilelink = By.id("com.koo.app:id/layout_profile_parent");
-	public By btn_sendInChat = By.id("com.koo.app:id/button_send");
-	public By btn_threedotsinChat = By.id("com.koo.app:id/icon_options");
-	public By txt_blockInChat = By.id("android:id/title");
-	
-	
-	public String chat_icon_Name = "";
-	public String btn_followingInChat_Name = "";
-	public String btn_othersInChat_Name = "";
-	public String btn_channelIconInChat_Name = "";
-	public String btn_followsYou_Name = "";
-	public String btn_messagechatbox_Name = "";
-	public String txt_messageheadingInChat_Name = "";
-	public String btn_searchInChat_Name = "";
-	public String btn_selectProfile_Name = "";
-	public String btn_request_Name = "";
-	public String btn_backInChat_Name = "";
-	public String btn_settingsInChat_Name = "";
-	public String btn_onOffChat_Name = "";
-	public String btn_profileinChat_Name = "";
-	public String txt_sendmsg_Name = "";
-	public String btn_profileImageinChat_Name = "";
-	public String txt_profilelink_Name = "";
-	public String btn_sendInChat_Name = "";
-	public String btn_threedotsinChat_Name = "";
-	public String txt_blockInChat_Name = "";
 
+	MobileActions mobileActions = null;
+
+	public By btn_Message = By.id("com.koo.app:id/lottie_messages");
+	public By btn_StartConversation = By.id("com.koo.app:id/tv_start_conversation");
+	public By txt_SearchBox = By.id("com.koo.app:id/search");
+
+	public By txt_OnNewUser = By.xpath(
+			"/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.RelativeLayout[1]/android.widget.LinearLayout");
+
+	public By vry_SearchedUser = By.id("com.koo.app:id/toolbar_name");
+	public By txt_ChatBox = By.id("com.koo.app:id/edittext_chat");
+
+	public By btn_Send = By.id("com.koo.app:id/button_send");
+	public By btn_FirstProfile = By.xpath(
+			"/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.RelativeLayout[1]/android.widget.LinearLayout");
+	public By btn_Request = By.id("com.koo.app:id/chat_button_holder");
+
+	/*
+	 * locators by Jagath
+	 */
+
+	String actual;
+	String expected;
+
+	public By conversationEmptyTxt = By.id("com.koo.app:id/empty_text");
+	public By startConversationBtn = By.id("com.koo.app:id/tv_start_conversation");
+	public By messageTabBtn = By.id("com.koo.app:id/message_fab");
+	public By customTabTextOthers = By.xpath(
+			"//android.widget.LinearLayout[@content-desc='Others']/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.TextView");
+	public By othersTabBtn = By.xpath("//android.widget.LinearLayout[@content-desc='Others']");
+	public By followingTabBtn = By.xpath("//android.widget.LinearLayout[@content-desc='Following']");
+	public By newMessagePageHeader = By.id("com.koo.app:id/toolbar_heading_textview");
+	public By searchBarAtNewMessagePage = By.id("com.koo.app:id/search"); //By.xpath("//android.widget.FrameLayout/android.widget.EditText[@resource-id='com.koo.app:id/search']");
+	public By emptySearchBarText = By.xpath("//android.widget.EditText[@text='Search for your friends and family…']");
+	public By emptyNewMessagePageBackGroundTxt = By.id("com.koo.app:id/search_background_textview");
+	public By profileNameOfFirstResult = By
+			.xpath("//android.view.ViewGroup/android.widget.TextView[@resource-id='com.koo.app:id/toolbar_name']");
+	public By requestBtn_Chats = By.xpath("//android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.TextView[@text='Request']");
+	public By textOfSwitchOffChat = By.id("com.koo.app:id/chat_status_title");
+
+	public String conversationEmptyTxt_Name = "Text for empty conversations";
+	public String startConversationBtn_Name = "Start Conversation button";
+	public String messageTabBtn_Name = "Message Tab button to Start new chat conversation";
+	public String othersTabBtn_Name = "Others Tab";
+	public String followingTabBtn_Name = "Following Tab";
+	public String newMessagePageHeader_Name = "New Message Page to Start conversation";
+	public String searchBarAtNewMessagePage_Name = "Search Bar at New Message Page to chat";
+	public String emptySearchBarText_Name = "Text in Empty Search bar in New Message Page";
+	public String emptyNewMessagePageBackGroundTxt_Name = "Text of Empty New Message Page Background";
+	public String profileNameOfFirstResult_Name = "Profile Name after clicking first profile";
+	public String requestBtn_Chats_Name = "Request Button";
+	public String textOfSwitchOffChat_Name = "Message of chat of request state (Switch off/On)";
+
+	public ChatsPage() {
+
+		this.mobileActions = BaseTest.utilObj.get().getMobileActions();
+
+	}
+
+	/**
+	 * This method is to Click on navigation buttons
+	 *
+	 * @param by
+	 * @return
+	 */
+	public void clickOnAnyBottomNavigationButton(By by, String navigationButtonName) {
+		mobileActions.waitForVisible(by);
+		BaseTest.utilObj.get().getAssertManager().sAssertTrue(mobileActions.isDisplayed(by, navigationButtonName),
+				navigationButtonName, false, BaseTest.mobileDriver.get(), true);
+		mobileActions.tapElement(by, navigationButtonName);
+	}
+
+	/**
+	 * This method is to verify New Message page
+	 *
+	 * @param expectedHeading
+	 * @return
+	 */
+	public void verifyPageHeaderInChat(By by, String name, String expectedHeading) {
+		mobileActions.waitForVisible(by);
+		Assert.assertTrue(mobileActions.isDisplayed(by, name));
+		actual = mobileActions.getText(by, name, true).trim();
+		BaseTest.utilObj.get().getAssertManager().sAssertEquals(actual, expectedHeading, "Both names are matched", true,
+				BaseTest.mobileDriver.get(), true);
+	}
+
+	/**
+	 * This method is to verify New Message page
+	 *
+	 * @param expectedHeading
+	 * @return
+	 */
+	public void verifyAndstartConversation() {
+		mobileActions.waitForVisible(startConversationBtn);
+		Assert.assertTrue(mobileActions.isDisplayed(startConversationBtn, startConversationBtn_Name));
+		actual = mobileActions.getText(startConversationBtn, startConversationBtn_Name, true).trim();
+		expected = LanguageDataProvider.getLanguageDataValue("ToStartAConversationButtonText");
+		BaseTest.utilObj.get().getAssertManager().sAssertEquals(actual, expected, "Both names are matched", true,
+				BaseTest.mobileDriver.get(), true);
+		mobileActions.click(startConversationBtn, startConversationBtn_Name);
+	}
+
+	/**
+	 * This method is to verify New Message page
+	 *
+	 * @param expectedHeading
+	 * @return
+	 */
+	public void verifyAndEnterTextInSearchBarOfNewMessage(String searchName) {
+		mobileActions.waitForVisible(searchBarAtNewMessagePage);
+		Assert.assertTrue(mobileActions.isDisplayed(searchBarAtNewMessagePage, searchBarAtNewMessagePage_Name));
+//		actual = mobileActions.getText(emptySearchBarText, emptySearchBarText_Name, true);
+//		expected = LanguageDataProvider.getLanguageDataValue("EmptySearchBarText");
+//		BaseTest.utilObj.get().getAssertManager().sAssertEquals(actual, expected, "Both names are matched", true,
+//				BaseTest.mobileDriver.get(), true);
+		actual = mobileActions.getText(emptyNewMessagePageBackGroundTxt, emptyNewMessagePageBackGroundTxt_Name, true)
+				.trim();
+		expected = LanguageDataProvider.getLanguageDataValue("EmptyNewMessagePageBackGroundTxt");
+		BaseTest.utilObj.get().getAssertManager().sAssertEquals(actual, expected, "Both names are matched", true,
+				BaseTest.mobileDriver.get(), true);
+		mobileActions.click(searchBarAtNewMessagePage, searchBarAtNewMessagePage_Name);
+		mobileActions.sendKeys(searchBarAtNewMessagePage, searchBarAtNewMessagePage_Name, searchName);
+	}
+
+	/**
+	 * This method is to verify New Message page
+	 *
+	 * @param expectedHeading
+	 * @return
+	 */
+	public void SearchAndSelectFirstProfileFromResults(String searchName) {
+		String newXpath = "//android.widget.LinearLayout/android.widget.TextView[@text='" + searchName + "']";
+		By firstProfileWithSearchText = By.xpath(newXpath);
+		mobileActions.waitForVisible(firstProfileWithSearchText);
+		Assert.assertTrue(mobileActions.isDisplayed(firstProfileWithSearchText,
+				"First Profile Name with your text in Search Results"));
+		actual = mobileActions
+				.getText(firstProfileWithSearchText, "First Profile Name with your text in Search Results", true)
+				.trim();
+		mobileActions.click(firstProfileWithSearchText, "First Profile Name with your text in Search Results");
+		Assert.assertTrue(mobileActions.isDisplayed(profileNameOfFirstResult, profileNameOfFirstResult_Name));
+		expected = mobileActions.getText(profileNameOfFirstResult, profileNameOfFirstResult_Name, true).trim();
+		BaseTest.utilObj.get().getAssertManager().sAssertEquals(actual, expected, "Both names are matched", true,
+				BaseTest.mobileDriver.get(), true);
+		actual = mobileActions.getText(textOfSwitchOffChat, textOfSwitchOffChat_Name, true).trim();
+		expected = LanguageDataProvider.getLanguageDataValue("ChatRequestPageBackgroundTextForSwitchOff");
+		BaseTest.utilObj.get().getAssertManager().sAssertEquals(actual, expected, "Both names are matched", true,
+				BaseTest.mobileDriver.get(), true);
+	}
+
+	/**
+	 * This method is to verify New Message page
+	 *
+	 * @param expectedHeading
+	 * @return
+	 */
+	public void verifyAndClickOnRequest() {
+		mobileActions.waitForVisible(requestBtn_Chats);
+		Assert.assertTrue(mobileActions.isDisplayed(requestBtn_Chats, requestBtn_Chats_Name));
+		actual = mobileActions.getText(requestBtn_Chats, requestBtn_Chats_Name, true).trim();
+		expected = LanguageDataProvider.getLanguageDataValue("ChatRequestButtonText");
+		BaseTest.utilObj.get().getAssertManager().sAssertEquals(actual, expected, "Both names are matched", true,
+				BaseTest.mobileDriver.get(), true);
+		mobileActions.click(requestBtn_Chats, requestBtn_Chats_Name);
+		actual = mobileActions.getText(textOfSwitchOffChat, textOfSwitchOffChat_Name, true).trim();
+		expected = LanguageDataProvider.getLanguageDataValue("ChatRequestPageBackgroundTextAfterRequested");
+		BaseTest.utilObj.get().getAssertManager().sAssertEquals(actual, expected, "Both names are matched", true,
+				BaseTest.mobileDriver.get(), true);
+	}
 }

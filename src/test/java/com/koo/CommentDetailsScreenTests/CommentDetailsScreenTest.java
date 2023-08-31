@@ -22,7 +22,7 @@ public class CommentDetailsScreenTest extends BaseTest {
 			LoginKooPage loginKooPage = new LoginKooPage();
 			CommentDetailsScreenPage commentDetailsScreenPage = new CommentDetailsScreenPage();
 			loginKooPage.loginValidUser(language, TestConfig.getInstance().getUserName());
-			commentDetailsScreenPage.verifyCommentConstaint();
+			commentDetailsScreenPage.verifyCommentConstaint(10);
 			commentDetailsScreenPage.clickWriteYourCommentBar();
 			commentDetailsScreenPage.writeYourCommentInInputField("Testing");
 			commentDetailsScreenPage.verifyParentThreadofKoo();
@@ -51,7 +51,7 @@ public class CommentDetailsScreenTest extends BaseTest {
 			LoginKooPage loginKooPage = new LoginKooPage();
 			CommentDetailsScreenPage commentDetailsScreenPage = new CommentDetailsScreenPage();
 			loginKooPage.loginValidUser(language, TestConfig.getInstance().getUserName());
-			commentDetailsScreenPage.verifyCommentConstaint();
+			commentDetailsScreenPage.verifyCommentConstaint(10);
 			commentDetailsScreenPage.clickWriteYourCommentBar();
 			commentDetailsScreenPage.verifyParentThreadofKoo();
 			commentDetailsScreenPage.writeYourCommentInInputField("Testing");
@@ -83,8 +83,11 @@ public class CommentDetailsScreenTest extends BaseTest {
 			LoginKooPage loginKooPage = new LoginKooPage();
 			CommentDetailsScreenPage commentDetailsScreenPage = new CommentDetailsScreenPage();
 			loginKooPage.loginValidUser(language, TestConfig.getInstance().getUserName());
-			commentDetailsScreenPage.verifyCommentConstaint();
-			commentDetailsScreenPage.verifyCommentsHeader("Comments");
+			commentDetailsScreenPage.verifyCommentConstaint(15);
+			commentDetailsScreenPage.clickWriteYourCommentBar();
+			commentDetailsScreenPage.writeYourCommentInInputField("Testing");
+			commentDetailsScreenPage.clickOnPostButton(LanguageDataProvider.getLanguageDataValue("PostButtonText"));
+			commentDetailsScreenPage.verifyCommentsSectionHeader(15,LanguageDataProvider.getLanguageDataValue("CommentsSectionHeading"));
 			BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO",
 					"<b><----Test case execution completed for Test:Successfully verified user is able to react on comment & all other functionaloity should be same as Koo details screen. ------><b>",
 					true, BaseTest.mobileDriver.get());
