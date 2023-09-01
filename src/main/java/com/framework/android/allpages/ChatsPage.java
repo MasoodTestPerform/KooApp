@@ -51,7 +51,13 @@ public class ChatsPage {
 			.xpath("//android.view.ViewGroup/android.widget.TextView[@resource-id='com.koo.app:id/toolbar_name']");
 	public By requestBtn_Chats = By.xpath("//android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.TextView[@text='Request']");
 	public By textOfSwitchOffChat = By.id("com.koo.app:id/chat_status_title");
+	public By chatBoxInputField = By.id("com.koo.app:id/edittext_chat");
+	public By sendButtonOfChatBox = By.id("com.koo.app:id/button_send");
+	public By messageDisplayed = By.id("com.koo.app:id/textview_chat_sent");
 
+	public String chatBoxInputField_Name = "Chat Box to send Message";
+	public String sendButtonOfChatBox_Name = "Send Button";
+	public String messageDisplayed_Name = "Message Displayed after successfully sent which we entered";
 	public String conversationEmptyTxt_Name = "Text for empty conversations";
 	public String startConversationBtn_Name = "Start Conversation button";
 	public String messageTabBtn_Name = "Message Tab button to Start new chat conversation";
@@ -180,5 +186,52 @@ public class ChatsPage {
 		expected = LanguageDataProvider.getLanguageDataValue("ChatRequestPageBackgroundTextAfterRequested");
 		BaseTest.utilObj.get().getAssertManager().sAssertEquals(actual, expected, "Both names are matched", true,
 				BaseTest.mobileDriver.get(), true);
+	}
+	
+	public void entersTheCharacterInChatBox(String giveMeTextWhichIwantToPass) {
+		mobileActions.waitForVisible(chatBoxInputField);
+		Assert.assertTrue(mobileActions.isDisplayed(chatBoxInputField, chatBoxInputField_Name));
+		mobileActions.click(chatBoxInputField, chatBoxInputField_Name);
+		mobileActions.sendKeys(chatBoxInputField, chatBoxInputField_Name, giveMeTextWhichIwantToPass);
+		if (mobileActions.isEnabled(sendButtonOfChatBox, sendButtonOfChatBox_Name)) {
+			mobileActions.click(sendButtonOfChatBox, sendButtonOfChatBox_Name);
+			mobileActions.waitForSec(2);
+			BaseTest.utilObj.get().getAssertManager().sAssertTrue(
+					mobileActions.isDisplayed(messageDisplayed, messageDisplayed_Name), "Successfully message sent",
+					true, BaseTest.mobileDriver.get(), true);
+		}
+	}
+	
+	public void verifyExpectedAndActualUser(String giveMeTextWhichIwantToPass) throws InterruptedException {
+		
+		actual = mobileActions.getText(vry_SearchedUser, "expectedUser", true).trim();
+		expected = giveMeTextWhichIwantToPass;
+		mobileActions.waitForSec(2);
+		if (expected.equalsIgnoreCase(actual)) {
+			BaseTest.utilObj.get().getAssertManager().sAssertTrue(
+					mobileActions.isDisplayed(vry_SearchedUser, "Actual user name"), "Searched user and Expected User is Matched",
+					true, BaseTest.mobileDriver.get(), true);
+			mobileActions.click(txt_OnNewUser, "searched profile");
+		} else {
+			BaseTest.utilObj.get().getAssertManager().sAssertTrue(
+					mobileActions.isDisplayed(vry_SearchedUser, "Actual user name"), "Searched user and Expected User is MisMatched",
+					true, BaseTest.mobileDriver.get(), true);
+		}
+
+	}
+
+	public void textForNewAccount()
+	{
+		if(mobileActions.isDisplayed(textOfSwitchOffChat, textOfSwitchOffChat_Name))
+		{
+		actual = mobileActions.getText(textOfSwitchOffChat, textOfSwitchOffChat_Name, true).trim();
+		expected = LanguageDataProvider.getLanguageDataValue("ChatRequestPageBackgroundTextForSwitchOff");
+		BaseTest.utilObj.get().getAssertManager().sAssertEquals(actual, expected, "Both names are matched", true,
+				BaseTest.mobileDriver.get(), true);
+		}
+		else
+		{
+			System.out.println("Not Present the:- "+expected);
+		}
 	}
 }

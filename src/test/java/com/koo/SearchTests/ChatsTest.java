@@ -51,5 +51,39 @@ public class ChatsTest extends BaseTest {
 		}
 
 	}
+	@Test(dataProvider = "Languages", dataProviderClass = LanguageDataProvider.class, description = "[TC_186] Verify user should be able send only text characters & nothing else.", groups = {
+			"regression", "topicsTab_home" })
+	public void verifyUserShouldAbleToSendonlyTextCharactersNothingelse(String language) {
+		try {
+
+			// Saving dynamically created test data into excel
+			BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO",
+					"<b><----Verify user should be able send only text characters & nothing else.------><b>", false,
+					BaseTest.mobileDriver.get());
+			LanguageDataProvider.setCurrentLanguage(language);
+			LoginKooPage loginKooPage = new LoginKooPage();
+			HomeScreenTabPage homeScreenTabPage = new HomeScreenTabPage();
+			ChatsPage chatsPage = new ChatsPage();
+			loginKooPage.loginValidUser(language, TestConfig.getInstance().getUserName());
+			homeScreenTabPage.verifyChatIcon();
+			chatsPage.clickOnAnyBottomNavigationButton(homeScreenTabPage.chatIcon, homeScreenTabPage.chatIcon_Name);
+			chatsPage.verifyAndstartConversation();
+			chatsPage.verifyPageHeaderInChat(chatsPage.newMessagePageHeader, chatsPage.newMessagePageHeader_Name,
+					"New Message");
+			chatsPage.verifyAndEnterTextInSearchBarOfNewMessage("Test001");
+			chatsPage.SearchAndSelectFirstProfileFromResults("Test001");
+			chatsPage.entersTheCharacterInChatBox("HI Tester");
+			BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO",
+					"<b><----Test case execution completed for Test:Successfully Verify user should be able send only text characters & nothing else. ------><b>",
+					true, BaseTest.mobileDriver.get());
+			BaseTest.afterMethodDriver.set(BaseTest.mobileDriver.get());
+		} catch (Exception e) {
+			BaseTest.utilObj.get().getAssertManager().sAssertException(
+					"Something went wrong in doing Verify user should be able send only text characters & nothing else. Exception:"
+							+ e.getMessage(),
+					true, BaseTest.mobileDriver.get());
+			BaseTest.afterMethodDriver.set(BaseTest.mobileDriver.get());
+		}
+	}
 
 }
