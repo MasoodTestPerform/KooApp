@@ -1,2 +1,2 @@
 "Date","Time","Test Case ID","Description","Result"
-"1970/01/01","05:29:59","TC_50_51_verifyTopicTabPage","[TC_50, TC_51] Verify Topics tab should have Topics pills with + button, tapping on it or topic name, topic is followed>tapping on arrow button, user goes to Topics Details screen & related topics content should be shown","PASS"
+"1970/01/01","05:29:59","TC_054_055_verifyManageTopicsPage","[TC_054] Verify Manage Topics screen in own profile, 'All' & 'Following' tabs should be present in that screen.","PASS"

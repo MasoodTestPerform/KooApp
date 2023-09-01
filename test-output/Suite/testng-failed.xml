@@ -12,7 +12,7 @@
           <include name="suiteSetup"/>
           <include name="testResult"/>
           <include name="startReporting"/>
-          <include name="TC_50_51_verifyTopicTabPage" invocation-numbers="0"/>
+          <include name="TC_054_055_verifyManageTopicsPage" invocation-numbers="0"/>
           <include name="generateResult"/>
         </methods>
       </class> <!-- com.framework.android.testcases.topicsTests.TopicWidgetTest -->

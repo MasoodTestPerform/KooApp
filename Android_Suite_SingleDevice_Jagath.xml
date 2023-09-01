@@ -2,27 +2,35 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
 	<listeners>
-        <listener class-name="com.framework.listeners.SuiteEvent"></listener>
-        <listener class-name="com.framework.listeners.MobileEvent"></listener>
-    </listeners>
-       <test name="Test">
-        <classes>
-            <class name="com.koo.tests.settings.SettingsTest">
-                <methods>
-                    <include name="verifyOptionsInAccountSection"/>
-                    <include name="verifyShareYourKooProfile"/>
-                    <include name="verifyAddAccount"/>
-                    <include name="verifyLanguage"/>
-                    <include name="verifyOptionsInOthers"/>
-                </methods>
-            </class>
-            <class name="com.koo.tests.search.SearchTest">
-                <methods>
-                    <include name="verifySearchBarFunctionality"/>
-                     <include name="verifyAllTabsInSearchResults"/>
-                     <include name="verifyallThreeTypesResults"/>
-                </methods>
-            </class>
-        </classes>
-    </test> <!-- Test -->
-</suite> <!-- Suite -->
+		<listener class-name="com.framework.listeners.SuiteEvent"></listener>
+		<listener class-name="com.framework.listeners.MobileEvent"></listener>
+	</listeners>
+	<test name="Test">
+		<classes>
+			<class name="com.koo.SettingsTests.SettingsTest">
+				<methods>
+					<include name="verifyOptionsInAccountSection" />
+					<include name="verifyOptionsInOthers" />
+				</methods>
+			</class>
+			<class name="com.koo.SearchTests.SearchTest">
+				<methods>
+					<include name="verifySearchBarFunctionality" />
+					<include name="verifyAllThreeTypesOfResults" />
+					<include name="verifyDifferentTabsInSearchResults" />
+					<include name="verifyRelatedResultsInEachTab" />
+					<include name="verifyBlockedUserPrfoile" />
+				</methods>
+			</class>
+			<class name="com.koo.CommentDetailsScreenTests">
+				<methods>
+					<include name="verifyUserAbleToEnterCommentDetails" />
+					<include name="verifyUserAbleToDoReversePagination" />
+					<include name="verifyUserAbleToReactOnOtherCommentOfKoo" />
+				</methods>
+			</class>
+		</classes>
+	</test> <!--
+	Test -->
+</suite> <!--
+Suite -->

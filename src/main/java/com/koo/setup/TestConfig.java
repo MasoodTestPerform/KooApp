@@ -315,8 +315,8 @@ public class TestConfig {
 		platform=TestConfig.getInstance().getPlatform();
 		udid = TestConfig.getInstance().getUdid();
 		systemPort = "8200";
-		deviceName = "RZCW60YWT1R";
-		deviceVersion = "android13";
+		deviceName = "";
+		deviceVersion = "";
 		WebDriver mobileDriver = null;
 		String[] platformInfo = platform.split(" ");
 		DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -324,13 +324,9 @@ public class TestConfig {
 		capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, platformInfo[0]);
 		capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, platformInfo[1]);
 		capabilities.setCapability(MobileCapabilityType.UDID, udid);
-
-
-		capabilities.setCapability("app", System.getProperty("user.dir") + "/src/main/resources/MobileApps/474.apk");
-
+		capabilities.setCapability("app", System.getProperty("user.dir") + "/src/main/resources/MobileApps/"+apkfilename);
 		capabilities.setCapability("appPackage", "com.koo.app");
 		capabilities.setCapability("appActivity", "com.koo.onboarding.OnBoardingActivity");
-
 		capabilities.setCapability(MobileCapabilityType.ORIENTATION, "PORTRAIT");
 		capabilities.setCapability(MobileCapabilityType.NO_RESET, false);
 
