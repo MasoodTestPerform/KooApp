@@ -85,5 +85,40 @@ public class ChatsTest extends BaseTest {
 			BaseTest.afterMethodDriver.set(BaseTest.mobileDriver.get());
 		}
 	}
+	@Test(dataProvider = "Languages", dataProviderClass = LanguageDataProvider.class, description = "[TC_184] Verify user is able to accept chat request & both persons are able to send messages.", groups = {
+			"regression", "topicsTab_home" })
+	public void verifyUserAbleToAcceptChatRequestBothPersonsAreAbleToSendMessages(String language) {
+		try {
+
+			// Saving dynamically created test data into excel
+			BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO",
+					"<b><----Verify user is able to accept chat request & both persons are able to send messages.------><b>",
+					false, BaseTest.mobileDriver.get());
+			LanguageDataProvider.setCurrentLanguage(language);
+			LoginKooPage loginKooPage = new LoginKooPage();
+			HomeScreenTabPage homeScreenTabPage = new HomeScreenTabPage();
+			ChatsPage chatsPage = new ChatsPage();
+			loginKooPage.loginValidUser(language, TestConfig.getInstance().getUserName());
+			homeScreenTabPage.verifyChatIcon();
+			chatsPage.clickOnAnyBottomNavigationButton(homeScreenTabPage.chatIcon, homeScreenTabPage.chatIcon_Name);
+			chatsPage.verifyAndstartConversation();
+			chatsPage.verifyPageHeaderInChat(chatsPage.newMessagePageHeader, chatsPage.newMessagePageHeader_Name,
+					"New Message");
+			chatsPage.verifyAndEnterTextInSearchBarOfNewMessage("Test001");
+			chatsPage.SearchAndSelectFirstProfileFromResults("Test001");
+			BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO",
+					"<b><----Test case execution completed for Test:Successfully Verify user is able to accept chat request & both persons are able to send messages. ------><b>",
+					true, BaseTest.mobileDriver.get());
+			BaseTest.afterMethodDriver.set(BaseTest.mobileDriver.get());
+		} catch (Exception e) {
+			BaseTest.utilObj.get().getAssertManager().sAssertException(
+					"Something went wrong in doing Verify user is able to accept chat request & both persons are able to send messages. Exception:"
+							+ e.getMessage(),
+					true, BaseTest.mobileDriver.get());
+			BaseTest.afterMethodDriver.set(BaseTest.mobileDriver.get());
+
+		}
+
+	}
 
 }
