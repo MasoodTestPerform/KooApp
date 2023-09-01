@@ -16,14 +16,16 @@ import com.framework.android.allpages.KooRewardsProgramPage;
 import com.framework.android.allpages.ManageTopicsPage;
 import com.framework.android.allpages.PeopleTabPage;
 import com.framework.android.allpages.ProfileScreenPage;
+import com.framework.android.allpages.SettingsPage;
 import com.framework.android.allpages.TopicsPage;
 import com.framework.android.allpages.UserBlockPage;
 import com.koo.android.utils.CommonHelper;
 import com.koo.android.utils.MobileActions;
+import com.koo.framework.BaseTest;
 import com.koo.setup.TestConfig;
 
 public class ElementsPage {
-	
+
 	MobileActions mobileActions = null;
 	TopicsPage topicsPage = null;
 	UserBlockPage userBlockPage = null;
@@ -35,15 +37,32 @@ public class ElementsPage {
 	EditProfilePage editProfilePage = null;
 	KooCreationPage kooCreationPage = null;
 	HomePage homePage = null;
+	SettingsPage settingsPage = null;
 
-	public void elements(String language,String peopleTabText)
-			throws IOException, InterruptedException {
-		mobileActions.click(mobileActions.returnByBasedOnPageNameAndObjectName(profileScreenPage.tab_people, 
-				"xpath", profileScreenPage.tab_people_Name),"People Tab");
+	public ElementsPage() {
+
+		this.mobileActions = BaseTest.utilObj.get().getMobileActions();
+		this.userBlockPage = new UserBlockPage();
+		this.profileScreenPage = new ProfileScreenPage();
+		this.editProfilePage = new EditProfilePage();
+		this.kooCardPage = new KooCardPage();
+		this.kooCreationPage = new KooCreationPage();
+		this.kooRewardsProgramPage = new KooRewardsProgramPage();
+		this.settingsPage = new SettingsPage();
+		this.topicsPage = new TopicsPage();
+		this.manageTopicsPage = new ManageTopicsPage();
+		this.feedTabPage = new FeedTabPage();
+		this.homePage = new HomePage();
+
+	}
+
+	public void elements(String language, String peopleTabText) throws IOException, InterruptedException {
+		mobileActions.click(mobileActions.returnByBasedOnPageNameAndObjectName(profileScreenPage.tab_people, "xpath",
+				profileScreenPage.tab_people_Name), "People Tab");
 		mobileActions.click(profileScreenPage.btn_arrowInPeopleTab, "Forward arrow");
 		mobileActions.click(profileScreenPage.btn_publicProfile, "public Profile");
 		mobileActions.swipeUsingID("tvFollow");
-		String follow=mobileActions.getText(profileScreenPage.btn_followInPublicProfile, 
+		String follow = mobileActions.getText(profileScreenPage.btn_followInPublicProfile,
 				profileScreenPage.btn_followInPublicProfile_Name, true);
 		System.out.println(follow);
 		mobileActions.swipeDown(2);
@@ -54,7 +73,7 @@ public class ElementsPage {
 		mobileActions.click(userBlockPage.settings, "Settings Button");
 		CommonHelper.logOutUser();
 
-}
+	}
 //	public void newUserLogin(String language) throws IOException, InterruptedException {
 //		mobileActions.click(mobileActions.returnByBasedOnPageNameAndObjectName(
 //				kooCreationPage.Chkbox_Select_Language, "xpath", language), "language Checkobx");
@@ -116,5 +135,5 @@ public class ElementsPage {
 //		Assert.assertTrue(mobileActions.isDisplayed(MobileUtil.returnByBasedOnPageNameAndObjectName("ProfileScreen", "noKoos"), "No Koos text"));
 //		
 //	}
-	
+
 }

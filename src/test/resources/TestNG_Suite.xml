@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+	<listeners>
+		<listener class-name="com.framework.listeners.SuiteEvent"></listener>
+		<listener class-name="com.framework.listeners.MobileEvent"></listener>
+	</listeners>
+	<test name="Suite">
+		<classes>
+			<class
+				name="com.framework.android.testcases.ProfileScreensTests.InformationTest">
+				<methods>
+					<include name="TC_077_verifyProfilePhotos" />
+					<include name="TC_083_verifyInformationPage" />
+					<include name="TC_084_verifyFollowingFollowersTab" />
+					<include
+						name="TC_085_verifyExplanatoryTextInFollowingAndFollowersTab" />
+					<include name="TC_086_verifyPinnedAndUnpinnedKoos" />
+					<include name="TC_092_verifyFollowingFollowersTab" />
+					<include name="verifyElements" />
+					<include name="verifySelfVerification" />
+					<include name="verifyAccountInfoDetails" />
+				</methods>
+			</class>
+			<class
+				name="com.framework.android.testcases.topicsTests.TopicWidgetTest">
+				<methods>
+					<include name="TC_050_051_verifyTopicTabPage" />
+					<include name="TC_053_verifyTopicsWidgetInFeedPage" />
+					<include name="TC_054_055_verifyManageTopicsPage" />
+				</methods>
+			</class>
+			<!--<class name="com.koo.homeScreenTabTests.HomeScreenTabTest" />
+			<class name="com.koo.OnBoardingFlowTests.OnBoardingFlowTest" />-->
+			<class name="com.koo.SettingsTests.SettingsTest">
+				<methods>
+					<include name="verifyOptionsInAccountSection" />
+					<include name="verifyOptionsInOthers" />
+				</methods>
+			</class>
+			<class name="com.koo.SearchTests.SearchTest">
+				<methods>
+					<include name="verifySearchBarFunctionality" />
+					<include name="verifyAllThreeTypesOfResults" />
+					<include name="verifyDifferentTabsInSearchResults" />
+					<include name="verifyRelatedResultsInEachTab" />
+					<include name="verifyBlockedUserPrfoile" />
+				</methods>
+			</class>
+			<class
+				name="com.framework.android.testcases.kooTests.KooCreationTest">
+				<methods>
+					<include name="TC_149_174_verifyAbleToPostKoosWithText" />
+					<include name="TC_149_verifyAbleToPostKoosWithImage" />
+					<include name="TC_149_verifyAbleToPostKoosWithVideo" />
+				</methods>
+			</class>
+		</classes>
+	</test> <!--
+	Test -->
+</suite> <!--
+Suite -->

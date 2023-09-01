@@ -36,11 +36,11 @@ public class SettingsTest extends BaseTest {
 			settingsPage.verifyManageSubscription_inSettings();
 			settingsPage.verifyManageBlockedUsersOption_inSettings();
 			settingsPage.verifyApplyForSelfVerificationOption_inSettings();
-			settingsPage.verifyApplyForEminenceOption_inSettings();
 			settingsPage.verifyMigrateFromTwitterOption_inSettings();
 			settingsPage.verifyManageAccountPage_inSettings();
 			settingsPage.verifyLogOutAction_inSettings();
 			settingsPage.verifyDeleteAction_inSettings();
+			settingsPage.verifyApplyForEminenceOption_inSettings();
 			BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO",
 					"<b><----Test case execution completed for Test:Successfully verified Options in Account Section ------><b>",
 					true, BaseTest.mobileDriver.get());
@@ -103,6 +103,7 @@ public class SettingsTest extends BaseTest {
 			settingsPage.verifySettingsButton();
 			settingsPage.clickSettingsButton();
 			settingsPage.verifyAddAccountPage_inSettings();
+			loginKooPage.loginValidUser(language, TestConfig.getInstance().getChildUserName());
 			BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO",
 					"<b><----Test case execution completed for Test:Successfully verified Options in Account Section ------><b>",
 					true, BaseTest.mobileDriver.get());
@@ -177,6 +178,7 @@ public class SettingsTest extends BaseTest {
 			settingsPage.verifyAboutUsOption_inSettings();
 			settingsPage.verifyResourceCenterOption_inSettings();
 			settingsPage.verifyPlayStoreComplianceOption_inSettings();
+
 			BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO",
 					"<b><----Test case execution completed for Test:Successfully verified Options in Options Section ------><b>",
 					true, BaseTest.mobileDriver.get());

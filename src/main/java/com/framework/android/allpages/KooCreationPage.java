@@ -93,6 +93,15 @@ public class KooCreationPage {
 	public By txt_threadkoo2 = By.xpath("(//android.widget.TextView[@resource-id='com.koo.app:id/topic_title_textview'])[2]");
 	public By btn_backinMLK = By.xpath("//android.widget.ImageView[@content-desc='Back Button']");
 	public By first_menu_hamberger = By.xpath("(//*[@resource-id='com.koo.app:id/iv_options_more'])[1]");
+	public By btn_no_multipleLang = By.xpath("//android.widget.TextView[@content-desc='negativeButton']");
+	public By btn_enablePermission = By.xpath("//android.view.View/android.widget.TextView");
+	public By btn_allowApp = By.id("com.android.permissioncontroller:id/permission_allow_foreground_only_button");
+	public By btn_allow = By.id("com.android.permissioncontroller:id/permission_allow_button");
+	public By btn_camera = By.xpath("(//android.view.View[1]/android.view.View[1])[4]");
+	public By btn_capturePhoto = By.id("com.sec.android.app.camera:id/rl_shutterbutton");
+	public By btn_ok = By.id("com.sec.android.app.camera:id/done_button");
+	public By btn_retry = By.id("com.sec.android.app.camera:id/btn_preview_retry");
+	public By gallery_video = By.xpath("//android.view.View[@content-desc='media_grid']/android.view.View[1]");
 	
 	public String Chkbox_Select_Language_Name = ""; 
 	public String OTP_btn_Name = "";
@@ -178,7 +187,7 @@ public class KooCreationPage {
 	public String btn_editKoo_Name = "";
 	public String txt_editedKoo_Name = "";
 	public String btn_like_Name = "";
-	public String txt_bftEditTxt_Name = "";
+	public String txt_bftEditTxt_Name = "Text box";
 	public String txt_threadkoo1_Name = "";
 	public String txt_threadkoo2_Name = "";
 	public String btn_backinMLK_Name = "";

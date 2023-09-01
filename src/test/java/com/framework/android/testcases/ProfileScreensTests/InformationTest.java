@@ -157,53 +157,60 @@ public class InformationTest extends BaseTest {
 		}
 	}
 	
-//	@Test(dataProvider = "Languages", dataProviderClass = LanguageDataProvider.class, description = "[TC_221, TC_224, TC_225, TC_227, TC_246] Verify Follow button on public profile screen on the top bar, on scrolling the screen if user not followed the account.", groups = {
-//			"regression", "Profile_Screen" })
-//	public void verifyElements(String language) throws IOException, InterruptedException, FilloException {
-//		BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO",
-//				"<b><----Test case execution started for Test: TC_077 - Verify profile image on top of the screen & should load all images on entering the screen. ------><b>",
-//				false, BaseTest.mobileDriver.get());
-//		try {
-//			LanguageDataProvider.setCurrentLanguage(language);
-//			LoginKooPage loginKooPage = new LoginKooPage();
-//			loginKooPage.loginValidUser(language, TestConfig.getInstance().getUserName());
-//			ElementsPage element = new ElementsPage();
-//			element.elements(language, LanguageDataProvider.getLanguageDataValue("PeopleTabText"));
-////        element.newUserLogin(language);
-////        element.verifyNokKoosInNewUser();
-//		} catch (Exception e) {
-//			BaseTest.utilObj.get().getAssertManager().sAssertException(
-//					"Something went wrong in TC_077 - Verify profile image on top of the screen & should load all images on entering the screen. Exception:"
-//							+ e.getMessage(),
-//					true, BaseTest.mobileDriver.get());
-//			BaseTest.afterMethodDriver.set(BaseTest.mobileDriver.get());
-//		}
-//	}
+	@Test(alwaysRun = false, dataProvider = "Languages", dataProviderClass = LanguageDataProvider.class, description = "[TC_221, TC_224, TC_225, TC_227, TC_246] Verify Follow button on public profile screen on the top bar, on scrolling the screen if user not followed the account.", groups = {
+			"regression", "Profile_Screen" })
+	public void verifyElements(String language) throws IOException, InterruptedException, FilloException {
+		BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO",
+				"<b><----Test case execution started for Test: TC_077 - Verify profile image on top of the screen & should load all images on entering the screen. ------><b>",
+				false, BaseTest.mobileDriver.get());
+		try {
+			LanguageDataProvider.setCurrentLanguage(language);
+			LoginKooPage loginKooPage = new LoginKooPage();
+			loginKooPage.loginValidUser(language, TestConfig.getInstance().getUserName());
+			ElementsPage element = new ElementsPage();
+			element.elements(language, LanguageDataProvider.getLanguageDataValue("PeopleTabText"));
+//        element.newUserLogin(language);
+//        element.verifyNokKoosInNewUser();
+		} catch (Exception e) {
+			BaseTest.utilObj.get().getAssertManager().sAssertException(
+					"Something went wrong in TC_077 - Verify profile image on top of the screen & should load all images on entering the screen. Exception:"
+							+ e.getMessage(),
+					true, BaseTest.mobileDriver.get());
+			BaseTest.afterMethodDriver.set(BaseTest.mobileDriver.get());
+		}
+	}
 
-//	@Test(dataProvider = "Languages", dataProviderClass = LanguageDataProvider.class, description = "[TC_236, TC_238, TC_240] Verify appropriate error messages in aadhaar & OTP screens.", groups = {
-//			"regression", "Profile_Screen" })
-//	public void verifySelfVerification(String language) throws IOException, InterruptedException, FilloException {
-//		LanguageDataProvider.setCurrentLanguage(language);
-//		LoginKooPage loginKooPage = new LoginKooPage();
-//		loginKooPage.loginValidUser(language, TestConfig.getInstance().getUserName());
-//		SelfVerificationPage selfverification = new SelfVerificationPage();
-//		selfverification.selfverificationpage(language);
-//	}
+	@Test(alwaysRun = false, dataProvider = "Languages", dataProviderClass = LanguageDataProvider.class, description = "[TC_236, TC_238, TC_240] Verify appropriate error messages in aadhaar & OTP screens.", groups = {
+			"regression", "Profile_Screen" })
+	public void verifySelfVerification(String language) throws IOException, InterruptedException, FilloException {
+		LanguageDataProvider.setCurrentLanguage(language);
+		LoginKooPage loginKooPage = new LoginKooPage();
+		loginKooPage.loginValidUser(language, TestConfig.getInstance().getUserName());
+		SelfVerificationPage selfverification = new SelfVerificationPage();
+		selfverification.selfverificationpage(language);
+	}
 
-//	@Test(dataProvider = "Languages", dataProviderClass = LanguageDataProvider.class, description = "[TC_243, TC_245, TC_250, TC_251, TC_252, TC_254, TC_255, TC_256, TC_257, TC_258, TC_259, TC_260, TC_261] Verify MLK's on koo card with language switch option in own/public profile.", groups = {
-//			"regression", "Profile_Screen" })
-//	public void verifyKoosTab(String language) throws IOException, InterruptedException, FilloException {
-//		LanguageDataProvider.setCurrentLanguage(language);
-//		LoginKooPage loginKooPage = new LoginKooPage();
-//		loginKooPage.loginValidUser(language, TestConfig.getInstance().getUserName());
-//        TabsPage tabs = new TabsPage();
-//        tabs.threadKooCreation(language,LanguageDataProvider.getLanguageDataValue("PostButtonText"));
-//        tabs.mlkKooCreation(language,  LanguageDataProvider.getLanguageDataValue("NextButtonText"), LanguageDataProvider.getLanguageDataValue("PreviewButtonText"),LanguageDataProvider.getLanguageDataValue("PostButtonText"));
-//        tabs.likestab();
-//        tabs.rekoostab();
-//        tabs.mentionstab();
-//        tabs.savedkoostab();
-//	}
+	@Test(alwaysRun = false, dataProvider = "Languages", dataProviderClass = LanguageDataProvider.class, description = "[TC_078] Verify all the fields on information card & should reflect what ever is added by the user.", 
+			groups = {"regression", "Profile_Screen" })
+	public void verifyAccountInfoDetails(String language) throws IOException, InterruptedException, FilloException {
+		BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO",
+				"<b><----Test case execution started for Test: TC_078 - Verify all the fields on information card & should reflect what ever is added by the user. ------><b>",
+				false, BaseTest.mobileDriver.get());
+		try {
+			LanguageDataProvider.setCurrentLanguage(language);
+			LoginKooPage loginKooPage = new LoginKooPage();
+			InformationPage element = new InformationPage();
+			loginKooPage.loginValidUser(language, TestConfig.getInstance().getUserName());
+			
+			element.accountInfoDetails(language);
+		} catch (Exception e) {
+			BaseTest.utilObj.get().getAssertManager().sAssertException(
+					"Something went wrong in TC_078 - Verify all the fields on information card & should reflect what ever is added by the user. Exception:"
+							+ e.getMessage(),
+					true, BaseTest.mobileDriver.get());
+			BaseTest.afterMethodDriver.set(BaseTest.mobileDriver.get());
+		}
+	}
 
 
 }

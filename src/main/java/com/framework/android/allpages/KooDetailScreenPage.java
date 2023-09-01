@@ -28,6 +28,10 @@ public class KooDetailScreenPage {
 	public By viewMoreForComments = By.xpath("(//android.widget.ImageView[@resource-id='com.koo.app:id/iv_options_more'])[2]");
 	public By hideUnHideComment = By.xpath("//android.widget.TextView[@resource-id='com.koo.app:id/itemhideReply']");
 	public By hideCommentEyeIcon = By.xpath("//android.widget.LinearLayout[@resource-id='com.koo.app:id/layout_hidden_comments']");
+	public By icon_kooComment = By.id("com.koo.app:id/comment_imageview");
+	public By icon_kooCommentSection = By.xpath("//android.view.View/android.view.View/android.view.View[1]/android.view.View[5]/android.view.View");
+	public By icon_kooCommentSection1 = By.xpath("//*[@id=\"sourceContainer\"]/div/div[3]/div/div/div/div[19]/span[3]/span/span/b");
+	public By txtbox_comments = By.xpath("//android.view.View[@content-desc='koo_create_textField']");
 	
 	
 	public String kooDetailTitle_Name = "";
@@ -53,7 +57,6 @@ public class KooDetailScreenPage {
 	public String postedCommentIcon_Name = "";
 	public String viewMoreForComments_Name = "";
 	public String hideUnHideComment_Name = "";
-	public String hideCommentEyeIcon_Name = "";
-	
+	public String hideCommentEyeIcon_Name = "";	
 	
 }

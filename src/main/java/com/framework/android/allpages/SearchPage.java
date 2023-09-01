@@ -17,19 +17,40 @@ import com.koo.framework.BaseTest;
 import com.koo.utils.UIUtils;
 
 public class SearchPage {
-	MobileActions mobileActions = BaseTest.utilObj.get().getMobileActions();
-	PeopleTabPage peopleTabPage = new PeopleTabPage();
-	HomePage homePage = new HomePage();
-	CommonHelper commonHelperPage = new CommonHelper();
-	UIUtils uiUtilsPage = new UIUtils();
-	SoftAssert softAssert = new SoftAssert();
-	ProfileScreenPage profileScreenPage = new ProfileScreenPage();
-	KooCardPage kooCardPage = new KooCardPage();
-	UserBlockPage userBlockPage = new UserBlockPage();
-	KooRewardsProgramPage kooRewardsProgramPage = new KooRewardsProgramPage();
-	ManageTopicsPage manageTopicsPage = new ManageTopicsPage();
-	HomeScreenTabPage homeScreenPage = new HomeScreenTabPage();
-	HashTagScreenPage hashTagScreenPage = new HashTagScreenPage();
+	HomeScreenTabPage homeScreenPage = null;
+	HashTagScreenPage hashTagScreenPage = null;
+	MobileActions mobileActions = null;
+	KooCreationPage kooCreationPage = null;
+	ProfileScreenPage profileScreenPage = null;
+	EditProfilePage editProfilePage = null;
+	UserBlockPage userBlockPage = null;
+	KooCardPage kooCardPage = null;
+	KooRewardsProgramPage kooRewardsProgramPage = null;
+	HomePage homePage = null;
+	SoftAssert softAssert = null;
+	PeopleTabPage peopleTabPage = null;
+	CommonHelper commonHelperPage = null;
+	UIUtils uiUtilsPage = null;
+	ManageTopicsPage manageTopicsPage = null;
+
+	public SearchPage() {
+
+		this.mobileActions = BaseTest.utilObj.get().getMobileActions();
+		this.userBlockPage = new UserBlockPage();
+		this.profileScreenPage = new ProfileScreenPage();
+		this.editProfilePage = new EditProfilePage();
+		this.kooCardPage = new KooCardPage();
+		this.kooCreationPage = new KooCreationPage();
+		this.kooRewardsProgramPage = new KooRewardsProgramPage();
+		this.softAssert = new SoftAssert();
+		this.homePage = new HomePage();
+		this.peopleTabPage = new PeopleTabPage();
+		this.commonHelperPage = new CommonHelper();
+		this.uiUtilsPage = new UIUtils();
+		this.manageTopicsPage = new ManageTopicsPage();
+		this.homeScreenPage = new HomeScreenTabPage();
+		this.hashTagScreenPage = new HashTagScreenPage();
+	}
 
 	String actualValue;
 
@@ -199,6 +220,7 @@ public class SearchPage {
 	 * This method is to verify data for koo sub tab Results
 	 */
 	public void verifyKoos() {
+		mobileActions.swipeUpFindElement(30, kooResults);
 		mobileActions.waitForVisible(kooResults);
 		mobileActions.getText(kooResults, kooResults_Name, true);
 		Assert.assertTrue(mobileActions.isDisplayed(kooResults, kooResults_Name));
@@ -214,6 +236,15 @@ public class SearchPage {
 	}
 
 	/**
+	 * This method is to verify data for three types of Results in All tab
+	 */
+	public void verifyallThreeTypesResults() {
+		verifyHashTags();
+		verifyProfileResults();
+		verifyKoos();
+	}
+
+	/**
 	 * This method is to verify and click on Tab
 	 */
 	public void verifyAndClickOnTab(String expectedTabName) {
@@ -223,12 +254,12 @@ public class SearchPage {
 	}
 
 	/**
-	 * This method is to verify data for three types of Results in All tab
+	 * This method is to verify and click on Tab
 	 */
-	public void verifyallThreeTypesResults() {
-		verifyHashTags();
-		verifyProfileResults();
-		verifyKoos();
+	public void verifyAndClickOnTab(By by, String expectedTabName) {
+		mobileActions.waitForVisible(by);
+		mobileActions.getText(by, expectedTabName, true);
+		Assert.assertTrue(mobileActions.isDisplayed(by, expectedTabName));
 	}
 
 }

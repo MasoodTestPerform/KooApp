@@ -80,12 +80,16 @@ public class ProfileScreenPage {
 	public By kooFabPlus = By.id("com.koo.app:id/circular_fab_plus");
 	public By list_heartButton = By.id("com.koo.app:id/favourite_button");
 	public By txt_explanatory = By.xpath("//*[@resource-id='com.koo.app:id/favourite_Accounts_Info_ComposeView']/android.view.View/android.view.View/android.widget.TextView[2]");
-		
+	public By txt_heading = By.id("com.koo.app:id/toolbar_heading_textview");
+	public By btn_superLikes = By.id("com.koo.app:id/super_likes_layout");
+	public By txt_superLikesHeading = By.xpath("(//*[@class='android.widget.TextView'])[4]");
+	public By btn_twoDots = By.xpath("(//*[@resource-id='com.koo.app:id/iv_options_more'])[1]");
+	
 	
 	public String img_profilePic_Name = "";
 	public String txt_profileName_Name = "";
 	public String btn_selfVerifyTag_Name = "";
-	public String btn_backInProfileScreen_Name = "";
+	public String btn_backInProfileScreen_Name = "Back Button in Prfoile Screen";
 	public String btn_threeDots_Name = "";
 	public String btn_addImages_Name = "";
 	public String btn_backInAddphotos_Name = "";
@@ -155,6 +159,6 @@ public class ProfileScreenPage {
 	public String commentsKoos_Name = "";
 	public String mentionsKoos_Name = "";
 	public String txt_explanatory_name = "Favorite accounts";
-	
+	public String settings_hdrname = "Settings";
 			
 }

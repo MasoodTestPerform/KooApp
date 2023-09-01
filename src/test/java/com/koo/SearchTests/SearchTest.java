@@ -30,7 +30,6 @@ public class SearchTest extends BaseTest {
 			searchPage.enterValueInSearchBar("Yogi Adityanath");
 			searchPage.verifyAndClickLeftSearchIcon();
 			searchPage.verifyAndClickSearchAllResultsLink();
-			mobileActions.swipeUp(2);
 			BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO",
 					"<b><----Test case execution completed for Test:Successfully verified Options Search Bar is Taking inputs & see appropriate search results ------><b>",
 					true, BaseTest.mobileDriver.get());

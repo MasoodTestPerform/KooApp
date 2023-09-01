@@ -6,7 +6,7 @@ public class FeedTabPage {
 	
 	public By topicsWidget_feedScreen = By.xpath("//android.widget.TextView[@text = 'Add Topics to your Feed']");
 	public By topicsWidget_pills = By.id("com.koo.app:id/item_title");
-	
+	public By btn_plus = By.id("com.koo.app:id/circular_fab");
 	
 	public String topicsWidget_feedScreen_Name = "Add topics to your feed";
 
