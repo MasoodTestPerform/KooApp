@@ -86,7 +86,6 @@ public class KooCreationPage {
 	public By btn_language3 = By.xpath("(//android.view.View)[16]");
 	public By btn_language1 = By.xpath("(//android.view.View)[12]");
 	public By txt_posted = By.xpath("//android.widget.EditText[@content-desc='koo_create_textField']");
-	public By btn_editKoo = By.id("com.koo.app:id/itemEditContent");
 	public By txt_editedKoo = By.id("com.koo.app:id/topic_title_textview");
 	public By btn_like = By.id("com.koo.app:id/like_imageview");
 	public By txt_bftEditTxt = By.xpath("//android.widget.EditText");
@@ -103,6 +102,11 @@ public class KooCreationPage {
 	public By btn_ok = By.id("com.sec.android.app.camera:id/done_button");
 	public By btn_retry = By.id("com.sec.android.app.camera:id/btn_preview_retry");
 	public By gallery_video = By.xpath("//android.view.View[@content-desc='media_grid']/android.view.View[1]");
+	//Edit Koo
+	public By txt_editKooTitle = By.xpath("//android.widget.TextView[@content-desc='edit_koo_title']");
+	public By btn_editThisKoo = By.xpath("//android.view.View[@content-desc='edit_this_koo_btn']");
+	public By btn_createNewKoo = By.xpath("//android.view.View[2]/android.widget.TextView");
+	public By btn_close = By.xpath("//android.view.View[3]/android.widget.TextView");
 	
 	public String Chkbox_Select_Language_Name = ""; 
 	public String OTP_btn_Name = "";

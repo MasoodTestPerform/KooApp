@@ -28,6 +28,7 @@ public class KooCreationPages {
 	SettingsPage settingsPage = null;
 	KooDetailScreenPage kooDetailScreenPage = null;
 	FeedTabPage feedTabPage = null;
+	CommentDetailsScreenPage commentDetailsScreenPage = null;
 
 	public KooCreationPages() {
 
@@ -41,6 +42,7 @@ public class KooCreationPages {
 		this.settingsPage = new SettingsPage();
 		this.kooDetailScreenPage = new KooDetailScreenPage();
 		this.feedTabPage = new FeedTabPage();
+		this.commentDetailsScreenPage = new CommentDetailsScreenPage();
 	}
 
 	public void kooCreationWithText(String language) throws IOException, InterruptedException {
@@ -287,5 +289,54 @@ public class KooCreationPages {
 			mobileActions.click(kooCreationPage.btn_yesdltkoo, "yes button");
 		}
 	}
+	
+	public void twoDotsWithEditThisKoo() {
+		mobileActions.click(kooCreationPage.btn_profile, "profile button");
+		List<WebElement> allKoos = BaseTest.utilObj.get().getMobileActions().elements(profileScreenPage.btn_twoDots);
+		if (allKoos.size() > 0) {
+
+			mobileActions.click(profileScreenPage.btn_twoDots, "two dots button");
+			mobileActions.click(kooCreationPage.btn_editkoo, "koo edit");
+//			mobileActions.click(kooCreationPage.btn_editThisKoo, "edit this koo button");			
+		}
+		if (mobileActions.isElmPresent(kooCreationPage.txt_bftEditTxt)) {
+			mobileActions.clearAndSendKeys(kooCreationPage.txt_bftEditTxt, kooCreationPage.txt_bftEditTxt_Name,
+					"Edited testing purpose");
+			mobileActions.click(mobileActions.returnByBasedOnPageNameAndObjectName(kooCreationPage.btn_post,
+					"xpath", kooCreationPage.btn_post_Name), "kooCreationPage.btn_post_Name");
+			mobileActions.click(commentDetailsScreenPage.backButtonAfterPostComment, "back button");
+		}
+		allKoos = BaseTest.utilObj.get().getMobileActions().elements(profileScreenPage.btn_twoDots);
+		if (allKoos.size() > 0) {
+			mobileActions.click(profileScreenPage.btn_twoDots, "two dots button");
+			mobileActions.click(kooCreationPage.btn_deletekoo, "koo delete");
+			mobileActions.click(kooCreationPage.btn_yesdltkoo, "yes button");
+		}
+	}
+	
+	public void kooCreationAndEditWithText(String language) throws IOException, InterruptedException {
+		BaseTest.LOGGER.get().logTestStep(BaseTest.extentTest.get(), "INFO", "Going to use Language:" + language, false,
+				BaseTest.mobileDriver.get());
+		try {
+			Assert.assertTrue(mobileActions.isDisplayed(feedTabPage.btn_plus, "Koo FAB + Button"));
+			mobileActions.click(feedTabPage.btn_plus, "plus button");
+
+			if (mobileActions.isElmPresent(kooCreationPage.txt_bftEditTxt)) {
+				mobileActions.sendKeys(kooCreationPage.txt_bftEditTxt, kooCreationPage.txt_bftEditTxt_Name,
+						"Testing purpose");
+				mobileActions.click(mobileActions.returnByBasedOnPageNameAndObjectName(kooCreationPage.btn_post,
+						"xpath", kooCreationPage.btn_post_Name), "kooCreationPage.btn_post_Name");
+				mobileActions.click(kooCreationPage.btn_no_multipleLang, "no button");
+				twoDotsWithEditThisKoo();
+//				twoDotsWithDelete();
+			} else {
+				BaseTest.utilObj.get().getAssertManager().sAssertTrue(false, "Not able to post the text message", true,
+						BaseTest.mobileDriver.get(), true);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 
 }

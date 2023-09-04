@@ -211,6 +211,7 @@ public class MobileActions {
     	try {
 	    	WebElement elm = findElement(elementName, by, TestConfig.getInstance().getOBJWAITTIME(), true);
 	    	elm.click();
+	    	elm.clear();
 	    	elm.sendKeys(data);
 	        LOGGER.logTestStep(extentTest, "INFO", "Entered text:"+data+ " on element:"+elementName, false, this.driver);
     	}catch(Exception e) {
