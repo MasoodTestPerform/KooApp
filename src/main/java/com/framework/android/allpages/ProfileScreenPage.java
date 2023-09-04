@@ -113,7 +113,7 @@ public class ProfileScreenPage {
 	public String btn_followInPublicProfile_Name = "";
 	public String btn_follow1InPublicProfile_Name = "";
 	public String btn_ShareInPublicProfile_Name = "";
-	public String btn_followingInPublicProfile_Name = "";
+	public String btn_followingInPublicProfile_Name = "following button";
 	public String btn_directMsgInPublicProfile_Name = "";
 	public String btn_blockMsgInPublicProfile_Name = "";
 	public String btn_reportUserInPublicProfile_Name = "Report user link";
@@ -140,7 +140,7 @@ public class ProfileScreenPage {
 	public String txt_comments_Name = "";
 	public String btn_showThisThreadInCommentsTab_Name = "";
 	public String txt_rekoowithComments_Name = "";
-	public String btn_saved_Name = "";
+	public String btn_saved_Name = "Save Koo button on koo card";
 	public String txt_kooSavedTime_Name = "";
 	public String btn_followers_Name = "";
 	public String txt_followersheading_Name = "";

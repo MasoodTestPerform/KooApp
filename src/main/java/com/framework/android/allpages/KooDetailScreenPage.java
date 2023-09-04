@@ -43,7 +43,7 @@ public class KooDetailScreenPage {
 	public String bigFollowButton_Name = "";
 	public String writeYourCommentForSpecificUser_Name = "";
 	public String commentTextCount_Name = "";
-	public String commentTextCountForKoo_Name = "";
+	public String commentTextCountForKoo_Name = "Comments Count";
 	public String likeReactionBelowCommentSection_Name = "";
 	public String commentReactionBelowCommentSection_Name = "";
 	public String rekooReactionBelowCommentSection_Name = "";
