@@ -153,4 +153,30 @@ public class KooCreationTest extends BaseTest {
 		}
 	}
 
+	@Test(dataProvider = "Languages", dataProviderClass = LanguageDataProvider.class, description = "[TC_150] Verify user is able to post Koo with combination of different media.", groups = {
+			"regression", "Profile_Screen" })
+	public void TC_168_verifyAbleToPostAndEditKoosWithText(String language)
+			throws IOException, InterruptedException, FilloException {
+		BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO",
+				"<b><----Test case execution started for Test: TC_168 - Verify user is able to post Koo with combination of different media. ------><b>",
+				false, BaseTest.mobileDriver.get());
+		try {
+			LanguageDataProvider.setCurrentLanguage(language);
+			LoginKooPage loginKooPage = new LoginKooPage();
+			loginKooPage.loginValidUser(language, TestConfig.getInstance().getUserName());
+			KooCreationPages creation = new KooCreationPages();
+			creation.kooCreationAndEditWithText(language);
+			BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO",
+					"<b><----Test case execution completed for Test:Successfully executed - TC_168 - Verify user is able to post Koo with combination of different media. ------><b>",
+					true, BaseTest.mobileDriver.get());
+			BaseTest.afterMethodDriver.set(BaseTest.mobileDriver.get());
+		} catch (Exception e) {
+			BaseTest.utilObj.get().getAssertManager().sAssertException(
+					"Something went wrong in TC_168 - Verify user is able to post Koo with combination of different media. Exception:"
+							+ e.getMessage(),
+					true, BaseTest.mobileDriver.get());
+			BaseTest.afterMethodDriver.set(BaseTest.mobileDriver.get());
+		}
+	}
+
 }
