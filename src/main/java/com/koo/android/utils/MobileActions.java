@@ -29,6 +29,7 @@ import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -743,5 +744,4 @@ public class MobileActions {
 		  .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
 		  .moveTo(PointOption.point(top_y, bottom_y)).release().perform();
 	}
-
 }

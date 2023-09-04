@@ -244,8 +244,8 @@ public class KooCardPage {
 		mobileActions.sendKeys(kooCreationPage.txt_Message, kooCreationPage.txt_Message_Name, atTheRate);
 		mobileActions.isDisplayed(atTheRatePopUp, atTheRatePopUp_Name);
 		mobileActions.click(atTheRatePopUp, atTheRatePopUp_Name);
-		mobileActions.isDisplayed(kooCreationPage.btn_post, kooCreationPage.btn_post_Name);
-		mobileActions.click(kooCreationPage.btn_post, kooCreationPage.btn_post_Name);
+		mobileActions.isDisplayed(kooCreationPage.btn_Post, kooCreationPage.btn_post_Name);
+		mobileActions.click(kooCreationPage.btn_Post, kooCreationPage.btn_post_Name);
 		if (language.equalsIgnoreCase("English")) {
 			mobileActions.waitForVisible(kooCreationPage.btn_okScheduleKoo);
 			mobileActions.isDisplayed(kooCreationPage.btn_okScheduleKoo, kooCreationPage.btn_okScheduleKoo_Name);

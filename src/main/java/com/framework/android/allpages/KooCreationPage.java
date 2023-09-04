@@ -19,7 +19,8 @@ public class KooCreationPage {
 	public By btn_draft = By.xpath("//android.widget.ImageView[@content-desc='Back Button']/../android.view.View[2]");
 	public By txt_languages = By.xpath("(//android.view.View)[8]");
 	public By btn_no = By.xpath("//android.widget.TextView[@content-desc='negativeButton']");
-	public By btn_post = By.xpath("//android.widget.TextView[@text='###']"); 
+	public By btn_Post = By.xpath("//android.widget.TextView[@text='###']"); 
+	public String btn_post = "//android.widget.TextView[@text='###']";
 	public By txt_Message = By.xpath("//android.widget.EditText");
 	public By btn_addlanguage_plus = By.xpath("//android.view.View[@content-desc='add_language']");
 	public By checkbox_selectLanguage = By.xpath("(//android.view.View)[14]");
