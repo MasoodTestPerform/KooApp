@@ -117,7 +117,7 @@ public class SettingsPage {
 
 	public String continueBtnForBrowserPermission_Name = "";
 	public String editProfileHeading_Name = "";
-	public String shareKooPopUpHeading_Name = "";
+	public String shareKooPopUpHeading_Name = "Share popup heading";
 	public String shareKooPopUp_Name = "";
 	public String applySelfVerificationPageHeading_Name = "";
 	public String applySelfEminenceAndHelp_Name = "";

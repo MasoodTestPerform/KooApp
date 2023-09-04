@@ -19,7 +19,8 @@ public class KooCreationPage {
 	public By btn_draft = By.xpath("//android.widget.ImageView[@content-desc='Back Button']/../android.view.View[2]");
 	public By txt_languages = By.xpath("(//android.view.View)[8]");
 	public By btn_no = By.xpath("//android.widget.TextView[@content-desc='negativeButton']");
-	public String btn_post = "//android.widget.TextView[@text='###']"; 
+	public By btn_Post = By.xpath("//android.widget.TextView[@text='###']"); 
+	public String btn_post = "//android.widget.TextView[@text='###']";
 	public By txt_Message = By.xpath("//android.widget.EditText");
 	public By btn_addlanguage_plus = By.xpath("//android.view.View[@content-desc='add_language']");
 	public By checkbox_selectLanguage = By.xpath("(//android.view.View)[14]");
@@ -118,7 +119,7 @@ public class KooCreationPage {
 	public String btn_draft_Name = "";
 	public String txt_languages_Name = "";
 	public String btn_no_Name = "";
-	public String btn_post_Name = "Post";
+	public String btn_post_Name = "Post Button";
 	public String txt_Message_Name = "Koo creation text field";
 	public String btn_addlanguage_plus_Name = "";
 	public String checkbox_selectLanguage_Name = "";
@@ -147,7 +148,7 @@ public class KooCreationPage {
 	public String btn_ScheduleKoo1_Name = "";
 	public String btn_skipandpost_Name = "";
 	public String btn_ScheduleKoomessage_Name = "";
-	public String btn_okScheduleKoo_Name = "ok Yes button";
+	public String btn_okScheduleKoo_Name = "Ok Yes button";
 	public String txt_scheduledanddrafts_Name = "";
 	public String btn_published_Name = "";
 	public String btn_upcoming_Name = "";
@@ -156,9 +157,9 @@ public class KooCreationPage {
 	public String menu_hamberger_Name = "";
 	public String btn_editkoo_Name = "";
 	public String btn_deletekoo_Name = "";
-	public String btn_yes_Name = "";
+	public String btn_yes_Name = "Yes Button to unfollow the User";
 	public String btn_viewdrafts_Name = "";
-	public String menu_drafthamberger_Name = "";
+	public String menu_drafthamberger_Name = "two dots for view more options on Koo card";
 	public String btn_exclusive_Name = "";
 	public String btn_exclusive_ok_Name = "";
 	public String txt_postHeader_Name = "";
