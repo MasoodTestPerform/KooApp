@@ -21,16 +21,16 @@ public class ReportUserTest {
             PeopleTabPage peopleTabPage = new PeopleTabPage();
             loginKooPage.loginValidUser(language, TestConfig.getInstance().getUserName());
             homeScreenTabPage.clickOnAnyTabFromHomePage(LanguageDataProvider.getLanguageDataValue("PeopleTabText"));
-            String val = peopleTabPage.verifyNavigateToFirstPeopleProfileFromPeopleTab();
-            System.out.println("val:"+val);
+            //String val = peopleTabPage.verifyNavigateToFirstPeopleProfileFromPeopleTab();
+            //System.out.println("val:"+val);
             
             MobileActions mobileActions = BaseTest.utilObj.get().getMobileActions();
             mobileActions.click(peopleTabPage.peopleTabProfile, peopleTabPage.peopleTabProfile_Name);
             Thread.sleep(50000);
-            val = BaseTest.mobileDriver.get().getPageSource();
+           // val = BaseTest.mobileDriver.get().getPageSource();
             mobileActions.click(By.xpath("//android.widget.ImageButton[@resource-id='com.koo.app:id/layoutOptionMenu']"), "OptionMenu");
             Thread.sleep(20000);
-            System.out.println(val);
+            //System.out.println(val);
             
         }
     }   

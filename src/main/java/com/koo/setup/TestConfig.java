@@ -93,6 +93,7 @@ public class TestConfig {
 	private static String NewUserOnBoarding_TC026;
 	private static String NewUserOnBoarding_TC027;
 	private static String NewUser_HomePage_TC_028;
+	private static String NewUserPeopleTab_TC_042_044;
 	
 
 	private TestConfig() {
@@ -271,6 +272,10 @@ public class TestConfig {
 	public String getNewUser_HomePage_TC_028() {
 		return NewUser_HomePage_TC_028;
 	}
+	
+	public String getNewUserPeopleTab_TC_042_044() {
+		return NewUserPeopleTab_TC_042_044;
+	}
 
 	// Framework Initialization
 	public void suiteSetup() {
@@ -411,6 +416,7 @@ public class TestConfig {
 		NewUserOnBoarding_TC026 = config.getPropertyValue("NewUserOnBoarding_TC026");
 		NewUserOnBoarding_TC027 = config.getPropertyValue("NewUserOnBoarding_TC027");
 		NewUser_HomePage_TC_028 = config.getPropertyValue("NewUser_HomePage_TC_028");
+		NewUserPeopleTab_TC_042_044 = config.getPropertyValue("NewUserPeopleTab_TC_042_044");
 	}
 
 }

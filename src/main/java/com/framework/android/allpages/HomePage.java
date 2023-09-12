@@ -7,13 +7,9 @@ import com.koo.framework.BaseTest;
 
 public class HomePage {
 	MobileActions mobileActions = null;
-	PeopleTabPage peopleTabPage = null;
 		
 	public HomePage() {
-		this.mobileActions = BaseTest.utilObj.get().getMobileActions();
-		this.peopleTabPage = new PeopleTabPage();
-		
-		
+		this.mobileActions = BaseTest.utilObj.get().getMobileActions();	
 	}
 	
 	public By select_languages = By.xpath("//android.widget.TextView[@text='Select Language']");

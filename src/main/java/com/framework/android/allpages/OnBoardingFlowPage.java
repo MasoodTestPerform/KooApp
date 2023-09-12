@@ -12,11 +12,9 @@ import com.framework.android.allpages.*;
 public class OnBoardingFlowPage {
 	
 	MobileActions mobileActions = null;
-	PeopleTabPage peopleTabPage = null;
 		
 	public OnBoardingFlowPage() {
 		this.mobileActions = BaseTest.utilObj.get().getMobileActions();
-		this.peopleTabPage = new PeopleTabPage();
 		
 		
 	}
@@ -215,6 +213,7 @@ public class OnBoardingFlowPage {
 	 * @throws IOException
 	 */
 	public OnBoardingFlowPage verifyNewUserAbleToviewProfileImagePage()  {
+		PeopleTabPage peopleTabPage = new PeopleTabPage();
 		
 		BaseTest.LOGGER.get().logTestStep(BaseTest.extentTest.get(), "INFO", "Going to Verify Add Profile picture page", false, BaseTest.mobileDriver.get());
 		boolean displayFlag = mobileActions.isDisplayed(headerText, headerText_Name);
@@ -278,6 +277,7 @@ public class OnBoardingFlowPage {
 	 * @throws IOException
 	 */
 	public OnBoardingFlowPage verifyUserAbleToViewFollowPeoplePage() throws Exception {
+		PeopleTabPage peopleTabPage = new PeopleTabPage();
 		BaseTest.LOGGER.get().logTestStep(BaseTest.extentTest.get(), "INFO", "Going to Verify People Follow page", false, BaseTest.mobileDriver.get());
 		mobileActions.click(skipOrContinueButton, skipOrContinueButton_Name);
 		mobileActions.click(skipOrContinueButton, skipOrContinueButton_Name);
@@ -327,6 +327,7 @@ public class OnBoardingFlowPage {
 	 * @throws IOException
 	 */
 	public OnBoardingFlowPage userAbleToFollowUnfollow() {
+		PeopleTabPage peopleTabPage = new PeopleTabPage();
 		BaseTest.LOGGER.get().logTestStep(BaseTest.extentTest.get(), "INFO", "Going to Verify User able to follow and unfollow", false, BaseTest.mobileDriver.get());
 		String firstProfileName = mobileActions
 				.getText(peopleTabPage.peopleTabFirstProfile, peopleTabPage.peopleTabFirstProfile_Name, true).trim();
