@@ -504,7 +504,8 @@ public class MobileActions {
 //        return element;
 //    }
     
-    public MobileElement swipeUsingText(String text) {
+    @SuppressWarnings("unchecked")
+	public MobileElement swipeUsingText(String text) {
     	MobileElement element = null;
     	
     	try {   		
@@ -744,5 +745,18 @@ public class MobileActions {
 		ts.press(PointOption.point(x, top_y))
 		  .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
 		  .moveTo(PointOption.point(top_y, bottom_y)).release().perform();
+	}
+    public void pullToRefreshPage()
+	{
+    	int deviceWidth = driver.manage().window().getSize().getWidth();
+    	int deviceHeight = driver.manage().window().getSize().getHeight();
+    	int midX = (deviceWidth / 2);
+    	int midY = (deviceHeight / 2);
+    	int bottomEdge = (int) (deviceHeight * 0.85f);
+    	TouchAction ts = new TouchAction((PerformsTouchActions) driver);
+        ts.press(point(midX,midY))
+        .waitAction(waitOptions(ofMillis(1000)))
+        .moveTo(point(midX, bottomEdge))
+        .release().perform();
 	}
 }

@@ -13,19 +13,10 @@ import com.koo.framework.BaseTest;
 public class HomeScreenTabPage {
 	
 	MobileActions mobileActions = null;
-	UserBlockPage userBlockPage = null;
-	HashTagScreenPage hashTagScreenPage = null;
-	OnBoardingFlowPage onBoardingFlowPage = null;
-	KooDetailScreenPage kooDetailScreenPage = null;
-	KooCreationPage kooCreationPage = null;
-	
+		
 	public HomeScreenTabPage(){
 		mobileActions = BaseTest.utilObj.get().getMobileActions();
-		userBlockPage = new UserBlockPage();
-		hashTagScreenPage = new HashTagScreenPage();
-		onBoardingFlowPage = new OnBoardingFlowPage();
-		kooDetailScreenPage = new KooDetailScreenPage();
-		kooCreationPage = new KooCreationPage();
+		
 
 	}
 	public By trendingTagsIcon = By.id("com.koo.app:id/trending_feed_imageview");
@@ -99,6 +90,7 @@ public class HomeScreenTabPage {
 	 * @return
 	 */
 	public HomeScreenTabPage verifyHomeIcon() {
+		UserBlockPage userBlockPage = new UserBlockPage();
 		mobileActions.waitForVisible(userBlockPage.homeButton);
 		boolean diaplyFlag = this.mobileActions.isDisplayed(userBlockPage.homeButton, userBlockPage.homeButton_Name);
 		BaseTest.utilObj.get().getAssertManager().sAssertEquals(diaplyFlag,true, "Validation of Home Icon in Koo", true, BaseTest.mobileDriver.get(), true);
@@ -126,6 +118,7 @@ public class HomeScreenTabPage {
 	 * @return
 	 */
 	public HomeScreenTabPage verifySearchIcon() {
+		HashTagScreenPage hashTagScreenPage = new HashTagScreenPage();
 		this.mobileActions.waitForVisible(hashTagScreenPage.search_icon);
 		boolean diaplyFlag = this.mobileActions.isDisplayed(hashTagScreenPage.search_icon, hashTagScreenPage.search_icon_Name);
 		BaseTest.utilObj.get().getAssertManager().sAssertEquals(diaplyFlag,true, "Validation of Search icon on main page", true, BaseTest.mobileDriver.get(), true);
@@ -194,6 +187,7 @@ public class HomeScreenTabPage {
 	 * @return
 	 */
 	public HomeScreenTabPage verifyHeaderTabs(List<String> expectedTabText) {
+		OnBoardingFlowPage onBoardingFlowPage = new OnBoardingFlowPage();
 		for (int i = 0; i < expectedTabText.size(); i++) {
 			WebElement elementsOne = BaseTest.mobileDriver.get().findElement(this.mobileActions
 					.returnByBasedOnPageNameAndObjectName(onBoardingFlowPage.feedTab_Text, "xpath", expectedTabText.get(i)));
@@ -213,6 +207,7 @@ public class HomeScreenTabPage {
 	}
 	
 	public HomeScreenTabPage verifyHeaderTabsNotPresent(List<String> expectedTabText) {
+		OnBoardingFlowPage onBoardingFlowPage = new OnBoardingFlowPage();
 		int  objCnt = 0;
 		this.mobileActions.setImplicitWaitMinimum(1);
 		for (int i = 0; i < expectedTabText.size(); i++) {
@@ -245,7 +240,9 @@ public class HomeScreenTabPage {
 	 * @throws IOException
 	 */
 	public HomeScreenTabPage verifyRedDotOnNextTabAndDisappearForLastTab(List<String> expectedTabText, String lastTab)
+	
 			 {
+		OnBoardingFlowPage onBoardingFlowPage = new OnBoardingFlowPage();
 		boolean displayFlag = false;
 		for (int i = 0; i < expectedTabText.size(); i++) {
 			this.mobileActions.click(this.mobileActions.returnByBasedOnPageNameAndObjectName(onBoardingFlowPage.feedTab_Text, "xpath",
@@ -271,6 +268,7 @@ public class HomeScreenTabPage {
 	 * @throws IOException
 	 */
 	public HomeScreenTabPage clickOnAnyTabFromHomePage(String tabName)  {
+		OnBoardingFlowPage onBoardingFlowPage = new OnBoardingFlowPage();
 		this.mobileActions.waitForVisible(
 				this.mobileActions.returnByBasedOnPageNameAndObjectName(onBoardingFlowPage.feedTab_Text, "xpath", tabName));
 		this.mobileActions.click(this.mobileActions.returnByBasedOnPageNameAndObjectName(onBoardingFlowPage.feedTab_Text, "xpath", tabName),
@@ -287,6 +285,7 @@ public class HomeScreenTabPage {
 	 * @throws IOException
 	 */
 	public HomeScreenTabPage verifyTopOfThePage(String tabName){
+		OnBoardingFlowPage onBoardingFlowPage = new OnBoardingFlowPage();
 		this.mobileActions.swipeUp(5);
 		this.mobileActions.click(this.mobileActions.returnByBasedOnPageNameAndObjectName(onBoardingFlowPage.feedTab_Text, "xpath", tabName),
 				"Click on tab = " + tabName);
@@ -318,6 +317,7 @@ public class HomeScreenTabPage {
 	 * @throws IOException
 	 */
 	public HomeScreenTabPage verifyBannersOnFeedPage(String regexExpression) {
+		UserBlockPage userBlockPage = new UserBlockPage();
 		String actualText = this.mobileActions
 				.getText(dynamicBannerText, dynamicBannerText_Name, true);
 		this.mobileActions.click(dynamicBannerText, dynamicBannerText_Name);
@@ -470,6 +470,8 @@ public class HomeScreenTabPage {
 	 */
 	public HomeScreenTabPage verifyCommentsDetailSection(String commentsSectionHeading, String commentText,
 			String postButton, String kooText)  {
+		KooDetailScreenPage kooDetailScreenPage = new KooDetailScreenPage();
+		KooCreationPage kooCreationPage = new KooCreationPage();
 		BaseTest.utilObj.get().getUIUtils().waitForSec(5);
 		this.mobileActions.swipeUp(1);
 		this.mobileActions.swipeUpFindElement(10,
