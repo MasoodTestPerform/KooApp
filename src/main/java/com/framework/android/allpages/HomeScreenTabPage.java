@@ -78,7 +78,7 @@ public class HomeScreenTabPage {
 	public String whatsappShareIconOnReactionBar_Name = "Whats App Share Icon on reaction bar";
 	public String shareIconOnReactionBar_Name = "share Icon on reaction bar";
 	public String kooText_Name = "koo text";
-	public String kooImage_Name = "";
+	public String kooImage_Name = "Image on Koo";
 	public String newKooBtn_Name = "new Koo button";
 	
 	
@@ -479,8 +479,8 @@ public class HomeScreenTabPage {
 		this.mobileActions.click(kooDetailScreenPage.writeCommentsBar, kooDetailScreenPage.writeCommentsBar_Name);
 		this.mobileActions.sendKeys(kooCreationPage.txt_Message, kooCreationPage.txt_Message_Name,
 				commentText);
-		this.mobileActions.click(this.mobileActions.returnByBasedOnPageNameAndObjectName(kooCreationPage.btn_post, "xpath", postButton),
-				"Click on Post Button");
+		//this.mobileActions.click(this.mobileActions.returnByBasedOnPageNameAndObjectName(kooCreationPage.btn_post, "xpath", postButton),
+			//	"Click on Post Button");
 		BaseTest.utilObj.get().getUIUtils().waitForSec(5);
 		this.mobileActions.swipeUpFindElement(10,
 				this.mobileActions.returnByBasedOnPageNameAndObjectName(kooDetailScreenPage.postedKooText, "xpath", kooText));

@@ -103,6 +103,7 @@ public class SettingsTest extends BaseTest {
 			settingsPage.verifySettingsButton();
 			settingsPage.clickSettingsButton();
 			settingsPage.verifyAddAccountPage_inSettings();
+			loginKooPage.loginValidUser(language, TestConfig.getInstance().getChildUserName());
 			BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO",
 					"<b><----Test case execution completed for Test:Successfully verified Options in Account Section ------><b>",
 					true, BaseTest.mobileDriver.get());

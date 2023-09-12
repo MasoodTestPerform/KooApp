@@ -19,7 +19,8 @@ public class KooCreationPage {
 	public By btn_draft = By.xpath("//android.widget.ImageView[@content-desc='Back Button']/../android.view.View[2]");
 	public By txt_languages = By.xpath("(//android.view.View)[8]");
 	public By btn_no = By.xpath("//android.widget.TextView[@content-desc='negativeButton']");
-	public String btn_post = "//android.widget.TextView[@text='###']"; 
+	public By btn_Post = By.xpath("//android.widget.TextView[@text='###']"); 
+	public String btn_post = "//android.widget.TextView[@text='###']";
 	public By txt_Message = By.xpath("//android.widget.EditText");
 	public By btn_addlanguage_plus = By.xpath("//android.view.View[@content-desc='add_language']");
 	public By checkbox_selectLanguage = By.xpath("(//android.view.View)[14]");
@@ -85,7 +86,6 @@ public class KooCreationPage {
 	public By btn_language3 = By.xpath("(//android.view.View)[16]");
 	public By btn_language1 = By.xpath("(//android.view.View)[12]");
 	public By txt_posted = By.xpath("//android.widget.EditText[@content-desc='koo_create_textField']");
-	public By btn_editKoo = By.id("com.koo.app:id/itemEditContent");
 	public By txt_editedKoo = By.id("com.koo.app:id/topic_title_textview");
 	public By btn_like = By.id("com.koo.app:id/like_imageview");
 	public By txt_bftEditTxt = By.xpath("//android.widget.EditText");
@@ -102,6 +102,11 @@ public class KooCreationPage {
 	public By btn_ok = By.id("com.sec.android.app.camera:id/done_button");
 	public By btn_retry = By.id("com.sec.android.app.camera:id/btn_preview_retry");
 	public By gallery_video = By.xpath("//android.view.View[@content-desc='media_grid']/android.view.View[1]");
+	//Edit Koo
+	public By txt_editKooTitle = By.xpath("//android.widget.TextView[@content-desc='edit_koo_title']");
+	public By btn_editThisKoo = By.xpath("//android.view.View[@content-desc='edit_this_koo_btn']");
+	public By btn_createNewKoo = By.xpath("//android.view.View[2]/android.widget.TextView");
+	public By btn_close = By.xpath("//android.view.View[3]/android.widget.TextView");
 	
 	public String Chkbox_Select_Language_Name = ""; 
 	public String OTP_btn_Name = "";
@@ -118,7 +123,7 @@ public class KooCreationPage {
 	public String btn_draft_Name = "";
 	public String txt_languages_Name = "";
 	public String btn_no_Name = "";
-	public String btn_post_Name = "Post";
+	public String btn_post_Name = "Post Button";
 	public String txt_Message_Name = "Koo creation text field";
 	public String btn_addlanguage_plus_Name = "";
 	public String checkbox_selectLanguage_Name = "";
@@ -147,7 +152,7 @@ public class KooCreationPage {
 	public String btn_ScheduleKoo1_Name = "";
 	public String btn_skipandpost_Name = "";
 	public String btn_ScheduleKoomessage_Name = "";
-	public String btn_okScheduleKoo_Name = "ok Yes button";
+	public String btn_okScheduleKoo_Name = "Ok Yes button";
 	public String txt_scheduledanddrafts_Name = "";
 	public String btn_published_Name = "";
 	public String btn_upcoming_Name = "";
@@ -156,9 +161,9 @@ public class KooCreationPage {
 	public String menu_hamberger_Name = "";
 	public String btn_editkoo_Name = "";
 	public String btn_deletekoo_Name = "";
-	public String btn_yes_Name = "";
+	public String btn_yes_Name = "Yes Button to unfollow the User";
 	public String btn_viewdrafts_Name = "";
-	public String menu_drafthamberger_Name = "";
+	public String menu_drafthamberger_Name = "two dots for view more options on Koo card";
 	public String btn_exclusive_Name = "";
 	public String btn_exclusive_ok_Name = "";
 	public String txt_postHeader_Name = "";

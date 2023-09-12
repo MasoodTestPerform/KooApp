@@ -60,30 +60,30 @@ public class TopicWidgetTest extends BaseTest {
 		}
 	}
 
-//	@Test(dataProvider = "Languages", dataProviderClass = LanguageDataProvider.class, description = "[TC_049] Verify followed Topics related Koo content should show on feed and justification text should show for Topic name with View more button.", groups = {
-//			"regression", "Topics" })
-//	public void TC_049_verifyTopicViewMorePage(String language) {
-//		BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO",
-//				"<b><----Test case execution started for Test: TC_049 - Verify followed Topics related Koo content should show on feed and justification text should show for Topic name with View more button ------><b>",
-//				false, BaseTest.mobileDriver.get());
-//		try {
-//			LanguageDataProvider.setCurrentLanguage(language);
-//			LoginKooPage loginKooPage = new LoginKooPage();
-//			loginKooPage.loginValidUser(language, TestConfig.getInstance().getUserName());
-//			TopicsTab topics = new TopicsTab();
-//			topics.topicsWithViewMore(language);
-//			BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO",
-//					"<b><----Test case execution completed for Test:Successfully executed - TC_049 - Verify followed Topics related Koo content should show on feed and justification text should show for Topic name with View more button ------><b>",
-//					true, BaseTest.mobileDriver.get());
-//			BaseTest.afterMethodDriver.set(BaseTest.mobileDriver.get());
-//		} catch (Exception e) {
-//			BaseTest.utilObj.get().getAssertManager().sAssertException(
-//					"Something went wrong in TC_049 - Verify followed Topics related Koo content should show on feed and justification text should show for Topic name with View more button. Exception:"
-//							+ e.getMessage(),
-//					true, BaseTest.mobileDriver.get());
-//			BaseTest.afterMethodDriver.set(BaseTest.mobileDriver.get());
-//		}
-//	}
+	@Test(dataProvider = "Languages", dataProviderClass = LanguageDataProvider.class, description = "[TC_049] Verify followed Topics related Koo content should show on feed and justification text should show for Topic name with View more button.", groups = {
+			"regression", "Topics" })
+	public void TC_049_verifyTopicViewMorePage(String language) {
+		BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO",
+				"<b><----Test case execution started for Test: TC_049 - Verify followed Topics related Koo content should show on feed and justification text should show for Topic name with View more button ------><b>",
+				false, BaseTest.mobileDriver.get());
+		try {
+			LanguageDataProvider.setCurrentLanguage(language);
+			LoginKooPage loginKooPage = new LoginKooPage();
+			loginKooPage.loginValidUser(language, TestConfig.getInstance().getUserName());
+			TopicsTab topics = new TopicsTab();
+			topics.topicsWithViewMore(language);
+			BaseTest.LOGGER.get().logTestStep(extentTest.get(), "INFO",
+					"<b><----Test case execution completed for Test:Successfully executed - TC_049 - Verify followed Topics related Koo content should show on feed and justification text should show for Topic name with View more button ------><b>",
+					true, BaseTest.mobileDriver.get());
+			BaseTest.afterMethodDriver.set(BaseTest.mobileDriver.get());
+		} catch (Exception e) {
+			BaseTest.utilObj.get().getAssertManager().sAssertException(
+					"Something went wrong in TC_049 - Verify followed Topics related Koo content should show on feed and justification text should show for Topic name with View more button. Exception:"
+							+ e.getMessage(),
+					true, BaseTest.mobileDriver.get());
+			BaseTest.afterMethodDriver.set(BaseTest.mobileDriver.get());
+		}
+	}
 
 	@Test(dataProvider = "Languages", dataProviderClass = LanguageDataProvider.class, description = "[TC_053] Verify Topics widget in feed screen with same pills like in Topics tab with same behaviour.", groups = {
 			"regression", "Topics" })

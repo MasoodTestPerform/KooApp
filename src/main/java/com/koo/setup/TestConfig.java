@@ -329,13 +329,9 @@ public class TestConfig {
 		capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, platformInfo[0]);
 		capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, platformInfo[1]);
 		capabilities.setCapability(MobileCapabilityType.UDID, udid);
-
-
 		capabilities.setCapability("app", System.getProperty("user.dir") + "/src/main/resources/MobileApps/"+apkfilename);
-
 		capabilities.setCapability("appPackage", "com.koo.app");
 		capabilities.setCapability("appActivity", "com.koo.onboarding.OnBoardingActivity");
-
 		capabilities.setCapability(MobileCapabilityType.ORIENTATION, "PORTRAIT");
 		capabilities.setCapability(MobileCapabilityType.NO_RESET, false);
 

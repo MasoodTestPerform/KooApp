@@ -217,5 +217,6 @@ public class BaseTest {
 			Assert.fail("Something went wrong in mobileSetupTestData");
 		}
 	}
+	
 }
 

@@ -29,6 +29,7 @@ import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -210,6 +211,7 @@ public class MobileActions {
     	try {
 	    	WebElement elm = findElement(elementName, by, TestConfig.getInstance().getOBJWAITTIME(), true);
 	    	elm.click();
+	    	elm.clear();
 	    	elm.sendKeys(data);
 	        LOGGER.logTestStep(extentTest, "INFO", "Entered text:"+data+ " on element:"+elementName, false, this.driver);
     	}catch(Exception e) {
@@ -744,7 +746,6 @@ public class MobileActions {
 		  .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
 		  .moveTo(PointOption.point(top_y, bottom_y)).release().perform();
 	}
-    
     public void pullToRefreshPage()
 	{
     	int deviceWidth = driver.manage().window().getSize().getWidth();
@@ -758,5 +759,4 @@ public class MobileActions {
         .moveTo(point(midX, bottomEdge))
         .release().perform();
 	}
-
 }
